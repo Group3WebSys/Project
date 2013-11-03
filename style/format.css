@@ -34,7 +34,7 @@ h1 {
 }
 
 #summaryBlock{
-	float: left;
+	float: right;
 	position: absolute;
 	border: 2px solid green;
   border-radius: 10px;
