@@ -1,0 +1,24 @@
+body {
+  background-repeat: repeat;
+  background-color:#DAFFB5;
+  background-position:center top;
+  background-attachment: scroll;
+  font-family: Bookman Old Style, Book Antiqua, Times New Roman, Arial;
+  font-size: 14px;
+}
+
+h1 {
+  color: black;
+  font-size: 38px;
+  text-align: center;
+}
+
+#bodyBlock{
+  position: absolute;
+  left: 50%;
+  width: 552px;
+  margin-left: -280px;
+  margin-top: 50px;    
+  margin-bottom: 30px;
+  border: 2px solid green;
+}
