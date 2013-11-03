@@ -13,6 +13,12 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  color: #003300;
+  font-size: 28px;
+  text-align: center;
+}
+
 #bodyBlock{
   position: absolute;
   left: 50%;
