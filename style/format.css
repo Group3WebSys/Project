@@ -21,4 +21,19 @@ h1 {
   margin-top: 50px;    
   margin-bottom: 30px;
   border: 2px solid green;
+  border-radius: 10px;
+}
+
+#navigationBlock{
+	float: left;
+	position: relative;
+	border: 2px solid green;
+  border-radius: 10px;
+}
+
+#summaryBlock{
+	float: left;
+	position: relative;
+	border: 2px solid green;
+  border-radius: 10px;
 }
