@@ -93,14 +93,12 @@
         else 
         { 
             $error_msg="Login failed";
-<<<<<<< HEAD
+            
             echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
             
             die();
-=======
             echo(json_encode(array("error"=>$error_msg, "success"=>0))); 
            
->>>>>>> header missions.php update (footer fix)
         } 
     } 
      
