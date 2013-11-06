@@ -54,3 +54,35 @@ h2 {
 	position: static;
   	padding: 10px 10px 10px 10px;
 }
+
+#slider {
+	/* Filler stuff for now */
+	height: 300px;
+	background-color: lightgray;
+	border: 1px solid black;
+	line-height: 300px;
+	text-align: center;
+	font-size: 18px;
+	color: black;
+	font-weight: bold;
+}
+#header {
+	/* Filler stuff for now */
+	height: 150px;
+	line-height: 150px;
+	background-color: lightgray;
+	border: 1px solid black;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 24px;
+	color: black;
+	font-weight: bold;
+}
+#content {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#intro {
+	text-align: center;
+}
