@@ -40,7 +40,7 @@
         // Note: On a production website, you should not output $ex->getMessage(). 
         // It may provide an attacker with helpful information about your code 
         // (like your database username and password). 
-        $ERRORS.push("Failed to connect to the database! Check host, dbname, username, and password in the dbconnect.php file. Error: ".$ex->getMessage());
+        array_push($ERRORS, "Failed to connect to the database! Check host, dbname, username, and password in the dbconnect.php file. Error: ".$ex->getMessage());
     } 
 
     if(count($ERRORS)==0)
