@@ -1,4 +1,4 @@
-<!doctype html>
+echo '
 <html>
 	<head>
 		<!--Favicon icon-->
@@ -14,7 +14,7 @@
 	<body>
 		<div id="header">
 			<!-- Logo, site name here -->
-			<!--Our awesome header here-->
+			<p>Our awesome header here</p>
 			<!--<?php 
 				// functions to display log in form or something else
 				// ifloggedin() { output nothing or member info }
@@ -22,4 +22,4 @@
 			?>-->
 		</div>	
 	</body>
-</html>
+</html>';
