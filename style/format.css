@@ -1,3 +1,11 @@
+* { 
+	margin: 0;
+}
+html,
+body {
+   height:100%;
+}
+
 body {
   background-repeat: repeat;
   background-color:#DAFFB5;
@@ -17,6 +25,11 @@ h2 {
   color: #003300;
   font-size: 28px;
   text-align: center;
+}
+
+.clearfooter {
+height: 330px;
+clear: both;
 }
 
 #bodyBlock{
@@ -86,3 +99,26 @@ h2 {
 #intro {
 	text-align: center;
 }
+
+#footer, #push {
+	margin: 150px;
+}
+#footer {
+	/* Filler stuff for now */
+	height: 150px;
+	background-color: lightgray;
+	border: 1px solid black;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 18px;
+	color: black;
+	font-weight: bold;
+}
+
+#container {
+   min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -150px;
+}
+

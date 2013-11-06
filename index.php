@@ -7,5 +7,10 @@
 				Super dope slider right here
 				<!-- slider will go here -->
 		</div>
+		<div id = "widgets">
+			<div class="widget">Widget 1</div>
+			<div class="widget">Widget 2</div>
+			<div class="widget">Widget 3</div>
+		</div>
 	</div>
-	
+	<?php include 'footer.php'; ?>

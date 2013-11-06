@@ -22,3 +22,4 @@
 			// else {output login form and register here}
 		?>
 	</div>	
+	<div id ="container">
