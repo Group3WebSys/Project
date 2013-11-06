@@ -1,4 +1,5 @@
-		<?php include 'header.php'; ?>
+<?php include 'header.php'; ?>
+	<html>
 		<div id = "bodyBlock">
 			<h1>Missions</h1>
 			<ul id = "missionsList">
@@ -23,4 +24,6 @@
 			<h2>Progress</h2>
 			<p>User summary (icon, level, mission status bar)</p>
 		</div>
-		<?php include 'footer.php'; ?>
+	</html>
+<?php include 'footer.php'; ?>
+
