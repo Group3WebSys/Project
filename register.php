@@ -38,7 +38,7 @@
 		if(empty($_POST['username']))
 		{
 			$error_msg="Empty user name";
-			echo json_encode(array("error"=>$error_msg), "success"=>0);
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
 		 
@@ -46,7 +46,7 @@
 		if(empty($_POST['password']))
 		{
 			$error_msg="Empty password";
-			echo json_encode(array("error"=>$error_msg), "success"=>0);
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
 		 
@@ -180,7 +180,7 @@
 		':username' => $_POST['username'],
 		':password' => $password,
 		':salt' => $salt,
-				':email' => $_POST['email']
+		':email' => $_POST['email']
 		);
 		 
 		try
@@ -197,7 +197,7 @@
 		}
 		
 		$query="SELECT * FROM users WHERE username=:username";
-		$query_params=array(":username", POST['username']);
+		$query_params=array(":username"=>$_POST['username']);
 		try
 		{
 			$stmt=$db->prepare($query);
@@ -210,8 +210,10 @@
 		}
 		
 		$user=$stmt->fetch();
-		echo json_encode(array("error"=>"None", "success"=>1, "username"=>$_POST['username'], "email"=>$_POST["email"]));
+		
+		session_start();
 		$_SESSION["user"]=$user;
+		echo json_encode(array("error"=>"None", "success"=>1, "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
 		die();
 	}
 	 

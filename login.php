@@ -84,17 +84,18 @@
         { 
             unset($user['salt']); 
             unset($user['password']);
-            $_SESSION['user'] = $user; 
             
-            echo json_encode(array("error"=>$error_msg, "success"=>1, "username"=>$user["username"], "email"=>$user["email"]));
-            $_SESSION["user"]=$user;
-            die(); 
+            session_start();
+			$_SESSION["user"]=$user;
+            echo json_encode(array("error"=>"None", "success"=>1, "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
+            die();
         } 
         else 
         { 
-            $error_msg="Login failed"
-            echo(json_encode(array("error"=>$error_msg, "success"=>0))); 
-           
+            $error_msg="Login failed";
+            echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
+            
+            die();
         } 
     } 
      
