@@ -7,10 +7,17 @@
 		<?php 
 			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Index";
 			else if (basename($_SERVER['PHP_SELF']) == "missions.php") echo "Missions";
+			else if (basename($_SERVER['PHP_SELF']) == "contact.php") echo "Contact";
 			// etc
 		?>
 		</title>
 		<link rel="stylesheet" type="text/css" href= "style/format.css">
+		<?php
+			if (basename($_SERVER['PHP_SELF']) == "contact.php") {
+		?>
+		<link rel="STYLESHEET" type="text/css" href="contact.css" />
+		<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+		<?php } ?>
 	</head>
 	<body>
 		<div id="header">
