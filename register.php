@@ -1,5 +1,34 @@
 <?php 
-	require('UserFrame_dbcon.php');
+//This file returns a response in json format:
+//"success": 1 or 0
+//"error": "error messages(seperated by commas)"
+//"username": "blah"
+//"email": "blah@blah"
+//
+//
+//
+//
+//
+//
+//
+	require('dbconnect.php');
+	
+	header('Content-Type: application/json');
+	
+	$error_msg="";
+	
+	if(count($ERRORS)!=0)
+	{
+		
+		foreach($ERRORS as $error)
+		{
+			$error_msg.=($error.",");
+		}
+		$error_msg=rtrim($error_msg, ",");
+		echo json_encode(array("error"=>$error_msg, "success"=>0));
+		die();
+	}
+	
 	// This if statement checks to determine whether the registration form has been submitted
 	// If it has, then the registration code is run, otherwise the form is displayed
 	if(!empty($_POST))
@@ -7,17 +36,17 @@
 		// Ensure that the user has entered a non-empty username
 		if(empty($_POST['username']))
 		{
-			// Note that die() is generally a terrible way of handling user errors
-			// like this.  It is much better to display the error with the form
-			// and allow the user to correct their mistake.  However, that is an
-			// exercise for you to implement yourself.
-			die("Please enter a username.");
+			$error_msg="Empty user name";
+			echo json_encode(array("error"=>$error_msg), "success"=>0);
+			die();
 		}
 		 
 		// Ensure that the user has entered a non-empty password
 		if(empty($_POST['password']))
 		{
-			die("Please enter a password.");
+			$error_msg="Empty password";
+			echo json_encode(array("error"=>$error_msg), "success"=>0);
+			die();
 		}
 		 
 		// Make sure the user entered a valid E-Mail address
@@ -26,20 +55,16 @@
 		// http://us.php.net/manual/en/filter.filters.php
 		if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
-			die("Invalid E-Mail Address");
+			$error_msg="Invalid email address";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
 		 
 		// We will use this SQL query to see whether the username entered by the
 		// user is already in use.  A SELECT query is used to retrieve data from the database.
 		// :username is a special token, we will substitute a real value in its place when
 		// we execute the query.
-		$query = "
-            SELECT
-                1
-            FROM users
-            WHERE
-                username = :username
-        ";
+		$query = "SELECT * FROM users WHERE username = :username";
 		 
 		// This contains the definitions for any special tokens that we place in
 		// our SQL query.  In this case, we are defining a value for the token
@@ -62,29 +87,23 @@
 		{
 			// Note: On a production website, you should not output $ex->getMessage().
 			// It may provide an attacker with helpful information about your code.
-			die("Failed to run query: " . $ex->getMessage());
+			$error_msg="Failed to run query: " . $ex->getMessage();
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
-		 
-		// The fetch() method returns an array representing the "next" row from
-		// the selected results, or false if there are no more rows to fetch.
-		$row = $stmt->fetch();
 		 
 		// If a row was returned, then we know a matching username was found in
 		// the database already and we should not allow the user to continue.
-		if($row)
+		if($stmt->rowCount()!=0)
 		{
-			die("This username is already in use");
+			$error_msg="Duplicate username";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
 		 
 		// Now we perform the same type of check for the email address, in order
 		// to ensure that it is unique.
-		$query = "
-            SELECT
-                1
-            FROM users
-            WHERE
-                email = :email
-        ";
+		$query = "SELECT * FROM users WHERE email = :email";
 		 
 		$query_params = array(
 				':email' => $_POST['email']
@@ -97,14 +116,16 @@
 		}
 		catch(PDOException $ex)
 		{
-			die("Failed to run query: " . $ex->getMessage());
+			$error_msg="Failed to run query: " . $ex->getMessage();
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
 		 
-		$row = $stmt->fetch();
-		 
-		if($row)
+		if($stmt->rowCount()!=0)
 		{
-			die("This email address is already registered");
+			$error_msg="Duplicate email address";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
 		 
 		// An INSERT query is used to add new rows to a database table.
@@ -124,7 +145,7 @@
             )
         ";
 		 
-		// A salt is randomly generated here to protect again brute force attacks
+		// A salt is randomly generated here to protect against brute force attacks
 		// and rainbow table attacks.  The following statement generates a hex
 		// representation of an 8 byte salt.  Representing this in hex provides
 		// no additional security, but makes it easier for humans to read.
@@ -166,34 +187,16 @@
 		// Execute the query to create the user
 		$stmt = $db->prepare($query);
 		$result = $stmt->execute($query_params);
-	}
-		catch(PDOException $ex)
-			{
-				// Note: On a production website, you should not output $ex->getMessage().
-				// It may provide an attacker with helpful information about your code.
-		die("Failed to run query: " . $ex->getMessage());
+		}catch(PDOException $ex)
+		{
+			$error_msg="Failed to run query: " . $ex->getMessage();
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		
 		}
-			 
-			// This redirects the user back to the login page after they register
-			header("Location: UserFrame_log.php");
-		 
-		// Calling die or exit after performing a redirect using the header function
-					// is critical.  The rest of your PHP script will continue to execute and
-			// will be sent to the user if you do not die or exit.
-			die("Redirecting to UserFrame_log.php");
+		
+		echo json_encode(array("error"=>"None", "success"=>1, "username"=>$_POST['username'], "email"=>$_POST["email"]));
+		die();
 	}
 	 
 	?>
-	<h1>Register</h1> 
-	<form action="register.php" method="post"> 
-	    Username:<br /> 
-	    <input type="text" name="username" value="" /> 
-	    <br /><br /> 
-	    E-Mail:<br /> 
-	    <input type="text" name="email" value="" /> 
-	    <br /><br /> 
-	    Password:<br /> 
-	    <input type="password" name="password" value="" /> 
-	    <br /><br /> 
-	    <input type="submit" value="Register" /> 
-	</form>

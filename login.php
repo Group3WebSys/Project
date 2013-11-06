@@ -1,8 +1,10 @@
 <?php 
 
     // First we execute our common code to connection to the database and start the session 
-    require("UserFrame_dbcon.php"); 
-     
+    require("dbconnect.php"); 
+    
+    header('Content-Type: application/json');
+    
     // This variable will be used to re-display the user's username to them in the 
     // login form if they fail to enter the correct password.  It is initialized here 
     // to an empty value, which will be shown if the user has not submitted the form. 
