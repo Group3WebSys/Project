@@ -11,6 +11,7 @@
 	<!-- Use Ajax to display the user info -->
 	<script>
 	  //User Info Here!
+	    //First check data.error for login status
 	</script>
 	  <p>Your account information!</p>
 	  <p>...</p>
@@ -40,7 +41,7 @@
 		$("#user #register").on("submit", function(e){
 			$.post("register.php", $(this).serialize(), function(data){
 				//Use Ajax to display user info
-				
+				  //First check data.error for login status
 			}).error(function(){
 				//Use Ajax to display error info
 			});

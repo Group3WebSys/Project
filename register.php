@@ -11,28 +11,29 @@
 //
 //
 //
-	require('dbconnect.php');
-	
-	header('Content-Type: application/json');
-	
-	$error_msg="";
-	
-	if(count($ERRORS)!=0)
+	if(!empty($_POST))
 	{
+		require('dbconnect.php');
 		
-		foreach($ERRORS as $error)
+		header('Content-Type: application/json');
+		
+		$error_msg="";
+		
+		if(count($ERRORS)!=0)
 		{
-			$error_msg.=($error.",");
+			
+			foreach($ERRORS as $error)
+			{
+				$error_msg.=($error.",");
+			}
+			$error_msg=rtrim($error_msg, ",");
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 		}
-		$error_msg=rtrim($error_msg, ",");
-		echo json_encode(array("error"=>$error_msg, "success"=>0));
-		die();
-	}
 	
 	// This if statement checks to determine whether the registration form has been submitted
 	// If it has, then the registration code is run, otherwise the form is displayed
-	if(!empty($_POST))
-	{
+	
 		// Ensure that the user has entered a non-empty username
 		if(empty($_POST['username']))
 		{
@@ -169,7 +170,7 @@
 		// guesses in the same amount of time instead of only one.
 		for($round = 0; $round < 65536; $round++)
 		{
-		$password = hash('sha256', $password . $salt);
+			$password = hash('sha256', $password . $salt);
 		}
 		 
 		// Here we prepare our tokens for insertion into the SQL query.  We do not
@@ -195,7 +196,22 @@
 		
 		}
 		
+		$query="SELECT * FROM users WHERE username=:username";
+		$query_params=array(":username", POST['username']);
+		try
+		{
+			$stmt=$db->prepare($query);
+			$result=$stmt->execute($query_params);
+		}catch(PDOException $ex)
+		{
+			$error_msg="Failed to run query: " . $ex->getMessage();
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		
+		$user=$stmt->fetch();
 		echo json_encode(array("error"=>"None", "success"=>1, "username"=>$_POST['username'], "email"=>$_POST["email"]));
+		$_SESSION["user"]=$user;
 		die();
 	}
 	 
