@@ -87,6 +87,7 @@
             $_SESSION['user'] = $user; 
             
             echo json_encode(array("error"=>$error_msg, "success"=>1, "username"=>$user["username"], "email"=>$user["email"]));
+            $_SESSION["user"]=$user;
             die(); 
         } 
         else 
