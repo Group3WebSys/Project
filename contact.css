@@ -7,7 +7,7 @@ stylesheet does not affect the other elements at all!
 
 #contactus fieldset
 {
-   width:320px;
+   width:750px;
    padding:20px;
    border:1px solid #ccc;
 -moz-border-radius: 10px;
@@ -48,7 +48,7 @@ border-radius: 10px;
 
 #contactus input[type="text"]
 {
-  height:18px;
+  
   width:220px;
   
   -webkit-border-radius: 5px;
@@ -60,13 +60,13 @@ border-radius: 10px;
 #contactus #scaptcha
 {
   width:60px;
-  height:18px;
+
 }
 
 #contactus input[type="submit"]
 {
    width:100px;
-   height:30px;
+
    padding-left:0px;
    
   -webkit-border-radius: 5px;

@@ -1,4 +1,3 @@
-
 		<div id ="footer">
 			Also awesome footer here<br/>
 			<p id = "links">

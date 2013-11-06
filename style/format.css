@@ -84,16 +84,16 @@ clear: both;
   font-weight: bold;
 }
 #header {
-        /* Filler stuff for now */
-        height: auto;
-        /*line-height: 150px;*/
-        background-color: lightgray;
-        border: none;
-        /*vertical-align: middle;*/
-        text-align: center;
-        font-size: 14px;
-        color: black;
-        font-weight: bold;
+	/* Filler stuff for now */
+	height: auto;
+	/*line-height: 150px;*/
+	background-color: lightgray;
+	border: none;
+	/*vertical-align: middle;*/
+	text-align: center;
+	font-size: 14px;
+	color: black;
+	font-weight: bold;
 }
 #content {
         width: 800px;
@@ -121,8 +121,14 @@ clear: both;
 }
 
 #container {
-   min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        margin: 0 auto -150px;
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -150px;
+}
+
+#centerme {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
 }
