@@ -3,12 +3,13 @@
 	<head>
 		<!--Favicon icon-->
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAC4/9UAAFklAMT/5gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIhESEiEiEiIiEiISISISIiIREhIRIhIiIhIiESEiEiIiERISISERIiIiIgIiIiIiIhIiERIREiIiEiIhIhIhIiIREiEiEiEiIhIiISISISIiERIREhESIiIiIiIiIiIiIhESERISISIiEiISEhIRIiISIhISESEiIhESERISISIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
-		<title>Best project EVER, yo. </title>
+		<title>Best project EVER, yo. | 
 		<?php 
 			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Index";
 			else if (basename($_SERVER['PHP_SELF']) == "missions.php") echo "Missions";
 			// etc
 		?>
+		</title>
 		<link rel="stylesheet" type="text/css" href= "style/format.css">
 	</head>
 	<body>
@@ -20,6 +21,5 @@
 				// ifloggedin() { output nothing or member info }
 				// else {output login form and register here}
 			?>-->
-		</div>	
-	</body>
-</html>
+		</div>
+		<div id ="container">
