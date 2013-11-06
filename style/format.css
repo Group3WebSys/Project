@@ -85,13 +85,13 @@ clear: both;
 }
 #header {
         /* Filler stuff for now */
-        height: 150px;
-        line-height: 150px;
+        height: auto;
+        /*line-height: 150px;*/
         background-color: lightgray;
         border: none;
-        vertical-align: middle;
+        /*vertical-align: middle;*/
         text-align: center;
-        font-size: 24px;
+        font-size: 14px;
         color: black;
         font-weight: bold;
 }

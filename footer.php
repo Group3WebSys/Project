@@ -1,5 +1,4 @@
-		<div id="push"></div>
-		</div> <!-- end #container -->
+
 		<div id ="footer">
 			Also awesome footer here<br/>
 			<p id = "links">
