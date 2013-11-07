@@ -1,6 +1,5 @@
 		<div id ="footer">
-			Also awesome footer here<br/>
-			<p id = "links">
+			<p id = "footerlinks">
 				<a href="#">About</a>
 				<a href="#">Contact</a>
 				<a href="#">Resources</a>
