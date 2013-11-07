@@ -68,10 +68,10 @@ clear: both;
   height: 90%;
   float: left;
   margin-top: 40px;
-  /*margin-left: 20px;*/
+  margin-left: 20px;
   margin-right: 20px;
   position: static;
-  padding: 15px 0px 0px 0px;
+  padding: 15px 0px -10px 10px;
   color:#91B585;
   background-color: white;
   font-size: 30px;
