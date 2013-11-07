@@ -33,6 +33,7 @@ li {
 }
 
 li:hover {
+  text-indent: -1em;
   background-color: #91B585;
   color: white;
 }
