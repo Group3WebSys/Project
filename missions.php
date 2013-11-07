@@ -12,16 +12,19 @@
 		<div id = "navigationBlock">
 			<h2>Navigate</h2>
 			<ul id = "navigationList">
-				<li>Home</li>
-				<li>Missions</li>
-				<li>Journal</li>
-				<li>About</li>
-				<li>Resources</li>
+				<li><a href = "index.php">HOME</a></li>
+				<li><a href = "missions.php">MISSIONS</a></li>
+				<li><a href = "journal.php">HOME</a></li>
+				<li><a href = "about.php">ABOUT</a></li>
+				<li><a href = "resources.php">RESOURCES</a></li>
 			</ul>
 		</div>
 		<div id = "summaryBlock">
 			<h2>Progress</h2>
-			<p>User summary (icon, level, mission status bar)</p>
+			<p>User summary (icon)</p>
+    			<p>Level 9001</p>
+    			<p>Mission status:</p>
+    			<p>[][][][][][][]</p>
 		</div>
 <?php include 'footer.php'; ?>
 
