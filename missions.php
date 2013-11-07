@@ -10,7 +10,6 @@
 			</ul>
 		</div>
 		<div id = "navigationBlock">
-			<h2>Navigate</h2>
 			<ul id = "navigationList">
 				<li><a href = "index.php">HOME</a></li>
 				<li><a href = "missions.php">MISSIONS</a></li>
@@ -20,10 +19,10 @@
 			</ul>
 		</div>
 		<div id = "summaryBlock">
-			<h2>Progress</h2>
-			<p>User summary (icon)</p>
-    			<p>Level 9001</p>
-    			<p>Mission status:</p>
+			<img src = "style/resources/iconfiller.jpg"</a><br/>
+			<p>Username</p>
+    			<p>Level 9</p>
+    			<p>Missions status:</p>
     			<p>[][][][][][][]</p>
 		</div>
 <?php include 'footer.php'; ?>
