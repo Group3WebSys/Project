@@ -3,7 +3,7 @@
 			<h1>MISSIONS</h1>
 			<ul id = "missionsList">
 			<br/>
-			<p>()This list will have to be replaced with a jquery menu)</p>
+			<li>(This list will have to be replaced with a jquery menu)</li>
 			<li>Be real</li>
 			<li>Be freaky</li>
 			<li>Be awesome</li>
