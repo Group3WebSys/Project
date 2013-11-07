@@ -118,6 +118,7 @@ clear: both;
   z-index: 10;
   height: 20px;
   margin-top: -20px;
+  margin-left:20px;
   background-color: white;
   text-align: center;
   font-size: 16px;
