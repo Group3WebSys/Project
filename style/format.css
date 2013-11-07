@@ -66,7 +66,7 @@ clear: both;
   padding: 10px 10px 30px 10px;
 }
 
-#navigationBlock{
+#leftsidebar{
   width: 200px;
   height: 90%;
   float: left;
@@ -81,7 +81,7 @@ clear: both;
   font-size: 30px;
 }      
 
-#summaryBlock{
+#rightsidebar{
   float: right;
   width: 200px;
   height: 45%;
