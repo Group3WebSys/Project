@@ -36,6 +36,17 @@ li:hover {
   color: white;
 }
 
+a {
+  color: #919191;
+}
+
+a:hover {
+  background-color: #91B585;
+  color: white;
+}
+
+
+
 .clearfooter {
 height: 330px;
 clear: both;
@@ -60,7 +71,7 @@ clear: both;
   margin-left: 20px;
   margin-right: 20px;
   position: static;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 0px 10px 10px;
   color:#91B585;
   background-color: white;
   font-size: 30px;
