@@ -4,4 +4,6 @@
   <p>Level 9</p>
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
+  <p><a href = "accountsettings.php">Account settings</a></p>
+  <p><a href = "logout.php">Logout</a></p>
 </div>
