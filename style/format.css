@@ -29,7 +29,7 @@ h2 {
 
 li {
   list-style: none;
-  text-indent: none;
+  text-indent: -1em;
 }
 
 li:hover {
@@ -46,8 +46,7 @@ a:hover {
   color: white;
 }
 
-
-
+/*what is this?*/
 .clearfooter {
 height: 330px;
 clear: both;
@@ -69,7 +68,7 @@ clear: both;
   height: 90%;
   float: left;
   margin-top: 40px;
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   margin-right: 20px;
   position: static;
   padding: 15px 0px 0px 0px;
