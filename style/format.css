@@ -113,6 +113,8 @@ clear: both;
 
 #footer {
         /* Filler stuff for now */
+        position: absolute;
+        bottom:0;
         height: 150px;
         background-color: white;
         vertical-align: bottom;
