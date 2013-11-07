@@ -34,6 +34,10 @@ li {
 li:hover {
   background-color: #91B585;
   color: white;
+  /*hovering over the list item might make the link itself turn white? we'll see, yo*/
+  a{
+    color:white;
+  }
 }
 
 a {
@@ -64,7 +68,7 @@ clear: both;
 }
 
 #navigationBlock{
-  width: 250px;
+  width: 200px;
   height: 90%;
   float: left;
   margin-top: 40px;
