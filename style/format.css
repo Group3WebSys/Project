@@ -28,16 +28,13 @@ h2 {
 }
 
 li {
-  list-style-type: none;
+  list-style: none;
+  text-indent: none;
 }
 
 li:hover {
   background-color: #91B585;
   color: white;
-  /*hovering over the list item might make the link itself turn white? we'll see, yo*/
-  a{
-    color:white;
-  }
 }
 
 a {
@@ -75,7 +72,7 @@ clear: both;
   margin-left: 20px;
   margin-right: 20px;
   position: static;
-  padding: 15px 0px 10px 0px;
+  padding: 15px 0px 0px 0px;
   color:#91B585;
   background-color: white;
   font-size: 30px;
