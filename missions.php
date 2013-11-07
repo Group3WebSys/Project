@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-	<div id = "bodyBlock">
+	<div class = "bodyBlock">
 			<h1>MISSIONS</h1>
 			<ul id = "missionsList">
 			<br/>
