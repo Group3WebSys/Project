@@ -71,6 +71,7 @@ clear: both;
   position: static;
   padding: 10px 10px 10px 10px;
   background-color: white;
+  text-align: center;
   color: #91B585;
 }
 
@@ -114,8 +115,7 @@ clear: both;
         /* Filler stuff for now */
         height: 150px;
         background-color: white;
-        border: none;
-        vertical-align: middle;
+        vertical-align: bottom;
         text-align: center;
         font-size: 18px;
         font-weight: bold;
