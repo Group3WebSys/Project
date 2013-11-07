@@ -40,7 +40,7 @@ clear: both;
   width: 800px;  
   position: absolute;
   left: 50%;
-  height:90%;
+  height:80%;
   margin-top: 40px;
   margin-left: -400px;    
   border: 1px dashed green;
@@ -49,7 +49,7 @@ clear: both;
 
 #navigationBlock{
   width: 250px;
-  height: 85%;
+  height: 80%;
   float: left;
   margin-top: 40px;
   margin-left: 20px;
@@ -112,18 +112,18 @@ clear: both;
 }*/
 
 #footer {
-        /* Filler stuff for now */
-        clear: both;
-        position: relative;
-        z-index: 10;
-        height: 30px;
-        margin-top: -30px;
-        background-color: white;
-        text-align: center;
-        font-size: 18px;
-        font-weight: bold;
-        color: #91B585;
-        padding:5px 5px 5px 5px;
+ /* Filler stuff for now */
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 20px;
+  margin-top: -20px;
+  background-color: white;
+  text-align: center;
+  font-size: 18px;
+  /*font-weight: bold;*/
+  color: #91B585;
+  padding:5px 5px 5px 5px;
 }
 
 #container {
