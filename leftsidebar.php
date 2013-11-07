@@ -1,4 +1,4 @@
-<div id = "navigationBlock">
+<div id = "leftsidebar">
   <ul id = "navigationList">
     <li><a href = "index.php">HOME</a></li>
     <li><a href = "missions.php">MISSIONS</a></li>
