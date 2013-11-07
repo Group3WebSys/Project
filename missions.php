@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 		<div id = "bodyBlock">
-			<h1>Missions</h1>
+			<h1>MISSIONS</h1>
 			<ul id = "missionsList">
 				<li>Be real</li>
 				<li>Be freaky</li>
