@@ -107,13 +107,14 @@ clear: both;
         text-align: center;
 }
 
-#footer, #push {
+#push {
         margin: 150px;
 }
 
 #footer {
         /* Filler stuff for now */
         position: absolute;
+        width:100%;
         bottom:0;
         height: 150px;
         background-color: white;
