@@ -33,6 +33,7 @@ li {
 }
 
 li:hover {
+  list-style: none;
   text-indent: -1em;
   background-color: #91B585;
   color: white;
@@ -72,7 +73,7 @@ clear: both;
   margin-left: 30px;
   margin-right: 20px;
   position: static;
-  padding: 15px 0px 0px 10px;
+  padding: 15px 0px 0px 0px;
   color:#91B585;
   background-color: white;
   font-size: 30px;
