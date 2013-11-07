@@ -31,6 +31,11 @@ li {
   list-style-type: none;
 }
 
+li:hover {
+  background-color: #91B585;
+  color: white;
+}
+
 .clearfooter {
 height: 330px;
 clear: both;
