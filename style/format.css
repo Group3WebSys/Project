@@ -75,10 +75,11 @@ clear: both;
   margin-left: 20px;
   margin-right: 20px;
   position: static;
-  padding: 10px 0px 10px 10px;
+  padding: 15px 0px 10px 0px;
   color:#91B585;
   background-color: white;
   font-size: 30px;
+  text-align: center;
 }      
 
 #summaryBlock{
