@@ -1,3 +1,4 @@
+		<div id = "push"></div>
 		<div id ="footer">
 			<p id = "footerlinks">
 				<a href="faq.php">FAQ</a>
@@ -7,6 +8,5 @@
 				<a href="termsandconditions.php">Terms and Conditions</a>
 			</p>
 		</div>
-		<div id = "push"></div>
 	</body>
 </html>
