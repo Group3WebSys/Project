@@ -58,7 +58,7 @@ clear: both;
   width: 800px;  
   position: absolute;
   left: 50%;
-  height:90%;
+  min-height:90%;
   margin-top: 40px;
   margin-left: -400px;    
   margin-bottom: 40px;
@@ -144,7 +144,7 @@ clear: both;
         margin: 150px;
 }*/
 
-#footer, .push {
+#footer{
  /* Filler stuff for now */
   clear: both;
   position: relative;
