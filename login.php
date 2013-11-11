@@ -87,19 +87,22 @@
             
             session_start();
 			$_SESSION["user"]=$user;
-            echo json_encode(array("error"=>"None", "success"=>1, "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
-            die();
+            echo json_encode(array("error"=>"None", "success"=>1, "current_user"=>array("username"=>$user["username"], "email"=>$user["email"], "sid"=>session_id())));
+           	die();
         } 
         else 
         { 
             $error_msg="Login failed";
             
             echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
-            
             die();
-            echo(json_encode(array("error"=>$error_msg, "success"=>0))); 
             
         } 
+    }
+    else 
+    {
+    	echo (json_encode(array("error"=>"Empty POST", "success"=>0))); 
+    	die();
     } 
      
 ?> 
