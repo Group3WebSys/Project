@@ -7,5 +7,6 @@
 				<a href="termsandconditions.php">Terms and Conditions</a>
 			</p>
 		</div>
+		<div id = "push"></div>
 	</body>
 </html>
