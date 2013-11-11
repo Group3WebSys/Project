@@ -64,6 +64,7 @@ clear: both;
   margin-bottom: 40px;
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
+  overflow-y: auto;
 }
 
 #leftsidebar{
