@@ -152,9 +152,9 @@ clear: both;
 
 #footer{
  /* Filler stuff for now */
-  /*clear: both;
+  clear: both;
   position: relative;
-  z-index: 10;*/
+  z-index: 10;
   height: 20px;
   margin-top: 0px;
   background-color: white;
