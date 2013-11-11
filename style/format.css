@@ -147,14 +147,14 @@ clear: both;
 }
 
 #push {
-  height: 100%;
+  min-height: 100%;
 }
 
 #footer{
  /* Filler stuff for now */
-  /*clear: both;*/
+  clear: both;
   position: relative;
-  /*z-index: 10;*/
+  z-index: 10;
   height: 20px;
   margin: 0 auto;
   background-color: white;
