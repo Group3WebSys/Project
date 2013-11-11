@@ -152,7 +152,6 @@ clear: both;
 
 #footer{
  /* Filler stuff for now */
-  clear: both;
   position: relative;
   z-index: 10;
   height: 20px;
