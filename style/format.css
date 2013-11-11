@@ -59,9 +59,9 @@ clear: both;
   position: absolute;
   left: 50%;
   /*height:90%;
+  margin-bottom: 40px;////////////////////////////////////////////////////////////////////////////////////*/
   margin-top: 40px;
   margin-left: -400px;    
-  margin-bottom: 40px;////////////////////////////////////////////////////////////////////////////////////*/
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
   
