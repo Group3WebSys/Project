@@ -64,7 +64,6 @@ clear: both;
   margin-bottom: 40px;
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
-  overflow-y: auto;
 }
 
 #leftsidebar{
@@ -97,17 +96,6 @@ clear: both;
   color: #91B585;
 }
 
-#slider {
-  /* Filler stuff for now */
-  height: 300px;
-  background-color: lightgray;
-  border: 1px solid black;
-  line-height: 300px;
-  text-align: center;
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-}
 #header {
   /* Filler stuff for now */
   height: auto;
@@ -120,6 +108,38 @@ clear: both;
   color: black;
   font-weight: bold;
 }
+
+/*#push {
+        margin: 150px;
+}*/
+
+#footer{
+  clear: both;
+  position: fixed;
+  bottom:0;
+  z-index: 10;
+  height: 20px;
+  background-color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #91B585;
+  padding:5px 5px 5px 5px;
+}
+
+
+#slider {
+  /* Filler stuff for now */
+  height: 300px;
+  background-color: lightgray;
+  border: 1px solid black;
+  line-height: 300px;
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
 #content {
   width: 800px;
   margin-left: auto;
@@ -139,25 +159,6 @@ clear: both;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 5px 5px 5px 5px;
-}
-
-/*#push {
-        margin: 150px;
-}*/
-
-#footer{
- /* Filler stuff for now */
-  clear: both;
-  position: relative;
-  z-index: 10;
-  height: 20px;
-  margin-top: 400px;
-  background-color: white;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: #91B585;
-  padding:5px 5px 5px 5px;
 }
 
 #container {
