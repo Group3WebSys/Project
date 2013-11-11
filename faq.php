@@ -14,6 +14,7 @@
 		<h2>Confiden is not working for me. What do I do?</h2>
 		<p>Confiden isn't for everyone; we totally uderstand that! If you feel that Confiden isn't your jam, check out our <a href = "resources.php">Resources Page</a> to see if any of the articles, books, or other websites listed can help you.</p>
 	</div>
+	<div id = "push"></div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 <?php include 'footer.php'; ?>
