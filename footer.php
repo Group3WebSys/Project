@@ -1,12 +1,10 @@
 		<div id ="footer">
-			Also awesome footer here<br/>
-			<p id = "links">
-				<a href="#">About</a>
-				<a href="#">Contact</a>
-				<a href="#">Resources</a>
-				<a href="#">Privacy Policy</a>
-				<a href="#">Terms and Conditions</a>
-				<a href="#">Blah</a>
+			<p id = "footerlinks">
+				<a href="faq.php">FAQ</a>
+				<a href="contact.php">Contact Us</a>
+				<a href="resources.php">Resources</a>
+				<a href="privacypolicy.php">Privacy Policy</a>
+				<a href="termsandconditions.php">Terms and Conditions</a>
 			</p>
 		</div>
 	</body>
