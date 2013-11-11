@@ -1,3 +1,4 @@
+		<div id = "push"></div>
 		<div id ="footer">
 			<p id = "footerlinks">
 				<a href="faq.php">FAQ</a>
