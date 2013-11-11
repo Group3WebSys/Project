@@ -13,6 +13,7 @@ body {
   font-family: 'Agency FB', 'Arial';
   font-size: 25px;
   color: white;
+  height = 100%;
 }
 
 h1 {
@@ -59,16 +60,16 @@ clear: both;
   position: absolute;
   left: 50%;
   /*height:90%;
-  margin-bottom: 40px;////////////////////////////////////////////////////////////////////////////////////*/
+  margin-bottom: 40px;////////////////////////////////////////////////////////////////////////////////////
   margin-top: 40px;
-  margin-left: -400px;    
+  margin-left: -400px;*/    
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
   
   min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -20px; /* the bottom margin is the negative value of the footer's height */
+	margin: 40px 0px -20px -400px; /* the bottom margin is the negative value of the footer's height */
 }
 
 #leftsidebar{
