@@ -4,8 +4,7 @@
 		
 		<script>  
 		function toggle_visibility(id) {
-  		$(".hiddendiv").hide();
-  		$("#" + id).toggle(showOrHide);
+  		$("#" + id).toggle();
 		} 
 		</script>
 
