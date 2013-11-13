@@ -48,6 +48,10 @@ a:hover {
   color: white;
 }
 
+.bodyLink{
+  color: #D1FFA3;
+}
+
 /*what is this?*/
 .clearfooter {
 height: 330px;
