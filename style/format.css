@@ -174,3 +174,7 @@ clear: both;
   margin-right: auto;
 }
 
+/*for faq*/
+.hiddendiv {display:none;}
+.visiblediv {display:block;}
+
