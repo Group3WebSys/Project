@@ -48,10 +48,6 @@ a:hover {
   color: white;
 }
 
-.bodyLink{
-  color: #D1FFA3;
-}
-
 /*what is this?*/
 .clearfooter {
 height: 330px;
@@ -68,6 +64,10 @@ clear: both;
   margin-bottom: 40px;
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
+}
+
+.bodyBlock:a{
+  color: #DEFFBC;
 }
 
 #leftsidebar{
