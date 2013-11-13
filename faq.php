@@ -4,7 +4,7 @@
 
 		<div id="q1teaser" style="display: inline;">
       <p>
-        <a href="javascript:showq('q1details'); javascript:hideq('q1teaser');">How many levels are there?</a>
+        <a href="#" onclick = "showq('q1details');">How many levels are there?</a>
       </p>
 		</div>
 		<div id = "q1details" style = "display: none;">
