@@ -40,10 +40,12 @@ li:hover {
 }
 
 a {
+  text-decoration: none;
   color: #919191;
 }
 
 a:hover {
+  text-decoration: none;
   background-color: #91B585;
   color: white;
 }
@@ -66,7 +68,8 @@ clear: both;
   padding: 10px 10px 30px 10px;
 }
 
-.bodyBlock.a{
+.bodyBlock a{
+  text-decoration: none;
   color: #DEFFBC;
 }
 
