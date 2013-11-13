@@ -7,7 +7,8 @@
         <a href="javascript:showq('q1details'); javascript:hideq('q1teaser');">How many levels are there?</a>
       </p>
 		</div>
-		<div id = "q1details">
+		<div id = "q1details" style = "display: none;">
+		<p><a href="javascript:hideq('q1details'); javascript:showq('q1teaser');">« hide details</a></p>
 		<p>You can reach up to level 10 as of now, but we are working towards making more in the future.</p>
 		</div>
 		
