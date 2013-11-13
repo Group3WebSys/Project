@@ -17,6 +17,7 @@
 		?>
 		<link rel="STYLESHEET" type="text/css" href="contact.css" />
 		<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+		<script type='text/javascript' src='scripts/javascript.js'></script>
 		<?php } ?>
 	</head>
 	<body>
