@@ -1,14 +1,20 @@
 <?php include 'header.php'; ?>
 	<div class = "bodyBlock">
 		<h1>FAQ</h1>
+		
+		<script>  
+		function toggle_visibility(id) {
+  		$(".hiddendiv").hide();
+  		$("#" + id).toggle();
+		} 
+		</script>
 
 		<div id="q1teaser" style="display: inline;">
       <p>
-        <a href="#" onclick = "showq('q1details');">How many levels are there?</a>
+        <a href="#" onclick="toggle_visibility('q1details');">How many levels are there?</a>
       </p>
 		</div>
-		<div id = "q1details" style = "display: none;">
-			<p><a href="javascript:hideq('q1details'); javascript:showq('q1teaser');">hide details</a></p>
+		<div id = "q1details" class = "hiddendiv" style = "display: none;">
 			<p>You can reach up to level 10 as of now, but we are working towards making more in the future.</p>
 		</div>
 		
