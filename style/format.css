@@ -17,7 +17,7 @@ body {
 
 h1 {
   color: white;
-  font-size: 38px;
+  font-size: 40px;
   text-align: center;
 }
 
@@ -25,6 +25,11 @@ h2 {
   color: #003300;
   font-size: 28px;
   text-align: center;
+}
+
+h3 {
+  color: white;
+  font-size: 28px;
 }
 
 li {
