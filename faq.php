@@ -9,17 +9,18 @@
 		</script>
 
 		<div id="q1teaser" style="display: inline;">
-      <p>
-        <a href="#" onclick="toggle_visibility('q1details');">How many levels are there?</a>
-      </p>
+			<p><a href="#" onclick="toggle_visibility('q1details');">How many levels are there?</a></p>
 		</div>
 		<div id = "q1details" class = "hiddendiv" style = "display: none;">
 			<p>You can reach up to level 10 as of now, but we are working towards making more in the future.</p>
 		</div>
 		
-		<h2>I'm not comfortable completing some missions. What do I do?</h2>
-		<p>We aim to guide our users out of their comfort zones, but at the same time do not want to push anyone too far. There is some leeway allowed in gaining levels without completing a few missions each time, but they will remain as options to come back to later. If you truly feel you're not ready to complete any of the missions, check out our <a href = "resources.php">Resources Page</a> to see if any of the articles, books, or other websites listed can help you.</p>
-		
+		<div id="q2teaser" style="display: inline;">
+			<p><a href="#" onclick="toggle_visibility('q1details');"><h2>I'm not comfortable completing some missions. What do I do?</h2></a></p>
+		</div>
+		<div id = "q2details" class = "hiddendiv" style = "display: none;">
+			<p>We aim to guide our users out of their comfort zones, but at the same time do not want to push anyone too far. There is some leeway allowed in gaining levels without completing a few missions each time, but they will remain as options to come back to later. If you truly feel you're not ready to complete any of the missions, check out our <a href = "resources.php">Resources Page</a> to see if any of the articles, books, or other websites listed can help you.</p>
+		</div>
 		
 		<h2>Can't I just cheat and say I've completed a mission?</h2>
 		<p>Yes, you can. However, the only person you'd be cheating by doing that is yourself. Confiden's mission is to help guide anyone who is willing to put the work towards changing their lives for the better by providing the tools to build a solid foundation of healthy self-confidence.</p>
