@@ -3,7 +3,9 @@
 		<h1>FAQ</h1>
 		
 		<script>  
-
+                function toggle_visibility(id) {
+                  $("#" + id).toggle();
+                } 
 		</script>
 
 		<div id="q1teaser" style="display: inline;">
