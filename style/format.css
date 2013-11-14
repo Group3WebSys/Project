@@ -107,6 +107,7 @@ clear: both;
   font-size: 14px;
   color: black;
   font-weight: bold;
+  padding: 0.3em;
 }
 
 /*#push {
@@ -165,6 +166,10 @@ clear: both;
   height: auto !important;
   height: 100%;
   margin: 0 auto -150px;
+}
+
+#user form {
+  margin: 1em;
 }
 
 /*what is this?*/

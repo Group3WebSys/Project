@@ -14,6 +14,7 @@
 	if(!empty($_POST))
 	{
 		require('dbconnect.php');
+		session_start();
 		
 		header('Content-Type: application/json');
 		
@@ -211,9 +212,8 @@
 		
 		$user=$stmt->fetch();
 		
-		session_start();
 		$_SESSION["user"]=$user;
-		echo json_encode(array("error"=>"None", "success"=>1, "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
+		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
 		die();
 	}
 	 
