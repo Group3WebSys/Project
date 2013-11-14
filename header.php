@@ -3,6 +3,7 @@
 	<head>
 		<!--Favicon icon-->
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAC4/9UAAFklAMT/5gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIhESEiEiEiIiEiISISISIiIREhIRIhIiIhIiESEiEiIiERISISERIiIiIgIiIiIiIhIiERIREiIiEiIhIhIhIiIREiEiEiEiIhIiISISISIiERIREhESIiIiIiIiIiIiIhESERISISIiEiISEhIRIiISIhISESEiIhESERISISIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+		<link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
 		<title>Best project EVER, yo. | 
 		<?php 
 			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Index";
@@ -17,6 +18,7 @@
 		?>
 		<link rel="STYLESHEET" type="text/css" href="contact.css" />
 		<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+		<script type='text/javascript' src='scripts/javascript.js'></script>
 		<?php } ?>
 	</head>
 	<body>
