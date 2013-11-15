@@ -4,10 +4,21 @@
 	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 	<script src="user_helper.js"></script>
 	
-	<div id="info"></div>
+	<div id="info">
+	  <div class="error">
+	    
+	  </div>
+	  
+	  <div id="account">
+	    
+	  </div>
+	</div>
 	
 	<div id="login_container">
 	  <a href="#">I want to log in!</a>
+	  <div class="error">
+	    
+	  </div>
 	  <form action="login.php" method="post" id="login">
 	    <label>User Name:</label><input type="text" name="username" />
 	    <label>Password:</label><input type="password" name="password"/>
@@ -17,6 +28,9 @@
 	
 	<div id="register_container">
 	  <a href="#">I want to register!</a>
+	  <div class="error">
+	    
+	  </div>
 	  <form action="register.php" method="post" id="register">
 	    <label>User Name:</label><input type="text" name="username" />
 	    <label>Email:</label><input type="email" name="email"/>
@@ -27,6 +41,9 @@
 	</div>
 	
 	<div id="logout_container">
+	  <div class="error">
+	    
+	  </div>
 	  <form action='logout.php' method='post' id="logout"><input id='button_logout' type='submit' value='Log out' /></form>
 	</div>
 	<script>
@@ -42,7 +59,7 @@
 					$("#user #register_container").remove();
 					$("#user #logout_container").show(500);
 					
-					$("#user #info").html("<p>Welcome "+data["current_user"]["username"]+"</p>");
+					$("#user #account").html("<p>Welcome "+data["current_user"]["username"]+"</p>");
 					display_user_info(data);
 					
 				}
@@ -73,7 +90,7 @@
 					$("#user #register_container").remove();
 					$("#user #logout_container").show(500);
 					
-					$("#user #info").html("<p>Welcome "+data["current_user"]["username"]+"</p>");
+					$("#user #account").html("<p>Welcome "+data["current_user"]["username"]+"</p>");
 					display_user_info(data);
 					
 					
@@ -135,7 +152,7 @@
 				//Use Ajax to display user info
 				if(data["success"]==1)
 				{
-					$("#user #info").html("<p>Welcome "+data["current_user"]["username"]+"</p>");
+					$("#user #info").append("<p>Welcome "+data["current_user"]["username"]+"</p>");
 					display_user_info(data);
 					
 				}
@@ -161,11 +178,11 @@
 			$("#user #register").hide();
 			$("#user #logout_container").hide();
 			$("#user #login_container a").on("click", function(){
-				$(this).next().slideToggle(300);
+				$(this).parent().find("form").first().slideToggle(300);
 			});
 			
 			$("#user #register_container a").on("click", function(){
-				$(this).next().slideToggle(300);
+				$(this).parent().find("form").first().slideToggle(300);
 			});
 			
 			destroy_user_info();
