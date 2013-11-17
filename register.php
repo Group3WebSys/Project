@@ -4,7 +4,7 @@
 //"error": "error messages(seperated by commas)"
 //"username": "blah"
 //"email": "blah@blah"
-//
+//etc...
 //
 //
 //
@@ -20,82 +20,115 @@
 		
 		$error_msg="";
 		
-		if(count($ERRORS)!=0)
-		{
-			
-			foreach($ERRORS as $error)
-			{
-				$error_msg.=($error.",");
-			}
-			$error_msg=rtrim($error_msg, ",");
-			echo json_encode(array("error"=>$error_msg, "success"=>0));
-			die();
-		}
-	
-	// This if statement checks to determine whether the registration form has been submitted
-	// If it has, then the registration code is run, otherwise the form is displayed
-	
-		// Ensure that the user has entered a non-empty username
 		if(empty($_POST['username']))
 		{
 			$error_msg="Empty user name";
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
+		
 		 
-		// Ensure that the user has entered a non-empty password
 		if(empty($_POST['password']))
 		{
 			$error_msg="Empty password";
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
+		else if($_POST['password']!=$_POST['password_again'])
+		{
+			$error_msg="Passwords don't match";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		else if(strlen($_POST['password'])<8)
+		{
+			$error_msg="Password is too short (needs to be at least 8 characters long)";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		
+		if(empty($_POST['email']))
+		{
+			$error_msg="Empty email";
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		
 		 
-		// Make sure the user entered a valid E-Mail address
-		// filter_var is a useful PHP function for validating form input, see:
-		// http://us.php.net/manual/en/function.filter-var.php
-		// http://us.php.net/manual/en/filter.filters.php
 		if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
 		{
 			$error_msg="Invalid email address";
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
-		 
-		// We will use this SQL query to see whether the username entered by the
-		// user is already in use.  A SELECT query is used to retrieve data from the database.
-		// :username is a special token, we will substitute a real value in its place when
-		// we execute the query.
+		
+		if(!empty($_POST["DOB"]))
+		{
+			try{
+				$dob=new DateTime($_POST["DOB"]);
+			}catch(Exception $e)
+			{
+				$error_msg=$e->getMessage();
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			$dob_formatted=explode("/", $dob->format("m/d/Y"));
+			$m=$dob_formatted[0];
+			$d=$dob_formatted[1];
+			$y=$dob_formatted[2];
+			if(!checkdate($m, $d, $y))
+			{
+				$error_msg="Wrong date format for the birthday";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+		}
+		
+		
+		if(!empty($_FILES["avatar"]))
+		{
+			$possible_errs=array( 
+			        0=>"There is no error, the file uploaded with success", 
+			        1=>"The uploaded file exceeds the upload_max_filesize directive in php.ini", 
+			        2=>"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form" ,
+			        3=>"The uploaded file was only partially uploaded", 
+			        4=>"No file was uploaded", 
+			        6=>"Missing a temporary folder" 
+			);
+			if($_FILES["avatar"]["error"]!=0)
+			{
+				$error_msg=$possible_errs[$_FILES["avatar"]["error"]];
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			
+			$tmp_fileloc=$_FILES["avatar"]["tmp_name"];
+			if(exif_imagetype($tmp_fileloc)==false)
+			{
+				$error_msg="The image uploaded is not a valid image type";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+		}
+		
+		
 		$query = "SELECT * FROM users WHERE username = :username";
-		 
-		// This contains the definitions for any special tokens that we place in
-		// our SQL query.  In this case, we are defining a value for the token
-		// :username.  It is possible to insert $_POST['username'] directly into
-		// your $query string; however doing so is very insecure and opens your
-		// code up to SQL injection exploits.  Using tokens prevents this.
-		// For more information on SQL injections, see Wikipedia:
-		// http://en.wikipedia.org/wiki/SQL_Injection
 		$query_params = array(
 				':username' => $_POST['username']
 		);
-		 
+		
 		try
 		{
-			// These two statements run the query against your database table.
 			$stmt = $db->prepare($query);
 			$result = $stmt->execute($query_params);
 		}
 		catch(PDOException $ex)
 		{
-			// Note: On a production website, you should not output $ex->getMessage().
-			// It may provide an attacker with helpful information about your code.
 			$error_msg="Failed to run query: " . $ex->getMessage();
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
 		 
-		// If a row was returned, then we know a matching username was found in
-		// the database already and we should not allow the user to continue.
 		if($stmt->rowCount()!=0)
 		{
 			$error_msg="Duplicate username";
@@ -103,8 +136,6 @@
 			die();
 		}
 		 
-		// Now we perform the same type of check for the email address, in order
-		// to ensure that it is unique.
 		$query = "SELECT * FROM users WHERE email = :email";
 		 
 		$query_params = array(
@@ -130,20 +161,33 @@
 			die();
 		}
 		 
-		// An INSERT query is used to add new rows to a database table.
-		// Again, we are using special tokens (technically called parameters) to
-		// protect against SQL injection attacks.
 		$query = "
             INSERT INTO users (
                 username,
                 password,
                 salt,
-                email
+                email,
+				gender,
+				dob,
+				level,
+				progress,
+				totalpoints,
+				personalgoal1,
+				personalgoal2,
+				personalgoal3
             ) VALUES (
                 :username,
                 :password,
                 :salt,
-                :email
+                :email,
+				:gender,
+				STR_TO_DATE(:dob, '%m/%d/%Y'),
+				:level,
+				:progress,
+				:totalpoints,
+				:personalgoal1,
+				:personalgoal2,
+				:personalgoal3
             )
         ";
 		 
@@ -174,21 +218,25 @@
 			$password = hash('sha256', $password . $salt);
 		}
 		 
-		// Here we prepare our tokens for insertion into the SQL query.  We do not
-		// store the original password; only the hashed version of it.  We do store
-		// the salt (in its plaintext form; this is not a security risk).
 		$query_params = array(
-		':username' => $_POST['username'],
-		':password' => $password,
-		':salt' => $salt,
-		':email' => $_POST['email']
+			':username' => $_POST['username'],
+			':password' => $password,
+			':salt' => $salt,
+			':email' => $_POST['email'],
+			':gender' => $_POST['gender'],
+			':dob' => $_POST['DOB'],
+			':level' => 0,
+			':progress' => 0,
+			':totalpoints' => 0,
+			':personalgoal1' => $_POST['pg1'],
+			':personalgoal2' => $_POST['pg2'],
+			':personalgoal3' => $_POST['pg3']
 		);
 		 
 		try
 		{
-		// Execute the query to create the user
-		$stmt = $db->prepare($query);
-		$result = $stmt->execute($query_params);
+			$stmt = $db->prepare($query);
+			$result = $stmt->execute($query_params);
 		}catch(PDOException $ex)
 		{
 			$error_msg="Failed to run query: " . $ex->getMessage();
@@ -196,6 +244,8 @@
 			die();
 		
 		}
+		
+		
 		
 		$query="SELECT * FROM users WHERE username=:username";
 		$query_params=array(":username"=>$_POST['username']);
@@ -210,10 +260,41 @@
 			die();
 		}
 		
+		//Saving the avatar of the user if he uploaded an image
+		/*if(!empty($_FILES["avatar"]))
+		{
+			$user_folder_loc="users/".$_POST['username'];
+			if(!(mkdir($user_folder_loc)))
+			{
+				$error_msg="Failed to create user directory";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			$suffix=array_pop(explode(".", $_FILES["avatar"]["name"]));
+			if(!(move_uploaded_file($_FILES["avatar"]["tmp_name"], $user_folder_loc."/avatar.".$suffix)))
+			{
+				$error_msg="Failed to process uploaded image";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			$query="UPDATE users SET `avatar`=:avatar WHERE `username`=:username";
+			$query_params=array(":avatar"=>$_FILES["avatar"]["name"], ":username"=>$_POST["username"]);
+			try
+			{
+				$stmt=$db->prepare($query);
+				$result=$stmt->execute($query_params);
+			}catch(PDOException $ex)
+			{
+				$error_msg="Failed to run query: " . $ex->getMessage();
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+		}*/
+		
 		$user=$stmt->fetch();
 		
 		$_SESSION["user"]=$user;
-		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
+		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
 		die();
 	}
 	 

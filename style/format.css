@@ -78,6 +78,36 @@ clear: both;
   color: #DEFFBC;
 }
 
+#user .left_c {
+  position: relative;
+  left: 20%;
+  float: left;
+  width: 20%;
+  text-align: left;
+  line-height:240%;
+}
+
+#user .left_c input {
+  float: right;
+}
+
+#user .right_c {
+  position: relative;
+  right: 20%;
+  float: right;
+  width: 25%;
+  text-align: left;
+  line-height: 240%;
+}
+
+#user .right_c input {
+  float: right;
+}
+
+#user .error {
+	color: red;
+}
+
 #leftsidebar{
   width: 200px;
   height: 90%;
@@ -120,6 +150,7 @@ clear: both;
   color: black;
   font-weight: bold;
   padding: 0.3em;
+  overflow:hidden;
 }
 
 /*#push {

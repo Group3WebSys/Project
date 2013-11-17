@@ -21,7 +21,7 @@
     	if(isset($_SESSION["user"]))
     	{
     		$user=$_SESSION["user"];
-    		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
+    		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
     		die();
     	}
     	
@@ -30,22 +30,10 @@
     	{
 	    	$error_msg="";
 	    	
-	    	if(count($ERRORS)!=0)
-	    	{
-	    	
-	    		foreach($ERRORS as $error)
-	    		{
-	    			$error_msg.=($error.",");
-	    		}
-	    		$error_msg=rtrim($error_msg, ",");
-	    		echo json_encode(array("error"=>$error_msg, "success"=>0));
-	    		die();
-	    	}
-	    	
 	    	$submitted_username = '';
 	        // This query retreives the user's information from the database using 
 	        // their username. 
-	        $query = " SELECT id, username, password, salt, email FROM users WHERE username = :username"; 
+	        $query = " SELECT * FROM users WHERE username = :username"; 
 	         
 	        // The parameter values 
 	        $query_params = array( 
@@ -61,6 +49,7 @@
 	        catch(PDOException $ex) 
 	        { 
 	        	$error_msg="Failed to run query: " . $ex->getMessage();
+	        	$_SESSION["error"]=$error_msg;
 	        	echo json_encode(array("error"=>$error_msg, "success"=>0));
 	        	die();
 	        } 
@@ -88,7 +77,7 @@
 	            { 
 	                // If they do, then we flip this to true 
 	                $login_ok = true; 
-	            } 
+	            }
 	        } 
 	         
 	        if($login_ok) 
@@ -97,13 +86,14 @@
 	            unset($user['password']);
 	            
 				$_SESSION["user"]=$user;
-	            echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>array("username"=>$user["username"], "email"=>$user["email"])));
+	            echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
+	            
 	           	die();
 	        } 
 	        else 
 	        { 
-	            $error_msg="Login failed";
-	            
+	            $error_msg="Login failed. Incorrent username or password";
+	            $_SESSION["error"]=$error_msg;
 	            echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
 	            die();
 	            
@@ -112,7 +102,9 @@
     }
     else 
     {
-    	echo (json_encode(array("error"=>"Empty POST", "success"=>0))); 
+    	$error_msg="Empty POST";
+    	echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
+    	$_SESSION["error"]=$error_msg;
     	die();
     } 
      
