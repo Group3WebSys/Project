@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2013 at 03:58 AM
+-- Generation Time: Nov 18, 2013 at 11:46 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -52,7 +52,8 @@ CREATE TABLE IF NOT EXISTS `suggestedtasks` (
   `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `suggestedBy` (`suggestedBy`),
-  KEY `username` (`username`)
+  KEY `username` (`username`),
+  KEY `suggestedBy_2` (`suggestedBy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -82,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gender` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `age` int(3) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
   `avatar` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `level` int(2) DEFAULT '0',
   `progress` int(3) DEFAULT NULL,
@@ -92,20 +93,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `personalGoal3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `age`, `avatar`, `level`, `progress`, `totalPoints`, `personalGoal1`, `personalGoal2`, `personalGoal3`) VALUES
-('system', 'password', 'salt', 'sys@foo.com', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Mike', '43ba898e483dca76fd759b3960dd63a4b0ce62ca28b7d917b3860101f054710e', '5500a41f25949b', 'mikeogod@gmail.com', 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat', '7a7753a22cb4357db5882d1c603566b9433731f8bad72390380a252e684852e3', '3515de2dd99b1f5', 'Cat@gmail.com', 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat2', 'a20b84900ceea55ebb377502d34ace72f6fbc077d75af98ee33a11279847294b', '7caceab6ed972a2', 'Cat2@gmail.com', 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat3', '923a5014c94b51b41ca93fbaf83bc495c6fd448cba92092e3b78e0c4632f4178', '15a11ba268a3894e', 'Cat3@gmail.com', 11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat4', 'e72a5af839b32c12fd92d4ddf23617f93892df704dc71decc1f74e1e17646ca1', '19463196387bfd0a', 'Cat4@gmail.com', 12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('Cat5', 'd8ed7703393ec45fb111ee9f0d89da682dbea7e9dadfbade2e54fb5e5cf7bd42', '126810194e2543b6', 'Cat5@gmail.com', 13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `DOB`, `avatar`, `level`, `progress`, `totalPoints`, `personalGoal1`, `personalGoal2`, `personalGoal3`) VALUES
+('Mike', '8a2e6f3faa5336f386db3c76839b4cadf0ffd1195e9ee17754ce7546d5cfa7d5', '5f5c20da183e499d', 'mikeogod@gmail.com', 26, 'unspecified', '1993-06-07', 'WP_000001.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat'),
+('Dog1', 'b60afe611efae3a1ed4dfd87f287fb8c4b609df220200049fc1f195df487fdb6', '552630623a5629b4', 'Dog1@gmail.com', 28, 'unspecified', '1993-06-07', 'WP_000001.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat'),
+('Dog', '8770cf1e03c618b202dfc3d9586a07d8147fa37fe60e271f4ed5f901f16ff6b3', '342e390565c5fc89', 'Dog@gmail.com', 30, 'unspecified', '1993-06-07', 'WP_000001.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat'),
+('Dog2', '0db7866df35ce6f5fb529c3f0f7179513c99759512926b57083bf7eb3d41919e', '1a126679235e4a8f', 'Dog2@gmail.com', 40, 'unspecified', '1993-06-07', 'WP_000003.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat'),
+('admin', 'aaa58ebeb05e8df22826dc290011211a3c4756740e0b7b075aa6c4cb8ac8b472', '7b7eadde6e0de2b2', 'mikeogod@outlook.com', 41, 'male', '2012-11-10', NULL, 0, 0, 0, 'Happy', '', '');
 
 --
 -- Constraints for dumped tables
@@ -115,15 +114,15 @@ INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `a
 -- Constraints for table `journals`
 --
 ALTER TABLE `journals`
-  ADD CONSTRAINT `journals_ibfk_2` FOREIGN KEY (`author`) REFERENCES `users` (`username`),
-  ADD CONSTRAINT `journals_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `journals_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `journals_ibfk_2` FOREIGN KEY (`author`) REFERENCES `users` (`username`);
 
 --
 -- Constraints for table `suggestedtasks`
 --
 ALTER TABLE `suggestedtasks`
-  ADD CONSTRAINT `suggestedtasks_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
-  ADD CONSTRAINT `suggestedtasks_ibfk_1` FOREIGN KEY (`suggestedBy`) REFERENCES `users` (`username`);
+  ADD CONSTRAINT `suggestedtasks_ibfk_1` FOREIGN KEY (`suggestedBy`) REFERENCES `users` (`username`),
+  ADD CONSTRAINT `suggestedtasks_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
