@@ -1,3 +1,6 @@
+<?php
+if(isset($_SESSION["user"])) {
+?>
 <div id = "leftsidebar">
   <ul id = "navigationList">
     <li><a href = "index.php">HOME</a></li>
@@ -7,3 +10,4 @@
     <li><a href = "resources.php">RESOURCES</a></li>
   </ul>
 </div>
+<?php } ?>
