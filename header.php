@@ -5,11 +5,17 @@
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAC4/9UAAFklAMT/5gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIhESEiEiEiIiEiISISISIiIREhIRIhIiIhIiESEiEiIiERISISERIiIiIgIiIiIiIhIiERIREiIiEiIhIhIhIiIREiEiEiEiIhIiISISISIiERIREhESIiIiIiIiIiIiIhESERISISIiEiISEhIRIiISIhISESEiIhESERISISIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
 		<link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<title>Best project EVER, yo. | 
+		<title>Confiden | 
 		<?php 
-			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Index";
+			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Welcome";
 			else if (basename($_SERVER['PHP_SELF']) == "missions.php") echo "Missions";
 			else if (basename($_SERVER['PHP_SELF']) == "contact.php") echo "Contact";
+			else if (basename($_SERVER['PHP_SELF']) == "faq.php") echo "FAQ";
+			else if (basename($_SERVER['PHP_SELF']) == "resources.php") echo "Resources";
+			else if (basename($_SERVER['PHP_SELF']) == "privacypolicy.php") echo "Privacy Policy";
+			else if (basename($_SERVER['PHP_SELF']) == "termsandconditions.php") echo "Terms and Conditions";
+			else if (basename($_SERVER['PHP_SELF']) == "journal.php") echo "Journal";
+			else if (basename($_SERVER['PHP_SELF']) == "accountsettings.php") echo "Settings";
 			// etc
 		?>
 		</title>
