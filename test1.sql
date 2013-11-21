@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2013 at 11:46 PM
+-- Generation Time: Nov 20, 2013 at 10:54 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `test1` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE `test1`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `completedtasks`
+--
+
+CREATE TABLE IF NOT EXISTS `completedtasks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `taskId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `userId` (`userId`),
+  KEY `taskId` (`taskId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -109,6 +124,13 @@ INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `D
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `completedtasks`
+--
+ALTER TABLE `completedtasks`
+  ADD CONSTRAINT `completedtasks_ibfk_2` FOREIGN KEY (`taskId`) REFERENCES `tasks` (`id`),
+  ADD CONSTRAINT `completedtasks_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `journals`

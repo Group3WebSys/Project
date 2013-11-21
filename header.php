@@ -13,12 +13,14 @@
 		?>
 		</title>
 		<link rel="stylesheet" type="text/css" href= "style/format.css">
+		<!-- <script src="http://code.jquery.com/jquery-1.9.0.js"></script> -->
+		<script src="scripts/jquery-1.7.1.js"></script>
 		<?php
 			if (basename($_SERVER['PHP_SELF']) == "contact.php") {
 		?>
 		<link rel="STYLESHEET" type="text/css" href="contact.css" />
 		<script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
-		<script type='text/javascript' src='scripts/javascript.js'></script>
+		
 		<?php } ?>
 	</head>
 	<body>

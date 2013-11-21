@@ -18,3 +18,9 @@ echo intval($dob_formatted[0])."<br />";
 echo json_encode(array("error"=>"None", "success"=>1));
 
 ?>
+
+<p id="output"></p>
+
+<script>
+
+</script>

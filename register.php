@@ -293,6 +293,9 @@
 		
 		$user=$stmt->fetch();
 		
+		unset($user['salt']);
+		unset($user['password']);
+		
 		$_SESSION["user"]=$user;
 		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
 		die();

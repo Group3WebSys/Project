@@ -1,7 +1,7 @@
 <?php require("dbconnect.php"); session_start(); header('Content-Type: text/html; charset=utf-8'); ?>
 
-<div id="user">
-	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+
+<div id="user">				
 	<script src="user_helper.js"></script>
 	
 	<div id="info">
@@ -15,9 +15,12 @@
 	    <div id="level"></div>
 	    <div id="avatar"></div>
 	    <div id="progress"></div>
+	    <div id="completed_missions"></div>
 	    <div id="personal_goal1"></div>
 	    <div id="personal_goal2"></div>
 	    <div id="personal_goal3"></div>
+	    <div id="account_setting"></div>
+	    <div id="account_setting_toggle"></div>
 	  </div>
 	</div>
 	
@@ -105,11 +108,13 @@
 			$.post("login.php", $(this).serialize(), function(data){
 				if(data["success"]==1)
 				{
+					$("#user").hide(500);
 					$("#user #login_container").hide(500);
 					$("#user #register_container").hide(500);
 					$("#uesr #login_container").remove();
 					$("#user #register_container").remove();
 					$("#user #logout_container").show(500);
+					$("#user").show(500);
 					
 					display_user_info(data);
 					
@@ -124,7 +129,7 @@
 					$("#user #info .error").html("<p>"+"We encountered an unknown error!"+"</p>");
 				}
 			}, "json").fail(function(jqXHR, textStatus, errorThrown){
-				$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
+				$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+","+jqXHR.responseText+"</p>");
 			});
 			
 		});
