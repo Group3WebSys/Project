@@ -296,6 +296,32 @@
 		unset($user['salt']);
 		unset($user['password']);
 		
+		//Fetch information regarding the user's completed missions
+		try{
+			 
+			$query="SELECT `tasks`.`title`, `tasks`.`star` FROM
+		            		`tasks` WHERE
+		            		`tasks`.`id` IN
+		            		(SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE
+		            		`completedtasks`.`uid`=:userId)";
+		
+			$query_params=array(":userId"=>$user["id"]);
+			$stmt=$db->prepare($query);
+			$result=$stmt->execute($query_params);
+		
+			$completedTasks=array();
+			$completedTasks=$stmt->fetchAll();
+			$user["completedTasks"]=$completedTasks;
+		}
+		catch(PDOException $ex)
+		{
+			$error_msg="Failed to run query: " . $ex->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		
 		$_SESSION["user"]=$user;
 		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
 		die();

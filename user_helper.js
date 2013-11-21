@@ -35,12 +35,19 @@ function display_user_info(data)
 	{
 		tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
 	}
+	//If the user has completed no missions, just print none
+	if(user_info["completedTasks"].length==0)
+	{
+		tasks="<li>None</li>";
+	}
 	$("#user #account #completed_missions").html(
 			"<p>You have completed:</p>"+
 			"<ul>"+
 			tasks+
 			"</ul>"
 	);
+	
+	
 	
 	//Display the personal goals
 	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
