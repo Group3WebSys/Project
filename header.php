@@ -23,7 +23,7 @@
 			if (basename($_SERVER['PHP_SELF']) == "index.php") { ?>
 			<link rel="stylesheet" type="text/css" href="style/slider.css" />
 			<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-			<!--<script type="text/javascript" src="scripts/coda-slider.1.1.1.pack.js"></script>-->
+			<script type="text/javascript" src="scripts/coda-slider.1.1.1.pack.js"></script>
 			<script type="text/javascript" src="scripts/jquery-easing-1.3.pack.js"></script>
 			<script type="text/javascript" src="scripts/jquery-easing-compatibility.1.2.pack.js"></script>
 			
@@ -31,7 +31,7 @@
 		<?php } ?>
 		<link rel="stylesheet" type="text/css" href= "style/format.css">
 		<!-- <script src="http://code.jquery.com/jquery-1.9.0.js"></script> -->
-		<script src="scripts/jquery-1.7.1.js"></script>
+		<!--<script src="scripts/jquery-1.7.1.js"></script>-->
 		<?php
 			if (basename($_SERVER['PHP_SELF']) == "contact.php") {
 		?>
