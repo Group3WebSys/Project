@@ -65,14 +65,15 @@
 
 				</div>
 			</div>
-
-			<a href="#1" class="cross-link active-thumb"><img src="style/resources/tempphoto-1thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a>
-			<div id="movers-row">
-				<div><a href="#2" class="cross-link"><img src="style/resources/tempphoto-2thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#3" class="cross-link"><img src="style/resources/tempphoto-3thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#4" class="cross-link"><img src="style/resources/tempphoto-4thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#5" class="cross-link"><img src="style/resources/tempphoto-5thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#6" class="cross-link"><img src="style/resources/tempphoto-6thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+			<div>
+				<a href="#1" class="cross-link active-thumb"><img src="style/resources/tempphoto-1thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a>
+				<div id="movers-row">
+					<div><a href="#2" class="cross-link"><img src="style/resources/tempphoto-2thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#3" class="cross-link"><img src="style/resources/tempphoto-3thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#4" class="cross-link"><img src="style/resources/tempphoto-4thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#5" class="cross-link"><img src="style/resources/tempphoto-5thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#6" class="cross-link"><img src="style/resources/tempphoto-6thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+				</div>
 			</div>
 
 		</div>
