@@ -1,8 +1,6 @@
 <?php 
 if(!empty($_POST))
 {
-	var_dump($_POST);
-	die();
 	
 	require("dbconnect.php");
 	header("Content-Type: application/json");
@@ -23,6 +21,7 @@ if(!empty($_POST))
 				$stmt=$db->prepare($query);
 				$query_params=array(":username"=> $_POST["username"], ":uid"=>$uid);
 				$result=$stmt->execute($query_params);
+				
 			}
 			catch(PDOException $ex)
 			{
@@ -62,10 +61,10 @@ if(!empty($_POST))
 				$query="SELECT `password`, `salt` FROM `users` WHERE `id`=:uid";
 				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query);
-				$result=$stmt->execute($query_params, $row["salt"]);
+				$result=$stmt->execute($query_params);
 				$row=$stmt->fetch();
 				
-				$check_password = hash('sha256', $check_password . $row["salt"]);
+				$check_password = hash('sha256', $_POST["old_password"] . $row["salt"]);
 				for($round = 0; $round < 65536; $round++)
 				{
 					$check_password = hash('sha256', $check_password . $row["salt"]);
@@ -82,13 +81,14 @@ if(!empty($_POST))
 				$password=hash('sha256', $_POST["password"].$salt);
 				for($round = 0; $round < 65536; $round++)
 				{
-					$password = hash('sha256', $password . $row["salt"]);
-				}				
+					$password = hash('sha256', $password . $salt);
+				}
 				
 				$query="UPDATE `users` SET `password`=:password, `salt`=:salt WHERE `id`=:uid";
 				$query_params=array(":password"=>$password, ":salt"=>$salt, ":uid"=>$uid);
 				$stmt=$db->prepare($query);
 				$result=$stmt->execute($query_params);
+				
 			}
 			catch(PDOException $ex)
 			{
@@ -101,36 +101,77 @@ if(!empty($_POST))
 		
 		
 		//If user sends an update request for personal goals
-		else if(isset($_POST["pg1"]) || isset($_POST["pg2"]) || isset($_POST["pg3"]))
+		else if(isset($_POST["pg1"]) && isset($_POST["pg2"]) && isset($_POST["pg3"]))
 		{
-			if(isset($_POST["pg1"]))
+			if(!empty($_POST["pg1"]))
 			{
 				$pg=$_POST["pg1"];
-				$query="UPDATE `users` SET `personalgoal1`=:pg";
+				$query="UPDATE `users` SET `personalgoal1`=:pg WHERE `id`=:uid";
+				$query_params=array(":pg"=>$pg, ":uid"=>$uid);
+				$stmt=$db->prepare($query);
+				$result=$stmt->execute($query_params);
 			}
-			else if(isset($_POST["pg2"]))
+			else if(!empty($_POST["pg1"]))
 			{
 				$pg=$_POST["pg2"];
 				$query="UPDATE `users` SET `personalgoal2`=:pg";
+				$query_params=array(":pg"=>$pg, ":uid"=>$uid);
+				$stmt=$db->prepare($query);
+				$result=$stmt->execute($query_params);
 			}
-			else
+			else if(!empty($_POST["pg1"]))
 			{
 				$pg=$_POST["pg3"];
 				$query="UPDATE `users` SET `personalgoal3`=:pg";
+				$query_params=array(":pg"=>$pg, ":uid"=>$uid);
+				$stmt=$db->prepare($query);
+				$result=$stmt->execute($query_params);
+			}
+			else
+			{
+				$error_msg="You must enter at least some words to describe your goals";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
 			}
 			
 		}
+		
+		//Query for the latest user info and return it to the caller
+		try
+		{
+			$query="SELECT * FROM `users` WHERE `id`=:uid";
+			$query_params=array(":uid"=>$uid);
+			$stmt=$db->prepare($query);
+			$result=$stmt->execute($query_params);
+			$user=$stmt->fetch();
+			
+			//Extra query to fetch the tasks the user has completed 
+			$query="SELECT `tasks`.`title`, `tasks`.`star` FROM
+		            		`tasks` WHERE
+		            		`tasks`.`id` IN
+		            		(SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE
+		            		`completedtasks`.`uid`=:userId)";
+			
+			$query_params=array(":userId"=>$user["id"]);
+			$stmt=$db->prepare($query);
+			$result=$stmt->execute($query_params);
+			
+			$completedTasks=array();
+			$completedTasks=$stmt->fetchAll();
+			$user["completedTasks"]=$completedTasks;
+		}
+		catch(PDOException $ex)
+		{
+			$error_msg="Failed to run query: ".$ex->getMessage();
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+		}
+		
+		echo json_encode(array("error"=>"None", "success"=>1,  "sid"=>session_id(), "current_user"=>$user));
+		die();
 	}
 }
 
 ?>
-
-<?php include 'header.php'; ?>
-        <div class = "bodyBlock">
-                        <h1>ACCOUNT SETTINGS</h1>
-                        <p>Yo, we are awesome.</p>
-        </div>
-        <?php include 'leftsidebar.php'; ?>
-        <?php include 'rightsidebar.php'; ?>
-<?php include 'footer.php'; ?>
 

@@ -11,13 +11,18 @@
 //
 //
 //
+
 	session_start();
 	header('Content-Type: application/json');
     if(isset($_SESSION['user']))
     {
     	// We remove the user's data from the session 
     	unset($_SESSION['user']); 
+    	// Destroy the session cookie for this session
+    	setcookie(session_name(), '', time() - 72000);
+    	//Destroy the session data on server
     	session_destroy();
+    	
     
     	// Two options:
     	// Redirect the user to the main page 

@@ -47,7 +47,12 @@ function display_user_info(data)
 			"</ul>"
 	);
 	
-	
+	//Display user's email
+	$("#user #account #completed_missions").html(
+			"<p>email address: "+
+			user_info["email"]+
+			"</p>"
+	);
 	
 	//Display the personal goals
 	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
@@ -106,11 +111,27 @@ function display_user_info(data)
 	);
 	$("#user #account #account_setting").hide();
 	$("#user #account #account_setting_toggle").html(
-			"<a href='#'>Account setting</a>"
+			"<a href='#'>Show account setting</a>"
 	);
 	
-	$("#user #account #account_setting_toggle").on("click", function(){
-		$("#user #account #account_setting").toggle(500);
+	//A widget that allows the user to hide and expand the account setting section.
+	$("#user #account #account_setting_toggle").unbind("click");
+	$("#user #account #account_setting_toggle").click(function(){
+		$("#user #account #account_setting").toggle(500, function(){
+			alert();
+			if($("#user #account #account_setting").css("display")=="none")
+			{
+				$("#user #account #account_setting_toggle").html(
+						"<a href='#'>Show account settings</a>"
+				);
+			}
+			else
+			{
+				$("#user #account #account_setting_toggle").html(
+						"<a href='#'>Hide account settings</a>"
+				);
+			}
+		});
 	});
 	
 }

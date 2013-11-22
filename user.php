@@ -16,6 +16,7 @@
 	    <div id="avatar"></div>
 	    <div id="progress"></div>
 	    <div id="completed_missions"></div>
+	    <div id="email"></div>
 	    <div id="personal_goal1"></div>
 	    <div id="personal_goal2"></div>
 	    <div id="personal_goal3"></div>
@@ -79,11 +80,13 @@
 			$.post("register.php", $(this).serialize(), function(data){
 				if(data["success"]==1)
 				{
+					$("#user").hide(500);
 					$("#user #login_container").hide(500);
 					$("#user #register_container").hide(500);
 					$("#uesr #login_container").remove();
 					$("#user #register_container").remove();
 					$("#user #logout_container").show(500);
+					$("#user").show(500);
 					
 					display_user_info(data);
 					
@@ -156,6 +159,24 @@
 			
 		});
 
+		window.setTimeout(function(){
+			$("#user #change_username, #user #change_email, #user #change_goals").on("submit", function(e){
+				e.preventDefault();
+				$.post("accountsettings.php", $(this).serialize(), function(data){
+
+					$("#user").hide(500);
+					$("#user #login_container").hide(500);
+					$("#user #register_container").hide(500);
+					$("#user #logout_container").show(500);
+					$("#user").show(500);
+					
+					display_user_info(data);
+				}, "json").fail(function(jqXHR, textStatus, errorThrown){
+					$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
+				});
+			});
+		}, 2000);
+
 
 		
 	</script>
@@ -188,7 +209,7 @@
 				{
 					$("#user #info .error").html("<p>"+"We encountered an unknown error!"+"</p>");
 				}
-			}).fail(function(){
+			}, "json").fail(function(){
 				
 				$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
 				
