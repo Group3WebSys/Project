@@ -65,7 +65,7 @@
 
 				</div>
 			</div>
-			<div>
+			<div id="thumbnails">
 				<a href="#1" class="cross-link active-thumb"><img src="style/resources/tempphoto-1thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a>
 				<div id="movers-row">
 					<div><a href="#2" class="cross-link"><img src="style/resources/tempphoto-2thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
