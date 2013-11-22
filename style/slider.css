@@ -1,36 +1,4 @@
-/*
-	Featured Content Slider
-	by: Chris Coyier
-*/
-/** {
-	margin: 0; padding: 0; 
-}
-body {
-	font-family: Arial, Helvetica, sans-serif; font-size: 10px; 
-}
 
-					  				  
-/*
-	UTILITY STYLES
-*/				  				  
-					  				  
-/*.floatLeft { 
-	float: left; margin-right: 10px;
-}
-.floatRight	{ 
-	float: right; 
-}
-.clear 	{ 
-	clear: both; 
-}
-a {
-	outline: none; 
-}*/
-
-
-/*
-	PAGE STRUCTURE
-*/
 #slider 	{
 	 width: 800px;
 	 margin: 20px auto; 
@@ -40,14 +8,7 @@ a {
 	}
 
 
-/*
-	TYPOGRAPHY
-*/
 
-/*a, a:visited { 
-	color: #729dff;
-	text-decoration: none; 
-}*/
 
 .wrapper h1 {
 	font-size: 22pt;
@@ -112,6 +73,9 @@ blockquote {
 }
 #movers-row div a.cross-link { 
 	float: right; 
+}
+div a:hover{ 
+	background-color: rgba(255,255,255,0);
 }
 .photo-meta-data {
 	background: url(resources/transpBlack.png); 
