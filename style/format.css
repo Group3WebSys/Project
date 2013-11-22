@@ -171,17 +171,7 @@ clear: both;
 }
 
 
-#slider {
-  /* Filler stuff for now */
-  height: 300px;
-  background-color: lightgray;
-  border: 1px solid black;
-  line-height: 300px;
-  text-align: center;
-  font-size: 18px;
-  color: black;
-  font-weight: bold;
-}
+
 
 #content {
   width: 800px;

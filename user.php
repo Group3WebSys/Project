@@ -181,7 +181,6 @@
 		
 	</script>
 </div>
-</div>
 
 <?php if(count($ERRORS)==0):?>
 	<!-- If the user has already logged in and he refreshes the page -->
