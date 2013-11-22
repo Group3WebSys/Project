@@ -1,8 +1,9 @@
 <div id = "rightsidebar">
-<?php if(isset($_SESSION["user"])) { ?>
-	<img src = "style/resources/iconfiller.jpg"</a><br/>
-	<p>Username</p>
-  <p>Level 9</p>
+<?php if(isset($_SESSION["user"])) {
+?>
+	<img width=150 height=150 src = "users/<?php echo $_SESSION["user"]['avatar']; ?>"</img><br/>
+	<p>Welcome <?php echo $_SESSION["user"]['username']; ?>!</p>
+  <p>Level <?php echo $_SESSION["user"]['level']; ?>!</p>
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
   <p><a href = "accountsettings.php">Account settings</a></p>
