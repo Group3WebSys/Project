@@ -1,6 +1,21 @@
 <?php
 require('dbconnect.php');
 session_start();
+//A custom session timeout implementation
+if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
+{
+	unset($_SESSION['user']);
+	unset($_SESSION['lastActivity']);
+	setcookie(session_name(), '', time() - 72000);
+	session_destroy();
+	header("Location: index.php");
+	die();
+}
+else
+{
+	$_SESSION["lastActivity"]=time();
+}
+
 $error_msg="";
 
 if(!empty($_FILES["avatar"]))
@@ -30,12 +45,12 @@ if(!empty($_FILES["avatar"]))
 		}
 		
 		//Upload and replace the file
-		$user_folder_location="users/".$_SESSION["user"]["username"];
+		$user_folder_location="users/".$_SESSION["user"]["username"]."/";
 		if(!is_dir($user_folder_location))
 		{
 			mkdir($user_folder_location);
 			$suffix=array_pop(explode(".", $_FILES["avatar"]["name"]));
-			if(!move_uploaded_file($_FILES["avatar"]["tmp_name"], $user_folder_location."/avatar.".$suffix))
+			if(!move_uploaded_file($_FILES["avatar"]["tmp_name"], $user_folder_location.$_FILES["avatar"]["name"]))
 			{
 				$error_msg="Failed to process uploaded image";
 				throw new Exception($error_msg);
@@ -44,7 +59,7 @@ if(!empty($_FILES["avatar"]))
 		else
 		{
 			$suffix=array_pop(explode(".", $_FILES["avatar"]["name"]));
-			if(!move_uploaded_file($_FILES["avatar"]["tmp_name"], $user_folder_location."/avatar.".$suffix))
+			if(!move_uploaded_file($_FILES["avatar"]["tmp_name"], $user_folder_location.$_FILES["avatar"]["name"]))
 			{
 				$error_msg="Failed to process uploaded image";
 				throw new Exception($error_msg);
@@ -72,6 +87,8 @@ if(!empty($_FILES["avatar"]))
 	
 	if($error_msg=="")
 	{
+		$_SESSION["user"]["avatar"]=$_FILES["avatar"]["name"];
+		
 		header('Location:index.php');
 	}
 }
