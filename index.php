@@ -1,4 +1,5 @@
 	<?php include 'header.php'; ?>
+	<?php include 'rightsidebar.php'; ?>
 	<div id = "content">
 		<div id ="intro">
 			Confiden is a place for young adults to come to build their confidence levels, no matter their current perceived level of confidence. They must complete challenges, A.K.A. "missions" with the intention of building a solid foundation of healthy confidence. Confiden has the potential to change the lives of any people willing to put the work towards changing their lives for the better, ideally gradually leaving their comfort zones and becoming more independent, self-assured individuals. Etc etc we the best
@@ -65,14 +66,15 @@
 
 				</div>
 			</div>
-
-			<a href="#1" class="cross-link active-thumb"><img src="style/resources/tempphoto-1thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a>
-			<div id="movers-row">
-				<div><a href="#2" class="cross-link"><img src="style/resources/tempphoto-2thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#3" class="cross-link"><img src="style/resources/tempphoto-3thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#4" class="cross-link"><img src="style/resources/tempphoto-4thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#5" class="cross-link"><img src="style/resources/tempphoto-5thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
-				<div><a href="#6" class="cross-link"><img src="style/resources/tempphoto-6thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+			<div id="thumbnails">
+				<a href="#1" class="cross-link active-thumb"><img src="style/resources/tempphoto-1thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a>
+				<div id="movers-row">
+					<div><a href="#2" class="cross-link"><img src="style/resources/tempphoto-2thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#3" class="cross-link"><img src="style/resources/tempphoto-3thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#4" class="cross-link"><img src="style/resources/tempphoto-4thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#5" class="cross-link"><img src="style/resources/tempphoto-5thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+					<div><a href="#6" class="cross-link"><img src="style/resources/tempphoto-6thumb.jpg" class="nav-thumb" alt="temp-thumb" /></a></div>
+				</div>
 			</div>
 
 		</div>

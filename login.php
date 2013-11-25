@@ -135,13 +135,14 @@
 	            
 	            
 				$_SESSION["user"]=$user;
-	            echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
-	            
+				
+								
+				echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
 	           	die();
 	        } 
 	        else 
 	        { 
-	            $error_msg="Login failed. Incorrent username or password";
+	            $error_msg="Login failed. Incorrect username or password";
 	            $_SESSION["error"]=$error_msg;
 	            echo (json_encode(array("error"=>$error_msg, "success"=>0))); 
 	            die();

@@ -80,8 +80,16 @@ function display_user_info(data)
 	if(user_info["avatar"]!=null)
 	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
+<<<<<<< HEAD
 		$("#user #account #avatar").html(
 			"<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time()?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>"+
+=======
+		//$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time()?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
+		
+		// changed by Taha - this way it will reflect whatever is from the session, default set to default.jpg
+		$("#user #account #avatar").html("<img src='users/"+user_info["avatar"]+"' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
+		$("#user #account #avatar").append(
+>>>>>>> e985fd765eec58955812e383737ed2492fe997be
 			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
 			  "<label>Choose a new profile picture</label><br />" +
 			  "<input type='file' name='avatar' />" +
