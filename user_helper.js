@@ -1,7 +1,7 @@
 function display_user_info(data)
 {
 	var user_info=data["current_user"];
-	$("#user .error").empty();
+	$("#user #info .error").empty();
 	
 	
 	//user_info is for debugging purposes. It prints out all the available user data
@@ -26,17 +26,34 @@ function display_user_info(data)
 	//Display the greeting
 	$("#user #account #greeting").html(
 			"<p>Hello! "+user_info["username"]+" You are level "+user_info["level"]+"</p>"+
-			"<p>You progress towards the next level:"+"</p>"
+			"<p>You progress towards the next level:"+user_info["progress"]+"</p>"+
+			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
+			
 	);
+	//Display user's current task
+	var task="";
+	if(user_info["currentTask"]!="")
+	{
+		task="<li>"+user_info["currentTask"]+"</li>";
+	}
+	//If the user has no onging mission, just print none
+	else
+	{
+		task="None";
+	}
+	$("#user #account #current_mission").html("<p>Your current mission: "+task+"</p>");
 	
 	//Display user's completed tasks
 	var tasks="";
-	for(var i=0; i!=user_info["completedTasks"].length; i++)
+	if(user_info["completedTasks"].length!=0)
 	{
-		tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
+		for(var i=0; i!=user_info["completedTasks"].length; i++)
+		{
+			tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
+		}
 	}
 	//If the user has completed no missions, just print none
-	if(user_info["completedTasks"].length==0)
+	else
 	{
 		tasks="<li>None</li>";
 	}
@@ -48,7 +65,7 @@ function display_user_info(data)
 	);
 	
 	//Display user's email
-	$("#user #account #completed_missions").html(
+	$("#user #account #email").html(
 			"<p>email address: "+
 			user_info["email"]+
 			"</p>"
@@ -63,8 +80,8 @@ function display_user_info(data)
 	if(user_info["avatar"]!=null)
 	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
-		$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time()?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
-		$("#user #account #avatar").append(
+		$("#user #account #avatar").html(
+			"<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time()?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>"+
 			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
 			  "<label>Choose a new profile picture</label><br />" +
 			  "<input type='file' name='avatar' />" +
@@ -74,11 +91,11 @@ function display_user_info(data)
 	}
 	else
 	{
-		$("#user #account #avatar").append(
-				"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
-				  "<label>Add a profile picture</label><input type='file' name='avatar'/>" +
-				  "<input type='submit' value='upload' />" +
-				"</form>"
+		$("#user #account #avatar").html(
+			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
+			  "<label>Add a profile picture</label><input type='file' name='avatar'/>" +
+			  "<input type='submit' value='upload' />" +
+			"</form>"
 		);
 	}
 	
@@ -99,6 +116,7 @@ function display_user_info(data)
 			"<form method='post' action='accountsettings.php' id='change_password'>"+
 			  "<label>Old password: </label><input type='password' name='old_password' /><br />"+
 			  "<label>New password: </label><input type='password' name='password' /><br />"+
+			  "<label>Password again: </label><input type='password' name='password_again'/><br />"+
 			  "<input type='submit' value='change' /><br />"+
 			"</form>"+
 			"<p><a href='#'>Change personal goals</a></p>"+
@@ -118,7 +136,6 @@ function display_user_info(data)
 	$("#user #account #account_setting_toggle").unbind("click");
 	$("#user #account #account_setting_toggle").click(function(){
 		$("#user #account #account_setting").toggle(500, function(){
-			alert();
 			if($("#user #account #account_setting").css("display")=="none")
 			{
 				$("#user #account #account_setting_toggle").html(
@@ -131,6 +148,34 @@ function display_user_info(data)
 						"<a href='#'>Hide account settings</a>"
 				);
 			}
+		});
+	});
+	
+	//bind event handler to the newly created change forms
+	$("#user #change_username, #user #change_email, #user #change_password, #user #change_goals").on("submit", function(e){
+		e.preventDefault();
+		$.post("accountsettings.php", $(this).serialize(), function(data){
+			if(data["success"]==1)
+			{
+				$("#user").hide(500);
+				$("#user #login_container").hide(500);
+				$("#user #register_container").hide(500);
+				$("#user #logout_container").show(500);
+				$("#user").show(500);
+				
+				display_user_info(data);
+			}
+			else if(data["success"]==0)
+			{
+				$("#user #info .error").html("<p>"+data["error"]+"</p>");
+			}
+			else
+			{
+				$("#user #info .error").html("<p>"+"We encountered an unknown error!"+"</p>");
+			}
+			
+		}, "json").fail(function(jqXHR, textStatus, errorThrown){
+			$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
 		});
 	});
 	

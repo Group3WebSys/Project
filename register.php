@@ -14,9 +14,28 @@
 	if(!empty($_POST))
 	{
 		require('dbconnect.php');
+		header('Content-Type: application/json');
+		header("Last-Modified: {now} GMT");
+		header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+		header('Cache-Control: post-check=0, pre-check=0', false);
+		header('Pragma: no-cache');
+		
 		session_start();
 		
-		header('Content-Type: application/json');
+		//A custom session timeout implementation
+		if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
+		{
+			unset($_SESSION['user']);
+			unset($_SESSION['lastActivity']);
+			setcookie(session_name(), '', time() - 72000);
+			session_destroy();
+			header("Location: index.php");
+			die();
+		}
+		else
+		{
+			$_SESSION["lastActivity"]=time();
+		}
 		
 		$error_msg="";
 		
@@ -36,15 +55,11 @@
 		}
 		else if($_POST['password']!=$_POST['password_again'])
 		{
-			$error_msg="Passwords don't match";
-			echo json_encode(array("error"=>$error_msg, "success"=>0));
-			die();
-		}
-		else if(strlen($_POST['password'])<8)
-		{
-			$error_msg="Password is too short (needs to be at least 8 characters long)";
-			echo json_encode(array("error"=>$error_msg, "success"=>0));
-			die();
+			if(!validate_password($_POST['password'], $_POST['password_again'], $db, "", "register", $old_password=""))
+			{
+				die();
+			}
+			
 		}
 		
 		if(empty($_POST['email']))
@@ -111,7 +126,7 @@
 			}
 		}
 		
-		
+		//Check for duplicate username
 		$query = "SELECT * FROM users WHERE username = :username";
 		$query_params = array(
 				':username' => $_POST['username']
@@ -135,7 +150,8 @@
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
-		 
+		
+		//Check for duplicate email address
 		$query = "SELECT * FROM users WHERE email = :email";
 		 
 		$query_params = array(

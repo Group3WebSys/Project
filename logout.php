@@ -18,6 +18,7 @@
     {
     	// We remove the user's data from the session 
     	unset($_SESSION['user']); 
+    	unset($_SESSION['lastActivity']);
     	// Destroy the session cookie for this session
     	setcookie(session_name(), '', time() - 72000);
     	//Destroy the session data on server

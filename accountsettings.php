@@ -3,8 +3,29 @@ if(!empty($_POST))
 {
 	
 	require("dbconnect.php");
+	require("helper_functions.php");
 	header("Content-Type: application/json");
+	header("Last-Modified: {now} GMT");
+	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+	header('Cache-Control: post-check=0, pre-check=0', false);
+	header('Pragma: no-cache');
+	
 	session_start();
+	
+	//A custom session timeout implementation
+	if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
+	{
+		unset($_SESSION['user']);
+		unset($_SESSION['lastActivity']);
+		setcookie(session_name(), '', time() - 72000);
+		session_destroy();
+		header("Location: index.php");
+		die();
+	}
+	else
+	{
+		$_SESSION["lastActivity"]=time();
+	}
 	
 	if(isset($_SESSION["user"]))
 	{
@@ -14,6 +35,31 @@ if(!empty($_POST))
 		//If user sends an update request for username
 		if(isset($_POST["username"]))
 		{
+			//Check for duplicate username
+			$query = "SELECT * FROM users WHERE username = :username";
+			$query_params = array(
+					':username' => $_POST['username']
+			);
+			
+			try
+			{
+				$stmt = $db->prepare($query);
+				$result = $stmt->execute($query_params);
+			}
+			catch(PDOException $ex)
+			{
+				$error_msg="Failed to run query: " . $ex->getMessage();
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+				
+			if($stmt->rowCount()!=0)
+			{
+				$error_msg="Duplicate username";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			
 			//Make an update to the users table where user id matches
 			try
 			{
@@ -21,6 +67,7 @@ if(!empty($_POST))
 				$stmt=$db->prepare($query);
 				$query_params=array(":username"=> $_POST["username"], ":uid"=>$uid);
 				$result=$stmt->execute($query_params);
+				
 				
 			}
 			catch(PDOException $ex)
@@ -35,6 +82,40 @@ if(!empty($_POST))
 		//If user sends an update request for email
 		else if(isset($_POST["email"]))
 		{
+			//Validate email format
+			if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
+			{
+				$error_msg="Invalid email address";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			
+			//Check for duplicate email address
+			$query = "SELECT * FROM users WHERE email = :email";
+				
+			$query_params = array(
+					':email' => $_POST['email']
+			);
+				
+			try
+			{
+				$stmt = $db->prepare($query);
+				$result = $stmt->execute($query_params);
+			}
+			catch(PDOException $ex)
+			{
+				$error_msg="Failed to run query: " . $ex->getMessage();
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+				
+			if($stmt->rowCount()!=0)
+			{
+				$error_msg="Duplicate email address";
+				echo json_encode(array("error"=>$error_msg, "success"=>0));
+				die();
+			}
+			
 			//Make an update to the users table where user id matches
 			try
 			{
@@ -57,22 +138,27 @@ if(!empty($_POST))
 			try
 			{
 				
-				//Check if the old password entered matches with the old password in the database
-				$query="SELECT `password`, `salt` FROM `users` WHERE `id`=:uid";
-				$query_params=array(":uid"=>$uid);
-				$stmt=$db->prepare($query);
-				$result=$stmt->execute($query_params);
-				$row=$stmt->fetch();
+				//Validate the password
+// 				$query="SELECT `password`, `salt` FROM `users` WHERE `id`=:uid";
+// 				$query_params=array(":uid"=>$uid);
+// 				$stmt=$db->prepare($query);
+// 				$result=$stmt->execute($query_params);
+// 				$row=$stmt->fetch();
 				
-				$check_password = hash('sha256', $_POST["old_password"] . $row["salt"]);
-				for($round = 0; $round < 65536; $round++)
+// 				$check_password = hash('sha256', $_POST["old_password"] . $row["salt"]);
+// 				for($round = 0; $round < 65536; $round++)
+// 				{
+// 					$check_password = hash('sha256', $check_password . $row["salt"]);
+// 				}
+// 				if($check_password!=$row["password"])
+// 				{
+// 					$error_msg="You enter an incorrect password";
+// 					echo json_encode(array("error"=>$error_msg, "success"=>0));
+// 					die();
+// 				}
+				
+				if(!validate_password($_POST["password"], $_POST["password_again"], $db, $uid, "change", $_POST["old_password"]))
 				{
-					$check_password = hash('sha256', $check_password . $row["salt"]);
-				}
-				if($check_password!=$row["password"])
-				{
-					$error_msg="You enter an incorrect password";
-					echo json_encode(array("error"=>$error_msg, "success"=>0));
 					die();
 				}
 
@@ -168,10 +254,18 @@ if(!empty($_POST))
 			die();
 		}
 		
+		//Update the Session variable
+		$_SESSION["user"]["username"]=$user["username"];
+		$_SESSION["user"]["email"]=$user["email"];
+		$_SESSION["user"]["personalGoal1"]=$user["personalGoal1"];
+		$_SESSION["user"]["personalGoal2"]=$user["personalGoal2"];
+		$_SESSION["user"]["personalGoal3"]=$user["personalGoal3"];
+		
 		echo json_encode(array("error"=>"None", "success"=>1,  "sid"=>session_id(), "current_user"=>$user));
 		die();
 	}
 }
+
 
 ?>
 

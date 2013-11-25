@@ -1,5 +1,19 @@
-<?php require("dbconnect.php"); session_start(); header('Content-Type: text/html; charset=utf-8'); ?>
-
+<?php 
+require("dbconnect.php"); 
+session_start(); header('Content-Type: text/html; charset=utf-8'); 
+//A custom session timeout implementation
+if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
+{
+	unset($_SESSION['user']);
+	unset($_SESSION['lastActivity']);
+	setcookie(session_name(), '', time() - 72000);
+	session_destroy();
+}
+else
+{
+	$_SESSION["lastActivity"]=time();
+}
+?>
 
 <div id="user">				
 	<script src="user_helper.js"></script>
@@ -15,6 +29,7 @@
 	    <div id="level"></div>
 	    <div id="avatar"></div>
 	    <div id="progress"></div>
+	    <div id="current_mission"></div>
 	    <div id="completed_missions"></div>
 	    <div id="email"></div>
 	    <div id="personal_goal1"></div>
@@ -159,23 +174,7 @@
 			
 		});
 
-		window.setTimeout(function(){
-			$("#user #change_username, #user #change_email, #user #change_goals").on("submit", function(e){
-				e.preventDefault();
-				$.post("accountsettings.php", $(this).serialize(), function(data){
-
-					$("#user").hide(500);
-					$("#user #login_container").hide(500);
-					$("#user #register_container").hide(500);
-					$("#user #logout_container").show(500);
-					$("#user").show(500);
-					
-					display_user_info(data);
-				}, "json").fail(function(jqXHR, textStatus, errorThrown){
-					$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
-				});
-			});
-		}, 2000);
+		
 
 
 		
@@ -186,7 +185,7 @@
 	<!-- If the user has already logged in and he refreshes the page -->
 	<?php if(isset($_SESSION["user"])):?>
 		<?php 
-			
+		print_r($_SESSION); echo "<br />";
 		?>
 		<script>
 			$("#user #login_container").remove();
@@ -209,7 +208,6 @@
 					$("#user #info .error").html("<p>"+"We encountered an unknown error!"+"</p>");
 				}
 			}, "json").fail(function(){
-				
 				$("#user #info .error").html("<p>"+"Some serious error has occurred: "+textStatus + ", " + errorThrown+"</p>");
 				
 			});

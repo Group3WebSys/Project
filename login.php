@@ -14,8 +14,31 @@
     if(!empty($_POST)) 
     {
     	require("dbconnect.php");
-    	session_start();
+    	require("helper_functions.php");
     	header('Content-Type: application/json');
+    	header("Last-Modified: {now} GMT");
+    	header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+    	header('Cache-Control: post-check=0, pre-check=0', false);
+    	header('Pragma: no-cache');
+    	 
+    	
+    	session_start();
+    	
+    	//A custom session timeout implementation
+    	if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
+    	{
+    		unset($_SESSION['user']);
+    		unset($_SESSION['lastActivity']);
+    		setcookie(session_name(), '', time() - 72000);
+    		session_destroy();
+    		header("Location: index.php");
+    		die();
+    	}
+    	else
+    	{
+    		$_SESSION["lastActivity"]=time();
+    	}
+    	
     	
     	//If the user has already logged in, return the info about the user
     	if(isset($_SESSION["user"]))
@@ -67,17 +90,16 @@
 	            // Using the password submitted by the user and the salt stored in the database, 
 	            // we now check to see whether the passwords match by hashing the submitted password 
 	            // and comparing it to the hashed version already stored in the database. 
-	            $check_password = hash('sha256', $_POST['password'] . $user['salt']); 
-	            for($round = 0; $round < 65536; $round++) 
-	            { 
-	                $check_password = hash('sha256', $check_password . $user['salt']); 
-	            } 
-	             
-	            if($check_password === $user['password']) 
-	            { 
-	                // If they do, then we flip this to true 
-	                $login_ok = true; 
-	            }
+	            
+	        	if(!validate_password($_POST['password'], $_POST['password'], $db, $user["id"], "login", $_POST['password']))
+	        	{
+	        		$login_ok=false;
+	        	}
+	        	else 
+	        	{
+	        		$login_ok=true;
+	        	}
+	        	
 	        } 
 	         
 	        if($login_ok) 
