@@ -83,7 +83,7 @@ function display_user_info(data)
 		
 		// changed by Taha - this way it will reflect whatever is from the session, default set to default.jpg
 		// image is broken because the path is wrong it should be users/username/(avatar.image or defautl.image)
-		$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/"+user_info["avatar"]+"?<?php echo time(); ?>' height='75' width='75'></img>");
+		$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/"+user_info["avatar"]+"' height='75' width='75'></img>");
 		$("#user #account #avatar").append(
 			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
 			  "<label>Choose a new profile picture</label><br />" +
@@ -94,10 +94,10 @@ function display_user_info(data)
 	}
 	else
 	{
-		$("#user #account #avatar").html("<img src='https://www.google.com/images/srpr/logo11w.png' height='75' width='75'></img>");
+		$("#user #account #avatar").html("<img src='users/default.jpg' height='75' width='75'></img>");
 		$("#user #account #avatar").html(
 			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
-			  "<label>Add a profile picture</label><input type='file' name='avatar'/>" +
+			  "<label>Upload a profile picture</label><input type='file' name='avatar'/>" +
 			  "<input type='submit' value='upload' />" +
 			"</form>"
 		);
