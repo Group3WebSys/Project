@@ -26,17 +26,16 @@ else
 	  
 	  <div id="account">
 	    <div id="greeting"></div>
-	    <div id="level"></div>
 	    <div id="avatar"></div>
 	    <div id="progress"></div>
-	    <div id="current_mission"></div>
-	    <div id="completed_missions"></div>
-	    <div id="email"></div>
-	    <div id="personal_goal1"></div>
-	    <div id="personal_goal2"></div>
-	    <div id="personal_goal3"></div>
-	    <div id="account_setting"></div>
-	    <div id="account_setting_toggle"></div>
+	    <div class="left_c" id="current_mission"></div>
+	    <div class="right_c" id="personal_goal1"></div>
+	    <div class="left_c" id="completed_missions"></div>
+	    <div class="right_c" id="personal_goal2"></div>
+	    <div class="left_c" id="email"></div>
+	    <div class="right_c" id="personal_goal3"></div>
+	    <div class="left_c" id="account_setting"></div>
+	    <div style="clear:both;font-size:150%;" id="account_setting_toggle"></div>
 	  </div>
 	</div>
 	
@@ -185,7 +184,7 @@ else
 	<!-- If the user has already logged in and he refreshes the page -->
 	<?php if(isset($_SESSION["user"])):?>
 		<?php 
-		print_r($_SESSION); echo "<br />";
+		//print_r($_SESSION); echo "<br />";
 		?>
 		<script>
 			$("#user #login_container").remove();

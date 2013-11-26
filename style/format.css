@@ -78,10 +78,15 @@ clear: both;
   color: #DEFFBC;
 }
 
+#user #account{
+  overflow: hidden;
+}
+
 #user .left_c {
   position: relative;
   left: 20%;
   float: left;
+  clear: left;
   width: 20%;
   text-align: left;
   line-height:240%;
@@ -95,6 +100,7 @@ clear: both;
   position: relative;
   right: 20%;
   float: right;
+  clear: right;
   width: 25%;
   text-align: left;
   line-height: 240%;
@@ -105,7 +111,7 @@ clear: both;
 }
 
 #user .error {
-	color: red;
+  color: red;
 }
 
 #leftsidebar{
