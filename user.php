@@ -13,6 +13,7 @@ else
 {
 	$_SESSION["lastActivity"]=time();
 }
+print_r($_SESSION);
 ?>
 
 <div id="user">				
@@ -178,6 +179,7 @@ else
 
 		
 	</script>
+	
 </div>
 
 <?php if(count($ERRORS)==0):?>
