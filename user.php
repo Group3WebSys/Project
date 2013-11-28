@@ -9,10 +9,12 @@ if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)
 	setcookie(session_name(), '', time() - 72000);
 	session_destroy();
 }
-else
+else 
 {
 	$_SESSION["lastActivity"]=time();
 }
+
+echo 'The $_SESSION: <br />';
 print_r($_SESSION);
 ?>
 
@@ -29,7 +31,6 @@ print_r($_SESSION);
 	    <div id="greeting"></div>
 	    <div id="avatar"></div>
 	    <div id="progress"></div>
-	    <div class="left_c" id="current_mission"></div>
 	    <div class="right_c" id="personal_goal1"></div>
 	    <div class="left_c" id="completed_missions"></div>
 	    <div class="right_c" id="personal_goal2"></div>
@@ -90,6 +91,7 @@ print_r($_SESSION);
 	  <form action='logout.php' method='post' id="logout"><input id='button_logout' type='submit' value='Log out' /></form>
 	</div>
 	<script>
+		var ajax_response="";
 		$("#user #register").on("submit", function(e){
 			e.preventDefault();
 			$.post("register.php", $(this).serialize(), function(data){

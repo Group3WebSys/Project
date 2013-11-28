@@ -9,8 +9,6 @@
   <p>Level <?php echo $_SESSION["user"]['level']; ?>!</p>
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
-  <p><a href = "accountsettings.php">Account settings</a></p>
-  <p><a href = "logout.php">Logout</a></p>
 <?php } else { ?>
 	Please log in to see some cool stuff about your account!
 <?php } ?>
