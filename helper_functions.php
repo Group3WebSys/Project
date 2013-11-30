@@ -1,4 +1,113 @@
 <?php 
+//A series of helper functions to
+//Get the latest data regarding a particular user
+//Because they query directly from the database, they are more reliable than SESSION data
+//Need to implement helper functions to update the latest data?
+
+function get_current_mission($uid, $db)
+{
+	try
+	{
+		$query="SELECT `currentTask` FROM `users` WHERE `id`=:userId";
+		$query_params=array(":userId" => $uid);
+		$query_params=array(":userId"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		return $stmt->fetch();
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function get_completed_missions($uid, $db)
+{
+	try
+	{
+		$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM
+		            		`tasks` WHERE
+		            		`tasks`.`id` IN
+		            		(SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE
+		            		`completedtasks`.`uid`=:userId)";
+		
+		$query_params=array(":userId"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		$completedTasks=array();
+		$completedTasks=$stmt->fetchAll();
+		return $completedTasks;
+		
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function get_available_missions($uid, $db)
+{
+	try {
+		$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM
+		            		`tasks` WHERE
+		            		`tasks`.`id` NOT IN
+		            		(SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE
+		            		`completedtasks`.`uid`=:userId)";
+		$query_params=array(":userId"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		$availableTasks=array();
+		$availableTasks=$stmt->fetchAll();
+		return $availableTasks;
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function get_current_progress($uid, $db)
+{
+	try
+	{
+		$query="SELECT `progress` FROM `users` WHERE `id`=:userId";
+		$query_params=array(":userId" => $uid);
+		$query_params=array(":userId"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+	
+		return $stmt->fetch();
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function get_current_level($uid, $db)
+{
+	try
+	{
+		$query="SELECT `level` FROM `users` WHERE `id`=:userId";
+		$query_params=array(":userId" => $uid);
+		$query_params=array(":userId"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+	
+		return $stmt->fetch();
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+//This is just for password validation
 function validate_password($new_password, $new_password_again, $db, $uid, $mode, $old_password="")
 {
 	//if the user is registering
@@ -85,4 +194,8 @@ function validate_password($new_password, $new_password_again, $db, $uid, $mode,
 		return false;
 	}
 }
+
+
+
+
 ?>
