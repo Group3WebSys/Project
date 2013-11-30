@@ -11,20 +11,6 @@
 //
 //
 //
-require("dbconnect.php");
-require("helper_functions.php");
-print_r(get_current_mission(26, $db));
-echo "<br />";
-print_r(get_completed_missions(26, $db));
-echo "<br />";
-print_r(get_available_missions(26, $db));
-echo "<br />";
-print_r(get_current_progress(26, $db));
-echo "<br />";
-print_r(get_current_level(26, $db));
-echo "<br />";
-
-
     if(!empty($_POST)) 
     {
     	require("dbconnect.php");
