@@ -4,6 +4,10 @@
 //Because they query directly from the database, they are more reliable than SESSION data
 //Need to implement helper functions to update the latest data?
 
+//Return values are in all arrays.
+//For single-entity queries(e.g. get_current_mission), the array is associative, with key as the column name and the value as the value.
+//For multi-entity queries(e.g. get_completed_missions), each entity is an array, and they are nested inside a bigger array
+
 function get_current_mission($uid, $db)
 {
 	try
