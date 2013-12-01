@@ -73,7 +73,7 @@ blockquote {
 #movers-row div a.cross-link { 
 	float: right; 
 }
-#thumbnails  div a:hover{ 
+#thumbnails  a:hover{ 
 	background-color: rgba(255,255,255,0);
 }
 .photo-meta-data {
