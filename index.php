@@ -1,6 +1,7 @@
 	<?php include 'header.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 	<div id = "content">
+		<h1>Confiden</h1>
 		<div id ="intro">
 			Confiden is a place for young adults to come to build their confidence levels, no matter their current perceived level of confidence. They must complete challenges, A.K.A. "missions" with the intention of building a solid foundation of healthy confidence. Confiden has the potential to change the lives of any people willing to put the work towards changing their lives for the better, ideally gradually leaving their comfort zones and becoming more independent, self-assured individuals. Etc etc we the best
 		</div>
@@ -80,10 +81,5 @@
 		</div>
 	
 	</div>
-		<div id = "widgets">
-			<div class="widget">Widget 1</div>
-			<div class="widget">Widget 2</div>
-			<div class="widget">Widget 3</div>
-		</div>
 	</div>
 	<?php include 'footer.php'; ?>
