@@ -9,12 +9,12 @@
 		<h3>Free for All</h3>
 		</p>Confiden is a 100% free website for all to use. We will not charge our users, who are here to seek help, for our assistance.<p>
 		<h3>Who We Are</h3>
-		<p>Alison Bischak!</p><img src = "about_alison.jpg"><br/>
-		<p>Taylor Davis!</p><img src = "about_taylor.jpg" alt = "whoops"><br/>
-		<p>Nurgul Kantarbayeva!</p><img src = "about_nurgul.jpg" alt = "whoops"><br/>
-		<p>Taha Mehdi!</p><img src = "about_taha.jpg" alt = "whoops"><br/>
-		<p>Hayley Schluter!</p><img src = "about_hayley.jpg" alt = "whoops"><br/>
-		<p>Michael Xie!</p><img src = "about_michael.jpg" alt = "whoops"><br/>
+		<p>Alison Bischak!</p><img src = "style/resources/about_alison.jpg" alt = "whoops"><br/><br/>
+		<p>Taylor Davis!</p><img src = "style/resources/about_taylor.jpg" alt = "whoops"><br/><br/>
+		<p>Nurgul Kantarbayeva!</p><img src = "style/resources/about_nurgul.jpg" alt = "whoops"><br/><br/>
+		<p>Taha Mehdi!</p><img src = "style/resources/about_taha.jpg" alt = "whoops"><br/><br/>
+		<p>Hayley Schluter!</p><img src = "style/resources/about_hayley.jpg" alt = "whoops"><br/><br/>
+		<p>Michael Xie!</p><img src = "style/resources/about_michael.jpg" alt = "whoops"><br/><br/>
 		<p>Feel free to refer to our <a href = "faq.php">Resources Page</a> or <a href = "contact.php">Contact Us</a> if you have any further questions.</p>
 	</div>
 	<?php include 'leftsidebar.php'; ?>
