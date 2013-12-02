@@ -65,7 +65,7 @@ clear: both;
   width: 800px;  
   position: absolute;
   left: 50%;
-  min-height:90%;
+  height:800px;
   margin-top: 40px;
   margin-left: -400px;    
   margin-bottom: 40px;
