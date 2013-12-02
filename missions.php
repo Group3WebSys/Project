@@ -7,7 +7,8 @@ if (isset($_POST['submit'])) {
 			<h1>MISSIONS</h1>
 			<?php 
 			//get_available_missions($_SESSION['user']['id'], $db);
-			
+			$arr = array('red','green','blue');
+			echo $arr;
 			?>
 			<ul id = "missionsList">
 			<br/>

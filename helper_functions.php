@@ -122,21 +122,21 @@ function get_available_missions($uid, $db)
 			
 			// implode the array
 			$missions = implode(",", $flattened);
-			echo $missions;
+			//echo $missions;
 			
 			$query="UPDATE `users` SET `currentmissions` = :missions WHERE `id` = :uid";
 			$query_params=array(":missions" => $missions, ":uid"=>$uid);
 			$stmt=$db->prepare($query);
 			$result2=$stmt->execute($query_params);
 		}
-		else {
-			// explode
+//		else {
+			// just select the tasks
 			$missions = $result['currentmissions'];
 			$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
 			$stmt=$db->prepare($query);
 			$result2=$stmt->execute($query_params);
-			$missions=$stmt->fetch();
-		}
+			$missions=$stmt->fetchAll();
+//		}
 		return $missions;
 	}
 	catch(Exception $e)
@@ -204,10 +204,29 @@ function submit_mission($uid, $db, $tid, $feedback)
 			$query="UPDATE `users` SET `current3star` = `current3star` + 1 WHERE `id` = :uid";
 		}
 		else { echo "Houston we have a problem"; }
+		
 		$query_params=array(":uid" => $uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
-		return $stmt->fetch();
+		
+		// explode currentmissions, remove the submitted tasks, then re-implode and update
+		$query="SELECT `users`.`currentmissions` FROM `users` WHERE `id`=:uid";
+		$query_params=array(":uid"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		$user = $stmt->fetch();
+		
+		$missions = explode(",",$user['currentmissions']);
+		if (($key = array_search($tid, $missions)) !== false) {
+			unset($missions[$key]);
+		}
+		$missions = implode(",", $missions);
+		$query="UPDATE `users` SET `currentmissions` = :missions WHERE `id` = :uid";
+		$query_params=array(":missions" => $missions, ":uid"=>$uid);
+		$stmt=$db->prepare($query);
+		$result2=$stmt->execute($query_params);
+
+		return $result2;
 	}
 	catch(Exception $e)
 	{
