@@ -1,4 +1,6 @@
 	<?php include 'header.php'; 
+	include 'leftsidebar.php'; 
+	include 'rightsidebar.php'; 
 	require_once("./include/fgcontactform.php");
 
 	$formproc = new FGContactForm();
