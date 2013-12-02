@@ -2,7 +2,7 @@
 	<div class = "bodyBlock">
 		<h1>ABOUT US</h1><br/>
 		<h3>Overview</h3>
-		<p>Confiden is a place for people to use to build their confidence levels, no matter their current perceived level of confidence. Users must complete challenges, A.K.A. "Missions" with the intention of building a solid foundation of healthy confidence. Confiden has the potential to assist anyone willing to put the work towards changing their lives for the better, gradually leaving their comfort zones and becoming more independent, self-assured individuals.</p>
+		<p>Confiden is a place for people to use to build their confidence levels, no matter their current perceived level of confidence. Users must complete challenges, A.K.A. "Missions" with the intention of building a solid foundation of healthy confidence. Confiden has the potential to assist anyone willing to put the work towards changing their lives for the better, gradually leaving their comfort zones and becoming more independent, self-assured individuals.</p><br/>
 		<h3>Our Mission</h3>
 		</p>To help guide individuals who feel that they lack confidence and are looking to build theirs by providing the resources and opportunities to do so in a safe and fun way.<p><br/>
 		<h3>Free for All</h3>
