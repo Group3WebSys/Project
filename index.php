@@ -20,7 +20,7 @@
 					</div>
 					<div class="panel" title="Panel 2">
 						<div class="wrapper">
-							<img src="style/resources/tempphoto-2.jpg" alt="temp" />
+							<img src="style/resources/sliderphoto1.png" alt="subreddit" />
 							<div class="photo-meta-data">
 								<a href="#">Link</a>
 							</div>
