@@ -9,7 +9,7 @@
 		<h3>Free for All</h3>
 		</p>Confiden is a 100% free website for all to use. We will not charge our users, who are here to seek help, for our assistance.<p>
 		<h3>Who We Are</h3>
-		<p>Alison Bischak!</p><img src = "about_alison.jpg" alt = "whoops"><br/>
+		<p>Alison Bischak!</p><img src = "about_alison.jpg"><br/>
 		<p>Taylor Davis!</p><img src = "about_taylor.jpg" alt = "whoops"><br/>
 		<p>Nurgul Kantarbayeva!</p><img src = "about_nurgul.jpg" alt = "whoops"><br/>
 		<p>Taha Mehdi!</p><img src = "about_taha.jpg" alt = "whoops"><br/>
