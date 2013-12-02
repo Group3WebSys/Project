@@ -45,9 +45,5 @@
 			
 			<!-- Logo, site name here -->
 			<!--Our awesome header here-->
-			<?php 
-				// functions to display log in form or something else
-				// ifloggedin() { output nothing or member info }
-				// else {output login form and register here}
-			?>
+			
 		</div>

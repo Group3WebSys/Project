@@ -1,5 +1,6 @@
 <?php 
 require("dbconnect.php"); 
+require("helper_functions.php");
 session_start(); header('Content-Type: text/html; charset=utf-8'); 
 //A custom session timeout implementation
 if(isset($_SESSION["lastActivity"]) && time()-$_SESSION["lastActivity"]>1800)

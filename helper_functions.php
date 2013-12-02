@@ -54,6 +54,7 @@ function get_completed_missions($uid, $db)
 function get_available_missions($uid, $db)
 {
 	try {
+		/*
 		$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM
 		            		`tasks` WHERE
 		            		`tasks`.`id` NOT IN
@@ -64,6 +65,28 @@ function get_available_missions($uid, $db)
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 		
+		$availableTasks=array();
+		$availableTasks=$stmt->fetchAll();
+		return $availableTasks;
+		*/
+		$query="SELECT `users`.`currentmissions` FROM `users` WHERE `uid`=:uid";
+		$query_params=array(":uid"=>$uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		if ($result['currentmissions'] == NULL) {
+		// select missions randomly according to levelup table, implode task id's and store into currentmissions
+			$missions = "";
+			$level = get_current_level($uid, $db)['level'];
+			
+		
+		}
+		else {
+			// explode
+			$missions = array_map('intval', explode(',', $result['currentmissions']));
+			$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM `tasks` WHERE `tasks`.`id` IN ".$missions;
+			$stmt=$db->prepare($query);
+			$result2=$stmt->execute($query_params);
+		}
 		$availableTasks=array();
 		$availableTasks=$stmt->fetchAll();
 		return $availableTasks;
@@ -163,8 +186,9 @@ function level_up($uid, $db)
 		// time to check
 		if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 
-			($result1['current3star'] >= $result2['3star'])) {
-			// user can level up
+			($result1['current3star'] >= $result2['3star']) && 
+			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] == 3)) {
+			// user can level up :D
 			$level = $result1['level'] + 1;
 			$msg = "Yay you have leveled up! Your new level is ".$level;
 			if ($level > 10) { // user has finished Confiden
@@ -176,11 +200,17 @@ function level_up($uid, $db)
 			$stmt=$db->prepare($query);
 			$result3=$stmt->execute($query_params);
 		}
-		else { // just tell them how many missions need to still be completed 
-			$msg = "To level up you need to complete:<br/>";
-			if ($result2['1star'] != 0) $msg.= $result2['1star']." 1 star missions<br/>";
-			if ($result2['2star'] != 0) $msg.= $result2['2star']." 2 star missions<br/>";
-			if ($result2['3star'] != 0) $msg.= $result2['3star']." 3 star missions<br/>";
+		else { // tell them how many missions need to still be completed 
+			$msg = "To level up you need to complete a total of:<br/>";
+			if ($result2['1star'] != 0) {
+				$msg.= $result2['1star']." 1 star missions (You currently have ".$result1['current1star'].")<br/>";
+			}
+			if ($result2['2star'] != 0) {
+				$msg.= $result2['2star']." 2 star missions (You currently have ".$result1['current2star'].")<br/>";
+			}
+			if ($result2['3star'] != 0) {
+				$msg.= $result2['3star']." 3 star missions (You currently have ".$result1['current3star'].")<br/>";
+			}
 		}
 		
 		return $msg;
