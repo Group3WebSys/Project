@@ -213,13 +213,6 @@ clear: both;
   margin: 1em;
 }
 
-/*what is this?*/
-#centerme {
-  width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 /*for faq*/
 .hiddendiv {display:none;}
 .visiblediv {display:block;}
