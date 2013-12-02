@@ -1,5 +1,6 @@
 		<div id = "push"></div>
 		<div id ="footer">
+				<span class = 'footerspan'><a href="index.php">Home</a></span>
 				<span class = 'footerspan'><a href="faq.php">FAQ</a></span>
 				<span class = 'footerspan'><a href="contact.php">Contact Us</a></span>
 				<span class = 'footerspan'><a href="resources.php">Resources</a></span>
