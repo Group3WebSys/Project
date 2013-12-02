@@ -69,27 +69,75 @@ function get_available_missions($uid, $db)
 		$availableTasks=$stmt->fetchAll();
 		return $availableTasks;
 		*/
-		$query="SELECT `users`.`currentmissions` FROM `users` WHERE `uid`=:uid";
+		$query="SELECT `users`.`currentmissions` FROM `users` WHERE `id`=:uid";
 		$query_params=array(":uid"=>$uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
-		if ($result['currentmissions'] == NULL) {
+		$user = $stmt->fetch();
+		if ($user['currentmissions'] == NULL or $user['currentmissions']=='') {
 		// select missions randomly according to levelup table, implode task id's and store into currentmissions
-			$missions = "";
 			$level = get_current_level($uid, $db)['level'];
+			//$level = 100;
+			$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
 			
-		
-		}
-		else {
-			// explode
-			$missions = array_map('intval', explode(',', $result['currentmissions']));
-			$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM `tasks` WHERE `tasks`.`id` IN ".$missions;
+			$query_params=array(":level" => $level);
+			$stmt=$db->prepare($query);
+			$result2=$stmt->execute($query_params);
+			$levelup = $stmt->fetch();
+			//print_r( $levelup);
+			$missions = "";
+			$result1star = array();
+			$result2star = array();
+			$result3star = array();
+			// get the tasks from each of the different task levels
+			if ($levelup['1star'] != 0) {
+				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 1 ORDER BY RAND() LIMIT ".$levelup['1star'];
+				$stmt=$db->prepare($query1);
+				$result1star=$stmt->execute();
+				$result1star = $stmt->fetchAll();
+			}
+			if ($levelup['2star'] != 0) {
+				$query2 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 2 ORDER BY RAND() LIMIT ".$levelup['2star'];
+				$stmt=$db->prepare($query2);
+				$result2star=$stmt->execute();
+				$result2star = $stmt->fetchAll();
+			}
+			if ($levelup['3star'] != 0) {
+				$query3 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 3 ORDER BY RAND() LIMIT ".$levelup['3star'];
+				$stmt=$db->prepare($query3);
+				$result3star=$stmt->execute();
+				$result3star = $stmt->fetchAll();
+			}
+			
+			$missions = array_merge((array)$result1star, (array)$result2star, (array)$result3star);
+			// the above will give us an extremely complex multi-dimensional array, let's just get it to 
+			// a single dimension
+			$flattened = array();
+			foreach ($missions as $key => $value) {
+				foreach ($missions[$key] as $key2 => $value2) {
+					$flattened[] = $value2;
+				}
+			}
+			//print_r($flattened);
+			
+			// implode the array
+			$missions = implode(",", $flattened);
+			echo $missions;
+			
+			$query="UPDATE `users` SET `currentmissions` = :missions WHERE `id` = :uid";
+			$query_params=array(":missions" => $missions, ":uid"=>$uid);
 			$stmt=$db->prepare($query);
 			$result2=$stmt->execute($query_params);
 		}
-		$availableTasks=array();
-		$availableTasks=$stmt->fetchAll();
-		return $availableTasks;
+		else {
+			// explode
+			$missions = $result['currentmissions'];
+			$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
+			$stmt=$db->prepare($query);
+			$result2=$stmt->execute($query_params);
+			$missions=$stmt->fetch();
+		}
+		return $missions;
 	}
 	catch(Exception $e)
 	{
@@ -144,7 +192,7 @@ function submit_mission($uid, $db, $tid, $feedback)
 		$query_params=array(":tid" => $tid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
-		
+		$result = $stmt->fetch();
 		// increment current X star value in user table
 		if ($result['star'] == 1) {
 			$query="UPDATE `users` SET `current1star` = `current1star` + 1 WHERE `id` = :uid";
@@ -176,13 +224,14 @@ function level_up($uid, $db)
 		$query_params=array(":uid" => $uid);
 		$stmt=$db->prepare($query);
 		$result1=$stmt->execute($query_params);
+		$result1=$stmt->fetch();
 		
 		// get information from table
 		$query="SELECT `levelup`.``1star`, `levelup`.``2star`, `levelup`.``3star` FROM `levelup` WHERE `currentlevel` = :level";
 		$query_params=array(":level" => $result1['level']);
 		$stmt=$db->prepare($query);
 		$result2=$stmt->execute($query_params);
-		
+		$result2=$stmt->fetch();
 		// time to check
 		if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 

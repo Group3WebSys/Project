@@ -6,8 +6,8 @@ if (isset($_POST['submit'])) {
 	<div class = "bodyBlock">
 			<h1>MISSIONS</h1>
 			<?php 
-			$yo = get_current_level($_SESSION['user']['id'], $db);
-			echo $yo['level'];
+			//get_available_missions($_SESSION['user']['id'], $db);
+			
 			?>
 			<ul id = "missionsList">
 			<br/>
