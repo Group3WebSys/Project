@@ -177,6 +177,10 @@ clear: both;
   padding:5px 5px 5px 5px;
 }
 
+.footerspan{
+        padding-right:10px;
+}
+
 #content {
   width: 800px;
   margin-left: auto;
