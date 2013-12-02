@@ -14,7 +14,6 @@ function get_current_mission($uid, $db)
 	{
 		$query="SELECT `currentTask` FROM `users` WHERE `id`=:userId";
 		$query_params=array(":userId" => $uid);
-		$query_params=array(":userId"=>$uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 		
@@ -81,7 +80,6 @@ function get_current_progress($uid, $db)
 	{
 		$query="SELECT `progress` FROM `users` WHERE `id`=:userId";
 		$query_params=array(":userId" => $uid);
-		$query_params=array(":userId"=>$uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 	
@@ -99,11 +97,93 @@ function get_current_level($uid, $db)
 	{
 		$query="SELECT `level` FROM `users` WHERE `id`=:userId";
 		$query_params=array(":userId" => $uid);
-		$query_params=array(":userId"=>$uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 	
 		return $stmt->fetch();
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function submit_mission($uid, $db, $tid, $feedback)
+{
+	try
+	{
+		$query="INSERT INTO `completedtasks` (`uid`, `tid`,`feedback`) VALUES (:uid, :tid:, :feedback)";
+		$query_params=array(":uid" => $uid, ":tid" => $tid, ":feedback" => $feedback);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		$query="SELECT `tasks`.`star` FROM `tasks` WHERE `id` = :tid";
+		$query_params=array(":tid" => $tid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		// increment current X star value in user table
+		if ($result['star'] == 1) {
+			$query="UPDATE `users` SET `current1star` = `current1star` + 1 WHERE `id` = :uid";
+		}
+		else if ($result['star'] == 2) {
+			$query="UPDATE `users` SET `current2star` = `current2star` + 1 WHERE `id` = :uid";
+		}
+		else if ($result['star'] == 3) {
+			$query="UPDATE `users` SET `current3star` = `current3star` + 1 WHERE `id` = :uid";
+		}
+		else { echo "Houston we have a problem"; }
+		$query_params=array(":uid" => $uid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		return $stmt->fetch();
+	}
+	catch(Exception $e)
+	{
+		return false;
+	}
+}
+
+function level_up($uid, $db)
+{
+	try
+	{
+		// get information regarding leveling up from user
+		$query="SELECT `users`.`level`, `users`.`current1star`, `users`.`current2star`, `users`.`current3star` FROM `users` WHERE `id` = :uid";
+		$query_params=array(":uid" => $uid);
+		$stmt=$db->prepare($query);
+		$result1=$stmt->execute($query_params);
+		
+		// get information from table
+		$query="SELECT `levelup`.``1star`, `levelup`.``2star`, `levelup`.``3star` FROM `levelup` WHERE `currentlevel` = :level";
+		$query_params=array(":level" => $result1['level']);
+		$stmt=$db->prepare($query);
+		$result2=$stmt->execute($query_params);
+		
+		// time to check
+		if (($result1['current1star'] >= $result2['1star']) && 
+			($result1['current2star'] >= $result2['2star'])	&& 
+			($result1['current3star'] >= $result2['3star'])) {
+			// user can level up
+			$level = $result1['level'] + 1;
+			$msg = "Yay you have leveled up! Your new level is ".$level;
+			if ($level > 10) { // user has finished Confiden
+				$msg .= "<br/>You have completed Confiden!";
+			}
+			// reset current X level values to zero and increment level
+			$query="UPDATE `users` SET `level` = :level, `current1star`=0, `current2star`=0, `current3star`=0  WHERE `id` = :uid";
+			$query_params=array(":level" => $level, ":uid" => $uid);
+			$stmt=$db->prepare($query);
+			$result3=$stmt->execute($query_params);
+		}
+		else { // just tell them how many missions need to still be completed 
+			$msg = "To level up you need to complete:<br/>";
+			if ($result2['1star'] != 0) $msg.= $result2['1star']." 1 star missions<br/>";
+			if ($result2['2star'] != 0) $msg.= $result2['2star']." 2 star missions<br/>";
+			if ($result2['3star'] != 0) $msg.= $result2['3star']." 3 star missions<br/>";
+		}
+		
+		return $msg;
 	}
 	catch(Exception $e)
 	{
