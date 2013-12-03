@@ -1,11 +1,10 @@
 	<?php include 'header.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 	<div id = "content">
-		<img src = "style/resources/LOGO.png" alt = "logo" width = "200">
+		<img src = "style/resources/LOGOwithglow.png" alt = "logo" width = "170">
 		<h1>Confiden</h1>
 		<div id ="intro">
-			<br/>
-			<p>New to this site? Check out our <a href = "about.php">About Us</a></p>
+			<p>New to this site? Learn all <a href = "about.php">About Us</a></p>
 		</div>
 		<div id = "slider">
 												
