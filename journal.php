@@ -23,6 +23,8 @@ if (isset($_SESSION['username']) ) :
 	      $stmt->execute(array(':uid' => $_POST['name'], ':author' => $_SESSION['username'], ':content' => $_POST['entry'], ':date' => date("Y/m/d") ));
 	      $msg = "Journal entry recorded.";
 	}
+	
+else: echo "ya done goofed"; 
 ?>
 
 
