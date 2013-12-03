@@ -1,7 +1,9 @@
 <?php include 'header.php'; ?>
 	<div class = "bodyBlock">
 			<h1>MISSIONS</h1>
+			
 			<?php 
+			
 			//if (isset($message)) echo "<p style='color:blue;'>$message</p>";
 			$missions = get_available_missions($_SESSION['user']['id'], $db);
 			

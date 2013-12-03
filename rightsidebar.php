@@ -7,6 +7,18 @@
 	<?php echo $_SESSION["user"]["username"]; ?>/<?php echo $_SESSION["user"]["avatar"]; } ?>"</img><br/>
 	<p>Welcome <?php echo $_SESSION["user"]['username']; ?>!</p>
   <p>Level <?php echo get_current_level($_SESSION["user"]["id"], $db)['level']; ?>!</p>
+ <!-- do we need this?
+ <p>To level up, you need:</p>
+  <?php
+  $needed = get_needed_missions((get_current_level($_SESSION["user"]["id"], $db)['level']), $db);
+  print_r($needed);
+  ?>
+  <p>Currently you have:</p>
+  <?php
+  $current = get_user_level_info($_SESSION["user"]["id"], $db);
+  print_r($current);
+  ?>
+  -->
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
   <hr/>

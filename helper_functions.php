@@ -271,29 +271,58 @@ function submit_mission($uid, $db, $tid, $fb)
 			die();
 	}
 }
+function get_needed_missions($level, $db) {
+	try
+		{
+			$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
+			$query_params=array(":level" => $level);
+			$stmt=$db->prepare($query);
+			$result2=$stmt->execute($query_params);
+			$result2=$stmt->fetch();
+			return $result2;
+		}
+	catch(Exception $e)
+	{
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+	}
+}
+
+function get_user_level_info($uid, $db) {
+	try
+		{
+			// get information regarding leveling up from user
+			$query="SELECT `users`.`level`, `users`.`current1star`, `users`.`current2star`, `users`.`current3star` FROM `users` WHERE `id` = :uid";
+			$query_params=array(":uid" => $uid);
+			$stmt=$db->prepare($query);
+			$result1=$stmt->execute($query_params);
+			$result1=$stmt->fetch();
+			return $result1;
+		}
+	catch(Exception $e)
+	{
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+	}
+}
 
 function level_up($uid, $db)
 {
 	try
 	{
-		// get information regarding leveling up from user
-		$query="SELECT `users`.`level`, `users`.`current1star`, `users`.`current2star`, `users`.`current3star` FROM `users` WHERE `id` = :uid";
-		$query_params=array(":uid" => $uid);
-		$stmt=$db->prepare($query);
-		$result1=$stmt->execute($query_params);
-		$result1=$stmt->fetch();
+		$result1=get_user_level_info($uid, $db);
 		
-		// get information from table
-		$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
-		$query_params=array(":level" => $result1['level']);
-		$stmt=$db->prepare($query);
-		$result2=$stmt->execute($query_params);
-		$result2=$stmt->fetch();
 		// time to check
-		if (($result1['current1star'] >= $result2['1star']) && 
+		/* if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 
 			($result1['current3star'] >= $result2['3star']) && 
-			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) {
+			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) { */
+			
+		if (($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) {
 			// user can level up :D
 			$level = $result1['level'] + 1;
 			$msg = "<br/>Yay you have leveled up! Your new level is ".$level."<br/>";
@@ -307,6 +336,8 @@ function level_up($uid, $db)
 			$result3=$stmt->execute($query_params);
 		}
 		else { // tell them how many missions need to still be completed 
+			// get information from table
+			$result2 = get_needed_missions($level, $db);			
 			$msg = "<br/>To level up you need to complete a total of:<br/>";
 			if ($result2['1star'] != 0) {
 				$msg.= $result2['1star']." 1 star missions (You currently have ".$result1['current1star'].")<br/>";
