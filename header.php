@@ -3,6 +3,8 @@
 	<head>
 		<!--Favicon icon-->
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAANliAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABERAAAAAAARERERAAAAARERERERAAABEREREREQABEREAERERAAEREAABEREAAREQAAEREQAAEREAABEQAAAREREAAAAAAAERERAAAAAAABEREQAAAAAAABERAAAAAAAAEREAAAAAAAABEAAAAAAAAAEAAAAAAAAAEAAAAAD4fwAA4B8AAMAHAADAAwAAgwMAAIeDAACHgwAAw8cAAMD/AADgfwAA8D8AAPw/AAD8PwAA/n8AAP7/AAD9/wAA" rel="icon" type="image/x-icon" />		<link href='http://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' type='text/css'>
+		<!--LOGO, YO-->
+		<a href = "index.php"><img src = "style/resources/LOGOsmall.png"></a> 
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script>  
                 function toggle_visibility(id) {
