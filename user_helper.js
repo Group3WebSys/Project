@@ -56,28 +56,28 @@ function display_user_info(data)
 	{
 		tasks="<li>None</li>";
 	}
-	$("#user #account #completed_missions").html(
-			"<p>You have completed:</p>"+
-			"<ul>"+
-			tasks+
-			"</ul>"
-	);
+//	$("#user #account #completed_missions").html(
+//			"<p>You have completed:</p>"+
+//			"<ul>"+
+///			tasks+
+//			"</ul>"
+//	);
 	
-	//Display user's email
-	$("#user #account #email").html(
-			"<p>email address: "+
-			user_info["email"]+
-			"</p>"
-	);
+//	//Display user's email
+//	$("#user #account #email").html(
+//			"<p>email address: "+
+//			user_info["email"]+
+//			"</p>"
+//	);
 	
 	//Display the personal goals
-	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
-	$("#user #account #personal_goal2").html("<p>Personal Goal 2: "+user_info["personalGoal2"]+"</p>");
-	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
+//	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
+//	$("#user #account #personal_goal2").html("<p>Personal Goal 2: "+user_info["personalGoal2"]+"</p>");
+//	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
 	
 	// Display/Edit avatar
-	if(user_info["avatar"]!="default.jpg")
-	{
+//	if(user_info["avatar"]!="default.jpg")
+//	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
 		//$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time(); ?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
 		
