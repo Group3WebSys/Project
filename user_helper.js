@@ -40,22 +40,22 @@ function display_user_info(data)
 	{
 		task="None";
 	}
-	$("#user #account #current_mission").html("<p>Your current mission: </p><ul>"+task+"</ul>");
+//	$("#user #account #current_mission").html("<p>Your current mission: </p><ul>"+task+"</ul>");
 	
 	//Display user's completed tasks
-	var tasks="";
-	if(user_info["completedTasks"].length!=0)
-	{
-		for(var i=0; i!=user_info["completedTasks"].length; i++)
-		{
-			tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
-		}
-	}
+//	var tasks="";
+//	if(user_info["completedTasks"].length!=0)
+//	{
+//		for(var i=0; i!=user_info["completedTasks"].length; i++)
+//		{
+//			tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
+//		}
+//	}
 	//If the user has completed no missions, just print none
-	else
-	{
-		tasks="<li>None</li>";
-	}
+//	else
+//	{
+//		tasks="<li>None</li>";
+//	}
 //	$("#user #account #completed_missions").html(
 //			"<p>You have completed:</p>"+
 //			"<ul>"+
