@@ -187,6 +187,7 @@ clear: both;
 }
 
 #content {
+	position: absolute;
   width: 800px;
   margin-left: auto;
   margin-right: auto;
