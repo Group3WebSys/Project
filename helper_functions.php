@@ -100,21 +100,24 @@ function get_available_missions($uid, $db)
 			$result3star = array();
 			// get the tasks from each of the different task levels
 			if ($levelup['1star'] != 0) {
-				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 1 ORDER BY RAND() LIMIT ".$levelup['1star'];
+				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 1 NOT IN (SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['1star'];
 				$stmt=$db->prepare($query1);
-				$result1star=$stmt->execute();
+				$result1star=$stmt->execute($query_params);
 				$result1star = $stmt->fetchAll();
 			}
 			if ($levelup['2star'] != 0) {
-				$query2 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 2 ORDER BY RAND() LIMIT ".$levelup['2star'];
+				$query2 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 2 NOT IN (SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['2star'];
 				$stmt=$db->prepare($query2);
-				$result2star=$stmt->execute();
+				$result2star=$stmt->execute($query_params);
 				$result2star = $stmt->fetchAll();
 			}
 			if ($levelup['3star'] != 0) {
-				$query3 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 3 ORDER BY RAND() LIMIT ".$levelup['3star'];
+				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 3 NOT IN (SELECT `completedtasks`.`tid` FROM
+		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['3star'];
 				$stmt=$db->prepare($query3);
-				$result3star=$stmt->execute();
+				$result3star=$stmt->execute($query_params);
 				$result3star = $stmt->fetchAll();
 			}
 			
