@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-	<div id = "content">
+	<div class = "bodyBlock">
 		<h1>FAQ</h1>
 		<br/>
 
