@@ -317,12 +317,12 @@ function level_up($uid, $db)
 		$result1=get_user_level_info($uid, $db);
 		
 		// time to check
-		/* if (($result1['current1star'] >= $result2['1star']) && 
+		 if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 
 			($result1['current3star'] >= $result2['3star']) && 
-			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) { */
+			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) { 
 			
-		if (($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) {
+		// if (($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) {
 			// user can level up :D
 			$level = $result1['level'] + 1;
 			$msg = "<br/>Yay you have leveled up! Your new level is ".$level."<br/>";
