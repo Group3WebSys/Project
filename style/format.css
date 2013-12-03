@@ -217,3 +217,8 @@ clear: both;
 .hiddendiv {display:none;}
 .visiblediv {display:block;}
 
+/* missions */
+.missionheading {
+  font-size: 1.25em;
+  border-bottom: 1px white solid;
+}

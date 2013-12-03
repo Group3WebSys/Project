@@ -129,14 +129,15 @@ function get_available_missions($uid, $db)
 			$stmt=$db->prepare($query);
 			$result2=$stmt->execute($query_params);
 		}
-//		else {
-			// just select the tasks
-			$missions = $result['currentmissions'];
-			$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
-			$stmt=$db->prepare($query);
-			$result2=$stmt->execute($query_params);
-			$missions=$stmt->fetchAll();
-//		}
+		
+		// then just select the tasks
+		$missions = $user['currentmissions'];
+		$query="SELECT * FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
+		$stmt=$db->prepare($query);
+		$result2=$stmt->execute($query_params);
+		$missions=$stmt->fetchAll();
+
+		//echo $missions;
 		return $missions;
 	}
 	catch(Exception $e)
