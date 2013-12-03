@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+if (!isset($_SESSION['user']) && (basename($_SERVER['PHP_SELF']) == "missions.php")) 
+	header ('Location: index.php');
+?>
+	<!doctype html>
 <html>
 	<head>
 		<!--Favicon icon-->

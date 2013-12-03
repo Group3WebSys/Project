@@ -6,7 +6,7 @@
 	<?php } else { ?>
 	<?php echo $_SESSION["user"]["username"]; ?>/<?php echo $_SESSION["user"]["avatar"]; } ?>"</img><br/>
 	<p>Welcome <?php echo $_SESSION["user"]['username']; ?>!</p>
-  <p>Level <?php echo $_SESSION["user"]['level']; ?>!</p>
+  <p>Level <?php echo get_current_level($_SESSION["user"]["id"], $db)['level']; ?>!</p>
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
 <?php } else { ?>
