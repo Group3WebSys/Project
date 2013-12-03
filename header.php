@@ -76,7 +76,7 @@
 					$yay = submit_mission($_SESSION['user']['id'], $db, $_POST['id'], $_POST['feedback']); 
 					
 					if ($yay===true) {
-						$message .= "Congratulations! You have successfully completed the task!";
+						$message .= "Congratulations! You have successfully completed the mission!";
 						$message .=level_up($_SESSION['user']['id'], $db);
 					}
 					else {
