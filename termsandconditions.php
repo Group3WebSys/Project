@@ -15,8 +15,8 @@
 			<p>We ask that no link is made to this website without or prior written consent. Users directed to this website must abide by our Terms and Conditions.</p>
 			<h3>Links from this website</h3>
 			<p>We do not monitor and are not responsible for the content of external links featured on our website. The views and opinions expressed in these links are not necessarily our own. We are not responsible for the Terms and Conditions of the websites featured in our links, and it is advised that the user be aware of the different Terms and Conditions associated with these websites.</p>
-			<h3>Copywrite Notice</h3>
-			<p>The Confiden logo and all content of this website are non-copywrited trademarks of the Confiden project team. </p>
+			<h3>Copyright Notice</h3>
+			<p>The Confiden logo and all content of this website are non-copyrighted trademarks of the Confiden project team. </p>
 			<h3>Communication</h3>
 			<p>We reserve the right to use the email address we have stored for your user account to contact you about changes to the website or the Terms and Conditions. Ways to communicate with the creators of this website are listed under the Contact Us section. </p>
 			<h3>Notification of Changes</h3>
