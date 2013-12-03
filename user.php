@@ -15,8 +15,8 @@ else
 	$_SESSION["lastActivity"]=time();
 }
 
-echo 'The $_SESSION: <br />';
-print_r($_SESSION);
+// echo 'The $_SESSION: <br />';
+// print_r($_SESSION);
 ?>
 
 <div id="user">				
@@ -237,6 +237,9 @@ print_r($_SESSION);
 	<?php endif;?>
 <?php else: ?>
 	<script>
+		$("#user form#login").hide();
+		$("#user form#register").hide();
+		$("#user #logout_container").hide();
 		$("#user #info .error").html("<p>Sorryyy. We encoutered some errors in database connection!</p>");
 	</script>
 <?php endif; ?>

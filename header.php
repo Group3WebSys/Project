@@ -87,7 +87,6 @@
 		
 		
 			<?php include("user.php");
-			print_r($_POST);
 			$message = "";
 			if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
 			
