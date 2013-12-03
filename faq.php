@@ -2,11 +2,7 @@
 	<div class = "bodyBlock">
 		<h1>FAQ</h1>
 		<br/>
-		<script>  
-                function toggle_visibility(id) {
-                  $("#" + id).toggle('medium');
-                } 
-		</script>
+
 
 		<div id="q1teaser" style="display: inline;">
 			<p><a href="#" onclick="toggle_visibility('q1details'); return false;"><h3>How many levels are there?</h3></a></p>
