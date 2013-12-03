@@ -68,7 +68,7 @@ clear: both;
   height:600px;
   margin-top: 40px;
   margin-left: -400px;    
-  margin-bottom: 600px;
+  margin-bottom: 40px;
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
   overflow: auto;
@@ -165,15 +165,24 @@ clear: both;
   background-color: transparent;
 }
 
-/*#push {
-        margin: 150px;
-}*/
+#push {
+  width: 800px;  
+  position: absolute;
+  left: 50%;
+  height:700px;
+  margin-top: 40px;
+  margin-left: -400px;    
+  margin-bottom: 40px;
+  border: 1px dashed green;
+  padding: 10px 10px 30px 10px;
+  overflow: auto;
+  background-color: red;
+}
 
 #footer{
   clear: both;
   position: absolute;
-  bottom: 0%;
-  vertical-align: baseline;
+  bottom: 0px;
   height: 20px;
   width: 100%;
   background-color: white;
