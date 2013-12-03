@@ -42,4 +42,3 @@ if (isset($_SESSION['username']) ) :
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 <?php include 'footer.php'; ?>
-
