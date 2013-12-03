@@ -180,8 +180,6 @@ clear: both;
 }
 
 #footer{
-  clear: both;
-  position: relative;
   z-index: 10;
   height: 20px;
   background-color: white;
