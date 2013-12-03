@@ -153,20 +153,27 @@ clear: both;
   /* Filler stuff for now */
   height: auto;
   /*line-height: 150px;*/
-  background-color: lightgray;
+  /*background-color: lightgray;*/
   border: none;
   /*vertical-align: middle;*/
   text-align: center;
-  font-size: 14px;
-  color: black;
+  font-size: 15px;
+  color: white;
   font-weight: bold;
   padding: 0.3em;
   overflow:hidden;
 }
 
+#header a {
+  text-decoration: none;
+  color: #DEFFBC;
+}
+
 #header a:hover {
   background-color: transparent;
 }
+
+
 
 /*#push {
         margin: 150px;
