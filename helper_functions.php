@@ -83,6 +83,7 @@ function get_available_missions($uid, $db)
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 		$user = $stmt->fetch();
+		
 		if ($user['currentmissions'] == NULL or $user['currentmissions']=='') {
 		// select missions randomly according to levelup table, implode task id's and store into currentmissions
 			$level = get_current_level($uid, $db)['level'];
@@ -98,26 +99,33 @@ function get_available_missions($uid, $db)
 			$result1star = array();
 			$result2star = array();
 			$result3star = array();
+			
 			// get the tasks from each of the different task levels
 			if ($levelup['1star'] != 0) {
-				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 1 NOT IN (SELECT `completedtasks`.`tid` FROM
-		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['1star'];
+				
+				$query1 = "SELECT `tasks`.`id` AS `tid` FROM `tasks` WHERE (`tasks`.`star` = 1 AND `tasks`.`id` NOT IN (SELECT `completedtasks`.`tid` FROM `completedtasks` WHERE `completedtasks`.`uid`= :uid)) ORDER BY RAND() LIMIT ".$levelup['1star'];
+				//$query1 = "SELECT `tasks`.`id` FROM `tasks` INNER JOIN `completedtasks` ON `tasks`.`id`!=`completedtasks`.`uid` WHERE `tasks.id
+				
+				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query1);
 				$result1star=$stmt->execute($query_params);
+				//echo "HIHIHIHI";
 				$result1star = $stmt->fetchAll();
 			}
 			if ($levelup['2star'] != 0) {
-				$query2 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 2 NOT IN (SELECT `completedtasks`.`tid` FROM
-		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['2star'];
+				$query2 = "SELECT `tasks`.`id` AS `tid` FROM `tasks` WHERE (`tasks`.`star` = 2 AND `tasks`.`id` NOT IN (SELECT `completedtasks`.`tid` FROM `completedtasks` WHERE `completedtasks`.`uid`= :uid)) ORDER BY RAND() LIMIT ".$levelup['2star'];
+				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query2);
 				$result2star=$stmt->execute($query_params);
+				//echo "HIHIHIHI";
 				$result2star = $stmt->fetchAll();
 			}
 			if ($levelup['3star'] != 0) {
-				$query1 = "SELECT `tasks`.`id` FROM `tasks` WHERE `star` = 3 NOT IN (SELECT `completedtasks`.`tid` FROM
-		            		`completedtasks` WHERE `completedtasks`.`uid`=:userId) ORDER BY RAND() LIMIT ".$levelup['3star'];
+				$query3 = "SELECT `tasks`.`id` AS `tid` FROM `tasks` WHERE (`tasks`.`star` = 3 AND `tasks`.`id` NOT IN (SELECT `completedtasks`.`tid` FROM `completedtasks` WHERE `completedtasks`.`uid`= :uid)) ORDER BY RAND() LIMIT ".$levelup['3star'];
+				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query3);
 				$result3star=$stmt->execute($query_params);
+				
 				$result3star = $stmt->fetchAll();
 			}
 			
@@ -154,7 +162,10 @@ function get_available_missions($uid, $db)
 	}
 	catch(Exception $e)
 	{
-		return false;
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 	}
 }
 
@@ -317,8 +328,8 @@ function level_up($uid, $db)
 {
 	try
 	{
-		$result1=get_user_level_info($uid, $db);
-		
+		$result1 = get_user_level_info($uid, $db);
+		$result2 = get_needed_missions($result1['level'], $db);	
 		// time to check
 		 if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 
@@ -339,8 +350,7 @@ function level_up($uid, $db)
 			$result3=$stmt->execute($query_params);
 		}
 		else { // tell them how many missions need to still be completed 
-			// get information from table
-			$result2 = get_needed_missions($level, $db);			
+			// get information from table		
 			$msg = "<br/>To level up you need to complete a total of:<br/>";
 			if ($result2['1star'] != 0) {
 				$msg.= $result2['1star']." 1 star missions (You currently have ".$result1['current1star'].")<br/>";
