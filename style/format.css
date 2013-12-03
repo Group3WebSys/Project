@@ -161,6 +161,10 @@ clear: both;
   overflow:hidden;
 }
 
+#header a:hover {
+	text-decoration: none;
+}
+
 /*#push {
         margin: 150px;
 }*/
