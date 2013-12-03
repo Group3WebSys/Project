@@ -48,7 +48,7 @@
 			
 		<script>  
                 function toggle_visibility(id) {
-                  $("#" + id).toggle();
+                  $("#" + id).toggle('medium');
                 } 
 				
 				function wordcount(count, id) {
