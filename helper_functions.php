@@ -50,25 +50,34 @@ function get_completed_missions($uid, $db)
 		return false;
 	}
 }
+function check_mission_complete($uid, $tid, $db) {
+	
+	try {
+		$query="SELECT `completedtasks`.`id` FROM `completedtasks` WHERE
+		            		`completedtasks`.`uid` = :uid AND `completedtasks`.`tid` = :tid";
+		
+		$query_params=array(":uid"=>$uid, ":tid"=>$tid);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		$completed=count($stmt->fetchAll());
+		if ($completed >=1) return true;
+		else return false;
+		
+	}
+	catch(Exception $e)
+	{
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+	}
+}
 
 function get_available_missions($uid, $db)
 {
 	try {
-		/*
-		$query="SELECT `tasks`.`title`, `tasks`.`star`, `tasks`.`desc` FROM
-		            		`tasks` WHERE
-		            		`tasks`.`id` NOT IN
-		            		(SELECT `completedtasks`.`tid` FROM
-		            		`completedtasks` WHERE
-		            		`completedtasks`.`uid`=:userId)";
-		$query_params=array(":userId"=>$uid);
-		$stmt=$db->prepare($query);
-		$result=$stmt->execute($query_params);
-		
-		$availableTasks=array();
-		$availableTasks=$stmt->fetchAll();
-		return $availableTasks;
-		*/
+
 		$query="SELECT `users`.`currentmissions` FROM `users` WHERE `id`=:uid";
 		$query_params=array(":uid"=>$uid);
 		$stmt=$db->prepare($query);
@@ -131,7 +140,7 @@ function get_available_missions($uid, $db)
 		}
 		
 		// then just select the tasks
-		$missions = $user['currentmissions'];
+		if (!isset($missions)) $missions = $user['currentmissions'];
 		$query="SELECT * FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
 		$stmt=$db->prepare($query);
 		$result2=$stmt->execute($query_params);
@@ -180,20 +189,26 @@ function get_current_level($uid, $db)
 	}
 }
 
-function submit_mission($uid, $db, $tid, $feedback)
+function submit_mission($uid, $db, $tid, $fb)
 {
 	try
 	{
-		$query="INSERT INTO `completedtasks` (`uid`, `tid`,`feedback`) VALUES (:uid, :tid:, :feedback)";
-		$query_params=array(":uid" => $uid, ":tid" => $tid, ":feedback" => $feedback);
+		// check if the user is trying to re-submit something (cheater cheater pumpkin eater)
+		if (check_mission_complete($uid, $tid, $db)) {
+			return "You have already completed this mission!<br/>";
+		}
+		$query="INSERT INTO `completedtasks` (`uid`, `tid`,`feedback`) VALUES (:uid, :tid, :feedback)";
+		$query_params=array(":uid" => $uid, ":tid" => $tid, ":feedback" => $fb);
 		$stmt=$db->prepare($query);
-		$result=$stmt->execute($query_params);
 		
+		$result=$stmt->execute($query_params);
+	
 		$query="SELECT `tasks`.`star` FROM `tasks` WHERE `id` = :tid";
 		$query_params=array(":tid" => $tid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
 		$result = $stmt->fetch();
+		
 		// increment current X star value in user table
 		if ($result['star'] == 1) {
 			$query="UPDATE `users` SET `current1star` = `current1star` + 1 WHERE `id` = :uid";
@@ -231,7 +246,10 @@ function submit_mission($uid, $db, $tid, $feedback)
 	}
 	catch(Exception $e)
 	{
-		return false;
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 	}
 }
 
@@ -247,7 +265,7 @@ function level_up($uid, $db)
 		$result1=$stmt->fetch();
 		
 		// get information from table
-		$query="SELECT `levelup`.``1star`, `levelup`.``2star`, `levelup`.``3star` FROM `levelup` WHERE `currentlevel` = :level";
+		$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
 		$query_params=array(":level" => $result1['level']);
 		$stmt=$db->prepare($query);
 		$result2=$stmt->execute($query_params);
@@ -256,10 +274,10 @@ function level_up($uid, $db)
 		if (($result1['current1star'] >= $result2['1star']) && 
 			($result1['current2star'] >= $result2['2star'])	&& 
 			($result1['current3star'] >= $result2['3star']) && 
-			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] == 3)) {
+			($result1['current1star'] + $result1['current2star'] + $result1['current3star'] >= 3)) {
 			// user can level up :D
 			$level = $result1['level'] + 1;
-			$msg = "Yay you have leveled up! Your new level is ".$level;
+			$msg = "<br/>Yay you have leveled up! Your new level is ".$level."<br/>";
 			if ($level > 10) { // user has finished Confiden
 				$msg .= "<br/>You have completed Confiden!";
 			}
@@ -270,7 +288,7 @@ function level_up($uid, $db)
 			$result3=$stmt->execute($query_params);
 		}
 		else { // tell them how many missions need to still be completed 
-			$msg = "To level up you need to complete a total of:<br/>";
+			$msg = "<br/>To level up you need to complete a total of:<br/>";
 			if ($result2['1star'] != 0) {
 				$msg.= $result2['1star']." 1 star missions (You currently have ".$result1['current1star'].")<br/>";
 			}
@@ -286,7 +304,10 @@ function level_up($uid, $db)
 	}
 	catch(Exception $e)
 	{
-		return false;
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
 	}
 }
 

@@ -241,7 +241,7 @@
 			':email' => $_POST['email'],
 			':gender' => $_POST['gender'],
 			':dob' => $_POST['DOB'],
-			':level' => 0,
+			':level' => 1,
 			':progress' => 0,
 			':totalpoints' => 0,
 			':personalgoal1' => $_POST['pg1'],
