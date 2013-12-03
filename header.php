@@ -49,7 +49,7 @@
 		<div id="header">
 		
 		<!--LOGO, YO-->
-		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOsmall.png"></a> 
+		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOwithglow.png" height = "100"></a> 
 		
 		
 			<?php include("user.php");
