@@ -248,7 +248,7 @@ clear: both;
 }
 #message {
 	text-align: center;
-	color: blue;
+	//color: blue;
 	padding: 10px;
 }
 

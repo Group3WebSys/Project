@@ -42,6 +42,20 @@
 			$( "#dialog" ).dialog( "open" );
 			});
 		});
+		$(function() {
+			$( "#message" ).dialog({
+			modal: true,
+			width: 500,
+			show: {
+				effect: "blind",
+				duration: 1000
+			},
+			hide: {
+				effect: "explode",
+				duration: 1000
+			}
+			});
+		});
 		</script>		
 		<title>Confiden | 
 		<?php 
@@ -127,4 +141,6 @@
 			<!--Our awesome header here-->
 			
 		</div>
-		<?php echo "<p id='message'>".$message."</p>"; ?>
+		<?php 
+			if ((isset($message)) && ($message != NULL) &&($message != ""))
+			echo "<div title='Notification!' id='message'>".$message."</div>"; ?>
