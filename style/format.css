@@ -171,7 +171,8 @@ clear: both;
 
 #footer{
   clear: both;
-  position: relative;
+  position: absolute;
+  bottom: 0px;
   z-index: 10;
   height: 20px;
   background-color: white;
