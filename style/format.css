@@ -162,7 +162,7 @@ clear: both;
 }
 
 #header a:hover {
-	text-decoration: none;
+  background-color: transparent;
 }
 
 /*#push {
