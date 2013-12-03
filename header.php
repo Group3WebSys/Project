@@ -9,6 +9,18 @@
                   $("#" + id).toggle('medium');
                 } 
 		</script>
+		<script>
+		$(function() {
+			$(".meter > span").each(function() {
+				$(this)
+					.data("origWidth", $(this).width())
+					.width(0)
+					.animate({
+						width: $(this).data("origWidth")
+					}, 1200);
+			});
+		});
+	</script>		
 		<title>Confiden | 
 		<?php 
 			if (basename($_SERVER['PHP_SELF']) == "index.php") echo "Welcome";

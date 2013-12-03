@@ -7,20 +7,21 @@
 	<?php echo $_SESSION["user"]["username"]; ?>/<?php echo $_SESSION["user"]["avatar"]; } ?>"</img><br/>
 	<p>Welcome <?php echo $_SESSION["user"]['username']; ?>!</p>
   <p>Level <?php echo get_current_level($_SESSION["user"]["id"], $db)['level']; ?>!</p>
- <!-- do we need this?
- <p>To level up, you need:</p>
-  <?php
-  $needed = get_needed_missions((get_current_level($_SESSION["user"]["id"], $db)['level']), $db);
-  print_r($needed);
+<?php
+	// calculate progress
+	$w = 5;
+	$level = get_user_level_info($_SESSION["user"]["id"], $db);
+	
+	$sum = $level['current1star'] + $level['current2star'] + $level['current3star'];
+	if ($sum == 1) $w = 25;
+	else if ($sum == 2) $w = 50;
+	else if ($sum == 3) $w = 75;
+	else if ($sum == 4) $w = 100;
   ?>
-  <p>Currently you have:</p>
-  <?php
-  $current = get_user_level_info($_SESSION["user"]["id"], $db);
-  print_r($current);
-  ?>
-  -->
   <p>Missions status:</p>
-  <p>[][][][][][][]</p>
+  <div class="meter animate">
+	<span style="width: <?php echo $w; ?>%"><span></span></span>
+</div>
   <hr/>
   <p><a style="color:green;" href="#" onclick="toggle_visibility('suggestamission'); return false;">Suggest a mission!</a></p>
   <form style="display:none;" id ="suggestamission" action="" method="post">
