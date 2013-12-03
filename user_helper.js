@@ -25,7 +25,7 @@ function display_user_info(data)
 //	
 	//Display the greeting
 	$("#user #account #greeting").html(
-			"<p>Hello! "+user_info["username"]+" You are level "+user_info["level"]+"</p>"+
+			"<p>Hello "+user_info["username"]+"! You are Level "+user_info["level"]+"</p>"+
 			"<p>You progress towards the next level:"+user_info["progress"]+"</p>"+
 			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
 	);
@@ -40,42 +40,45 @@ function display_user_info(data)
 	{
 		task="None";
 	}
-	$("#user #account #current_mission").html("<p>Your current mission: </p><ul>"+task+"</ul>");
+//	$("#user #account #current_mission").html("<p>Your current mission: </p><ul>"+task+"</ul>");
 	
 	//Display user's completed tasks
-	var tasks="";
-	if(user_info["completedTasks"].length!=0)
-	{
-		for(var i=0; i!=user_info["completedTasks"].length; i++)
-		{
-			tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
-		}
-	}
+//	var tasks="";
+//	if(user_info["completedTasks"].length!=0)
+//	{
+//		for(var i=0; i!=user_info["completedTasks"].length; i++)
+//		{
+//			tasks+="<li>"+user_info["completedTasks"][i]["title"]+" ("+user_info["completedTasks"][i]["star"]+"-star)"+"</li>";
+//		}
+//	}
 	//If the user has completed no missions, just print none
-	else
-	{
-		tasks="<li>None</li>";
-	}
-	$("#user #account #completed_missions").html(
-			"<p>You have completed:</p>"+
-			"<ul>"+
-			tasks+
-			"</ul>"
-	);
+//	else
+//	{
+//		tasks="<li>None</li>";
+//	}
+//	$("#user #account #completed_missions").html(
+//			"<p>You have completed:</p>"+
+//			"<ul>"+
+///			tasks+
+//			"</ul>"
+//	);
 	
-	//Display user's email
-	$("#user #account #email").html(
-			"<p>email address: "+
-			user_info["email"]+
-			"</p>"
-	);
+//	//Display user's email
+//	$("#user #account #email").html(
+//			"<p>email address: "+
+//			user_info["email"]+
+//			"</p>"
+//	);
 	
 	//Display the personal goals
-	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
-	$("#user #account #personal_goal2").html("<p>Personal Goal 2: "+user_info["personalGoal2"]+"</p>");
-	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
+//	$("#user #account #personal_goal1").html("<p>Personal Goal 1: "+user_info["personalGoal1"]+"</p>");
+//	$("#user #account #personal_goal2").html("<p>Personal Goal 2: "+user_info["personalGoal2"]+"</p>");
+//	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
 	
 	// Display/Edit avatar
+
+	//Dipslay account setting
+	
 	if(user_info["avatar"]!="default.jpg")
 	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
@@ -102,8 +105,7 @@ function display_user_info(data)
 			"</form>"
 		);
 	}
-	
-	//Dipslay account setting
+		
 	
 	$("#user #account #account_setting").html(
 			"<p><a href='#'>Change username</a></p>" +
