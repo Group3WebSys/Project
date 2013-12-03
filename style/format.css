@@ -164,9 +164,16 @@ clear: both;
   overflow:hidden;
 }
 
+#header a {
+  text-decoration: none;
+  color: #DEFFBC;
+}
+
 #header a:hover {
   background-color: transparent;
 }
+
+
 
 /*#push {
         margin: 150px;
