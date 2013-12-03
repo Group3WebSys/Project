@@ -1,8 +1,8 @@
 	<?php include 'header.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 	<div id = "content">
-		<img src = "style/resources/LOGOwithglow.png" alt = "logo" width = "170">
-		<h1>Confiden</h1>
+		<h1><img src = "style/resources/LOGOwithglow.png" alt = "logo" width = "200">
+		Confiden</h1>
 		<div id ="intro">
 			<p>New to this site? Learn all <a href = "about.php">About Us</a></p>
 		</div>
