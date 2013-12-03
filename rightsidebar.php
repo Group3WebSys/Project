@@ -11,7 +11,6 @@
 	// calculate progress
 	$w = 5;
 	$level = get_user_level_info($_SESSION["user"]["id"], $db);
-	
 	$sum = $level['current1star'] + $level['current2star'] + $level['current3star'];
 	if ($sum == 1) $w = 25;
 	else if ($sum == 2) $w = 50;
@@ -22,6 +21,20 @@
   <div class="meter animate">
 	<span style="width: <?php echo $w; ?>%"><span></span></span>
 </div>
+  <p><a id="personalgoals" style="color:green;" href="#" onclick="return false;">View personal goals!</a></p>
+  <div id="dialog" title="Personal Goals">
+  <p>
+  <ol>
+  <?php
+	// get goals
+	$goals = get_goals($_SESSION["user"]["id"], $db);
+	foreach ($goals as $id => $goal) {
+		echo "<li>".$goal."</li>";
+	}
+  ?>
+  </ol>
+  </p>
+  </div>
   <hr/>
   <p><a style="color:green;" href="#" onclick="toggle_visibility('suggestamission'); return false;">Suggest a mission!</a></p>
   <form style="display:none;" id ="suggestamission" action="" method="post">

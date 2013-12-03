@@ -379,3 +379,26 @@ clear: both;
 	-webkit-animation: none;
 	background-image: none;
 }
+
+/* personal goals */
+.ui-dialog-titlebar {
+    font-size:16px;
+}
+
+.ui-dialog {
+	font-size: 14px;
+}
+hr {
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+#dialog ol > li {
+  list-style: square;
+  text-indent: 0em;
+}
+#dialog ol > li:hover {
+  list-style: square;
+  text-indent: 0em;
+  background-color: white;
+  color: black;
+}

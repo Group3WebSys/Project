@@ -324,6 +324,26 @@ function get_user_level_info($uid, $db) {
 	}
 }
 
+function get_goals($uid, $db) {
+	try
+		{
+			// get information regarding leveling up from user
+			$query="SELECT `users`.`personalGoal1`, `users`.`personalGoal2`, `users`.`personalGoal3` FROM `users` WHERE `id` = :uid";
+			$query_params=array(":uid" => $uid);
+			$stmt=$db->prepare($query);
+			$result1=$stmt->execute($query_params);
+			$result1=$stmt->fetch();
+			return $result1;
+		}
+	catch(Exception $e)
+	{
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+	}
+}
+
 function level_up($uid, $db)
 {
 	try
