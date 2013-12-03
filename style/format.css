@@ -172,7 +172,7 @@ clear: both;
 #footer{
   clear: both;
   position: absolute;
-  bottom: 0px;
+  bottom: 0%;
   height: 20px;
   width: 100%;
   background-color: white;
