@@ -76,8 +76,8 @@ function display_user_info(data)
 //	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
 	
 	// Display/Edit avatar
-//	if(user_info["avatar"]!="default.jpg")
-//	{
+	if(user_info["avatar"]!="default.jpg")
+	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
 		//$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time(); ?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
 		
