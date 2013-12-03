@@ -34,10 +34,6 @@
 			<script type="text/javascript" src="scripts/slider.js"></script>
 		<?php } ?>
 		
-		<!--LOGO, YO-->
-		<a href = "index.php"><img src = "style/resources/LOGOsmall.png"></a> 
-		
-		
 		<link rel="stylesheet" type="text/css" href= "style/format.css">
 		<!-- <script src="http://code.jquery.com/jquery-1.9.0.js"></script> -->
 		<!--<script src="scripts/jquery-1.7.1.js"></script>-->
@@ -51,6 +47,11 @@
 	</head>
 	<body>
 		<div id="header">
+		
+		<!--LOGO, YO-->
+		<a href = "index.php"><img src = "style/resources/LOGOsmall.png"></a> 
+		
+		
 			<?php include("user.php");
 			print_r($_POST);
 			$message = "";
