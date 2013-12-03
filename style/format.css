@@ -173,6 +173,7 @@ clear: both;
   clear: both;
   position: absolute;
   bottom: 0%;
+  vertical-align: baseline;
   height: 20px;
   width: 100%;
   background-color: white;
