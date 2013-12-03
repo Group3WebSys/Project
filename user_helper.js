@@ -76,6 +76,9 @@ function display_user_info(data)
 //	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
 	
 	// Display/Edit avatar
+
+	//Dipslay account setting
+	
 	if(user_info["avatar"]!="default.jpg")
 	{
 		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
@@ -102,8 +105,7 @@ function display_user_info(data)
 			"</form>"
 		);
 	}
-	
-	//Dipslay account setting
+		
 	
 	$("#user #account #account_setting").html(
 			"<p><a href='#'>Change username</a></p>" +
