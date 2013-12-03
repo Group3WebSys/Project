@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2013 at 04:26 AM
+-- Generation Time: Dec 03, 2013 at 06:51 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -32,7 +32,17 @@ CREATE TABLE IF NOT EXISTS `completedtasks` (
   `uid` int(11) NOT NULL,
   `feedback` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=30 ;
+
+--
+-- Dumping data for table `completedtasks`
+--
+
+INSERT INTO `completedtasks` (`id`, `tid`, `uid`, `feedback`) VALUES
+(26, 1, 42, 'a a a a a a a a a a a a a a a a a a a a a aa a a a a a a a a a a a a a a a a a a a a a'),
+(27, 4, 42, 'a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a '),
+(28, 2, 42, 'a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a '),
+(29, 5, 42, 'mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission mission ');
 
 -- --------------------------------------------------------
 
@@ -89,14 +99,12 @@ INSERT INTO `levelup` (`currentlevel`, `1star`, `2star`, `3star`) VALUES
 
 CREATE TABLE IF NOT EXISTS `suggestedtasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `desc` varchar(2000) COLLATE utf8_unicode_ci NOT NULL,
-  `suggestedBy` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `suggestedBy` int(11) NOT NULL,
+  `suggestion` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `suggestedBy` (`suggestedBy`),
-  KEY `username` (`username`),
   KEY `suggestedBy_2` (`suggestedBy`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 -- --------------------------------------------------------
 
@@ -162,7 +170,7 @@ INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `D
 ('Dog', '8770cf1e03c618b202dfc3d9586a07d8147fa37fe60e271f4ed5f901f16ff6b3', '342e390565c5fc89', 'Dog@gmail.com', 30, 'unspecified', '1993-06-07', 'WP_000001.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat', 0, 0, 0, ''),
 ('Dog2', '0db7866df35ce6f5fb529c3f0f7179513c99759512926b57083bf7eb3d41919e', '1a126679235e4a8f', 'Dog2@gmail.com', 40, 'unspecified', '1993-06-07', 'WP_000003.jpg', 0, 0, 0, 'Happy', 'Sad', 'Eat', 0, 0, 0, ''),
 ('admin', 'aaa58ebeb05e8df22826dc290011211a3c4756740e0b7b075aa6c4cb8ac8b472', '7b7eadde6e0de2b2', 'mikeogod@outlook.com', 41, 'male', '2012-11-10', NULL, 0, 0, 0, 'Happy', '', '', 0, 0, 0, ''),
-('hello', '29eece8cb0f4c7d6665b62067923e172b40b59bc27026260921641ce6ca59043', '312b073a621f8507', 'hi@hi.com', 42, 'unspecified', '0131-01-02', 'Snow-planet-fantasy-sky_1920x1200.jpg', 3, 0, 0, 'hi', 'hi', 'hi', 0, 0, 0, '4,1,2,5');
+('hello', '29eece8cb0f4c7d6665b62067923e172b40b59bc27026260921641ce6ca59043', '312b073a621f8507', 'hi@hi.com', 42, 'unspecified', '0131-01-02', 'Snow-planet-fantasy-sky_1920x1200.jpg', 4, 0, 0, 'hi', 'hi', 'hi', 0, 0, 0, '4,2,5');
 
 --
 -- Constraints for dumped tables
@@ -174,13 +182,6 @@ INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `D
 ALTER TABLE `journals`
   ADD CONSTRAINT `journals_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `journals_ibfk_2` FOREIGN KEY (`author`) REFERENCES `users` (`username`);
-
---
--- Constraints for table `suggestedtasks`
---
-ALTER TABLE `suggestedtasks`
-  ADD CONSTRAINT `suggestedtasks_ibfk_1` FOREIGN KEY (`suggestedBy`) REFERENCES `users` (`username`),
-  ADD CONSTRAINT `suggestedtasks_ibfk_2` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -63,13 +63,17 @@
 				}
 			}
 			else if (isset($_POST['submit']) && ($_POST['submit'] == "Suggest Mission")) {
-				if ($_POST['suggest'] = "") {
+			
+				if ($_POST["suggest"] = "") {
 					$message .= "Please enter something to be suggested!";
 				}
 				else {
-					$yay = suggest_mission($_SESSION['user']['id'], $_POST['suggest'], $db);
+					$yay = suggest_mission($_SESSION['user']['id'], $_POST["suggest"], $db);
 					if ($yay===true) {
 						$message .= "Thanks for your suggestion homie!";
+					}
+					else {
+						$message .= "Some error occurred!";
 					}
 				}
 			}

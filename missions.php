@@ -1,25 +1,4 @@
-<?php include 'header.php'; 
-/*print_r($_POST);
-if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
-
-	$message = "";
-	if(str_word_count($_POST['feedback']) < 30) {
-		$message .= "Please write at least 30 words on what you experienced!<br/>";
-	}
-	else {
-		$yay = submit_mission($_SESSION['user']['id'], $db, $_POST['id'], $_POST['feedback']); 
-		
-		if ($yay===true) {
-			$message .= "Congratulations! You have successfully completed the task!";
-			$message .=level_up($_SESSION['user']['id'], $db);
-		}
-		else {
-			$message .= $yay;
-		}
-		
-	}
-}*/
-?>
+<?php include 'header.php'; ?>
 	<div class = "bodyBlock">
 			<h1>MISSIONS</h1>
 			<?php 

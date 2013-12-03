@@ -189,15 +189,14 @@ function get_current_level($uid, $db)
 	}
 }
 
-function suggest_mission($uid, $mission, $db)
+function suggest_mission($uid, $suggestion, $db)
 {
 	try
 	{
-		$query="INSERT INTO `suggestedtasks` (`desc`, `suggestedBy`) VALUES (:mission, :uid)";
-		$query_params=array(":uid" => $uid, ":mission" => $mission);
+		$query="INSERT INTO `suggestedtasks` (`suggestion`, `suggestedBy`) VALUES (:suggestion, :uid)";
+		$query_params=array(":suggestion" => $suggestion, ":uid" => $uid);
 		$stmt=$db->prepare($query);
 		$result=$stmt->execute($query_params);
-		
 		return $result;
 	}
 	catch(Exception $e)
