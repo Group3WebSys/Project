@@ -9,6 +9,13 @@
   <p>Level <?php echo get_current_level($_SESSION["user"]["id"], $db)['level']; ?>!</p>
   <p>Missions status:</p>
   <p>[][][][][][][]</p>
+  <hr/>
+  <p><a href="#" onclick="return false;">Suggest a mission!</a></p>
+  <form action="" method="post">
+  <input type='hidden' name='id' id='id' value='<?php echo $_SESSION["user"]["id"]; ?>'>
+  <textarea name="suggest" id="suggest" rows="4" cols="20" placeholder='Enter some ideas for missions here'></textarea>
+  <input id='suggestmission' name='submit' type='submit' value='Suggest Mission'>
+  </form>
 <?php } else { ?>
 	Please log in to see some cool stuff about your account!
 <?php } ?>

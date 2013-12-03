@@ -189,6 +189,27 @@ function get_current_level($uid, $db)
 	}
 }
 
+function suggest_mission($uid, $mission, $db)
+{
+	try
+	{
+		$query="INSERT INTO `suggestedtasks` (`desc`, `suggestedBy`) VALUES (:mission, :uid)";
+		$query_params=array(":uid" => $uid, ":mission" => $mission);
+		$stmt=$db->prepare($query);
+		$result=$stmt->execute($query_params);
+		
+		return $result;
+	}
+	catch(Exception $e)
+	{
+		$error_msg="Failed to run query: " . $e->getMessage();
+			$_SESSION["error"]=$error_msg;
+			echo json_encode(array("error"=>$error_msg, "success"=>0));
+			die();
+	}
+}
+
+
 function submit_mission($uid, $db, $tid, $fb)
 {
 	try
@@ -200,7 +221,6 @@ function submit_mission($uid, $db, $tid, $fb)
 		$query="INSERT INTO `completedtasks` (`uid`, `tid`,`feedback`) VALUES (:uid, :tid, :feedback)";
 		$query_params=array(":uid" => $uid, ":tid" => $tid, ":feedback" => $fb);
 		$stmt=$db->prepare($query);
-		
 		$result=$stmt->execute($query_params);
 	
 		$query="SELECT `tasks`.`star` FROM `tasks` WHERE `id` = :tid";

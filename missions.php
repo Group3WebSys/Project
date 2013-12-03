@@ -1,5 +1,7 @@
 <?php include 'header.php'; 
-if (isset($_POST['submit'])) {
+/*print_r($_POST);
+if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
+
 	$message = "";
 	if(str_word_count($_POST['feedback']) < 30) {
 		$message .= "Please write at least 30 words on what you experienced!<br/>";
@@ -16,12 +18,12 @@ if (isset($_POST['submit'])) {
 		}
 		
 	}
-}
+}*/
 ?>
 	<div class = "bodyBlock">
 			<h1>MISSIONS</h1>
 			<?php 
-			if (isset($message)) echo "<p style='color:blue;'>$message</p>";
+			//if (isset($message)) echo "<p style='color:blue;'>$message</p>";
 			$missions = get_available_missions($_SESSION['user']['id'], $db);
 			
 			$output1star = "";
@@ -38,7 +40,7 @@ if (isset($_POST['submit'])) {
 				$output .= "<form method='post' action='' name='$value[id]' id='$value[id]'>\n";
 				$output .= "<input type='hidden' name='id' id='id' value='$value[id]'>";
 				$output .= "<textarea onkeyup='wordcount(this.value, $value[id]);' id='feedback' name='feedback' rows='4' cols='50' placeholder='Enter your feedback here (at least 30 words)'></textarea>\n";
-				$output .= "<br/><input id='submit' name='submit' type='submit' value='Submit'>\n";
+				$output .= "<br/><input id='submitmission' name='submit' type='submit' value='Submit Mission'>\n";
 				$output .= "</form>\n<span class='wordcount'>Word Count:</span><input type='text' size='4' readonly id='{$value['id']}w_count'></div>\n</div>\n";		
 				if ($value['star'] == 1) {
 					$output1star .= "$output";
