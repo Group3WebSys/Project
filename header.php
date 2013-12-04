@@ -102,7 +102,7 @@
 			include("user.php");
 			$notification = "";
 			if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
-			
+				
 				if(str_word_count($_POST['feedback']) < 30) {
 					$notification .= "Please write at least 30 words on what you experienced!<br/>";
 				}

@@ -87,14 +87,13 @@ function get_available_missions($uid, $db)
 		if ($user['currentmissions'] == NULL or $user['currentmissions']=='') {
 		// select missions randomly according to levelup table, implode task id's and store into currentmissions
 			$level = get_current_level($uid, $db)['level'];
-			//$level = 100;
-			$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
 			
+			$query="SELECT `levelup`.`1star`, `levelup`.`2star`, `levelup`.`3star` FROM `levelup` WHERE `currentlevel` = :level";
 			$query_params=array(":level" => $level);
 			$stmt=$db->prepare($query);
 			$result2=$stmt->execute($query_params);
 			$levelup = $stmt->fetch();
-			//print_r( $levelup);
+			
 			$missions = "";
 			$result1star = array();
 			$result2star = array();
@@ -109,7 +108,6 @@ function get_available_missions($uid, $db)
 				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query1);
 				$result1star=$stmt->execute($query_params);
-				//echo "HIHIHIHI";
 				$result1star = $stmt->fetchAll();
 			}
 			if ($levelup['2star'] != 0) {
@@ -117,7 +115,6 @@ function get_available_missions($uid, $db)
 				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query2);
 				$result2star=$stmt->execute($query_params);
-				//echo "HIHIHIHI";
 				$result2star = $stmt->fetchAll();
 			}
 			if ($levelup['3star'] != 0) {
@@ -125,7 +122,6 @@ function get_available_missions($uid, $db)
 				$query_params=array(":uid"=>$uid);
 				$stmt=$db->prepare($query3);
 				$result3star=$stmt->execute($query_params);
-				
 				$result3star = $stmt->fetchAll();
 			}
 			
@@ -138,11 +134,9 @@ function get_available_missions($uid, $db)
 					$flattened[] = $value2;
 				}
 			}
-			//print_r($flattened);
 			
 			// implode the array
 			$missions = implode(",", $flattened);
-			//echo $missions;
 			
 			$query="UPDATE `users` SET `currentmissions` = :missions WHERE `id` = :uid";
 			$query_params=array(":missions" => $missions, ":uid"=>$uid);
@@ -150,14 +144,13 @@ function get_available_missions($uid, $db)
 			$result2=$stmt->execute($query_params);
 		}
 		
-		// then just select the tasks
+		// then just select the missions
 		if (!isset($missions)) $missions = $user['currentmissions'];
+		if ($missions == "") return "No missions available!";
 		$query="SELECT * FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
 		$stmt=$db->prepare($query);
 		$result2=$stmt->execute($query_params);
 		$missions=$stmt->fetchAll();
-
-		//echo $missions;
 		return $missions;
 	}
 	catch(Exception $e)
