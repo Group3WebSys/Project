@@ -139,7 +139,7 @@ else
 				if(data["success"]==1)
 				{
 					var refresh=alert("You are logged out! Click OK to refresh the page");
-					window.location.reload();
+					window.location.href = 'index.php';
 				}
 				else if(data["success"]==0)
 				{
