@@ -22,12 +22,12 @@
 	{	
 	if($formproc->ProcessForm())
 	{
-			echo "<p style='text-align:center;font-weight: bold'>Thanks for contacting us!!</p>";
+			echo "<div title='Notification!' id='notification'>Thanks for contacting us yo!!</div>"; 
 	}
 	}
 	?>
 	
-	<div id ="centerme">
+	<div class ="bodyBlock">
 		<p>Hey we're always happy to hear from our users, leave us a message and we'll get back to you ASAP!!!!!!</p>
 		
 		<!-- Form Code Start -->

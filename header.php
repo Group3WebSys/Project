@@ -43,7 +43,7 @@
 			});
 		});
 		$(function() {
-			$( "#message" ).dialog({
+			$( "#notification" ).dialog({
 			modal: true,
 			width: 500,
 			show: {
@@ -100,21 +100,21 @@
 		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOsmall.png" height = "60"></a>
 			<?php 
 			include("user.php");
-			$message = "";
+			$notification = "";
 			if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
 			
 				if(str_word_count($_POST['feedback']) < 30) {
-					$message .= "Please write at least 30 words on what you experienced!<br/>";
+					$notification .= "Please write at least 30 words on what you experienced!<br/>";
 				}
 				else {
 					$yay = submit_mission($_SESSION['user']['id'], $db, $_POST['id'], $_POST['feedback']); 
 					
 					if ($yay===true) {
-						$message .= "Congratulations! You have successfully completed the mission!";
-						$message .=level_up($_SESSION['user']['id'], $db);
+						$notification .= "Congratulations! You have successfully completed the mission!";
+						$notification .=level_up($_SESSION['user']['id'], $db);
 					}
 					else {
-						$message .= $yay;
+						$notification .= $yay;
 					}
 					
 				}
@@ -122,23 +122,24 @@
 			else if (isset($_POST['submit']) && ($_POST['submit'] == "Suggest Mission")) {
 			
 				if ($_POST["suggest"] = "") {
-					$message .= "Please enter something to be suggested!";
+					$notification .= "Please enter something to be suggested!";
 				}
 				else {
 					$yay = suggest_mission($_SESSION['user']['id'], $_POST["suggest"], $db);
 					if ($yay===true) {
-						$message .= "Thanks for your suggestion homie!";
+						$notification .= "Thanks for your suggestion homie!";
 					}
 					else {
-						$message .= "Some error occurred!";
+						$notification .= "Some error occurred!";
 					}
 				}
 			}
+
 			?>
 			<!-- Logo, site name here -->
 			<!--Our awesome header here-->
 			
 		</div>
 		<?php 
-			if ((isset($message)) && ($message != NULL) &&($message != ""))
-			echo "<div title='Notification!' id='message'>".$message."</div>"; ?>
+			if ((isset($notification)) && ($notification != NULL) &&($notification != ""))
+			echo "<div title='Notification!' id='notification'>".$notification."</div>"; ?>
