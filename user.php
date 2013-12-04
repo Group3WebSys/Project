@@ -45,9 +45,6 @@ else
 	
 	<div id="login_container">
 	  <a href="#">I want to log in!</a>
-	  <div class="error">
-	    
-	  </div>
 	  <form action="login.php" method="post" id="login">
 	    <label>User Name:</label><input type="text" name="username" />
 	    <label>Password:</label><input type="password" name="password"/>
@@ -57,9 +54,6 @@ else
 	
 	<div id="register_container">
 	  <a href="#">I want to register!</a>
-	  <div class="error">
-	    
-	  </div>
 	  <form enctype="multipart/form-data" action="register.php" method="post" id="register">
 	    <div class="left_c">
 	    	<label>User Name*:</label><input type="text" name="username" /><br />

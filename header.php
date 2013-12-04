@@ -97,10 +97,9 @@
 		<div id="header">
 		
 		<!--LOGO, YO-->
-		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOwithglow.png" height = "100"></a> 
-		
-		
-			<?php include("user.php");
+		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOwithglow.png" height = "100"></a>
+			<?php 
+			include("user.php");
 			$message = "";
 			if (isset($_POST['submit']) && ($_POST['submit'] == "Submit Mission")) {
 			

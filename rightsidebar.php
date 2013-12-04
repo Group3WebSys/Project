@@ -43,6 +43,6 @@
   <input id='suggestmission' name='submit' type='submit' value='Suggest Mission'>
   </form>
 <?php } else { ?>
-	Please log in to see some cool stuff about your account!
+	Please log in and <a href="javascript:location.reload();">refresh</a> the page to see some cool stuff about your account!
 <?php } ?>
 </div>

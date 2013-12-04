@@ -138,11 +138,11 @@
 				$_SESSION["user"]=$user;
 				
 								
-				//echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
-				echo '<script type="text/javascript">
-				alert("You are logged in! Click OK to refresh the page")
-				window.location.reload()
-				</script>';
+				echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
+// 				echo '<script type="text/javascript">
+// 				alert("You are logged in! Click OK to refresh the page")
+// 				window.location.reload()
+// 				</script>';
 				
 	           	die();
 	        } 

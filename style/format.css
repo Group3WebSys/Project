@@ -86,12 +86,12 @@ clear: both;
   overflow: hidden;
 }
 
+
 #user .left_c {
   position: relative;
-  left: 20%;
+  left: 200px;
   float: left;
-  clear: left;
-  width: 20%;
+  width: 500px;
   text-align: left;
   line-height:240%;
 }
@@ -102,10 +102,9 @@ clear: both;
 
 #user .right_c {
   position: relative;
-  right: 20%;
+  right: 200px;
   float: right;
-  clear: right;
-  width: 25%;
+  width: 500px;
   text-align: left;
   line-height: 240%;
 }
