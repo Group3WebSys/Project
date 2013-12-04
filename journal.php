@@ -11,10 +11,14 @@
 
     	  	$prev =  get_journal_entries($_SESSION["user"]["id"], $db);
     	  	$prevOut = "";
+<<<<<<< HEAD
     	  	echo "yo";
     	  	echo $prev;
     	  	print $prev;
 		echo "yo";
+=======
+
+>>>>>>> parent of f40dbf3... Update journal.php
     	  	// iterate through each mission and generate the appropriate HTML for it
 			foreach ($prev as $key => $value) {
 
