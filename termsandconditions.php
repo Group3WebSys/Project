@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<div class = "wrapmeup">
 	<div class = "bodyBlock">
 			<h1>Terms and Conditions</h1>
 			<h3>In using this website you are confirming to have read and agreed to the following terms and conditions:</h3>
@@ -24,4 +25,5 @@
 	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
+</div>
 <?php include 'footer.php'; ?>
