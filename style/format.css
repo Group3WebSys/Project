@@ -7,7 +7,7 @@ html, body {
 
 body {
   background-repeat: repeat;
-  background-color:#a4c6dc;
+  background-color:#bfd2dc;
   background-position:center top;
   background-attachment: scroll;
   font-family: 'Agency FB', 'Share Tech', 'Arial';
@@ -70,7 +70,7 @@ clear: both;
   margin-left: -400px;    
   margin-bottom: 40px;
   
-  border: 1px dashed green;
+  border: 1px dashed #1f68e2;
   padding: 10px 10px 30px 10px;
   overflow-y: auto;
 }
@@ -120,7 +120,7 @@ clear: both;
 	height: 230px;
 	font-size: 18px;
 	overflow-y: auto;
-	border: 1px dashed green;
+	border: 1px dashed #1f68e2;
 	padding-left: 10px;
 	padding-top:-10px;
 }
