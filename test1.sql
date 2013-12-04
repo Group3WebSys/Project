@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2013 at 06:51 AM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Generation Time: Dec 04, 2013 at 05:59 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `test1`
 --
+CREATE DATABASE IF NOT EXISTS `test1` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `test1`;
 
 -- --------------------------------------------------------
 
@@ -56,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `journals` (
   `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `content` varchar(5000) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date` date NOT NULL,
+  `subject` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `author` (`author`)
