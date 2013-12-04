@@ -84,7 +84,7 @@
 		    	  	// iterate through each mission and generate the appropriate HTML for it
 					foreach ($prev as $key => $value) {
 		
-						$innerdiv = $value['id'].$value['subject'];
+						$innerdiv = $value['id']."entry";
 						$output = "";
 						$output .= "<div id='$value[id]'>\n";
 						$output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a><span style = 'font-size:18px;'>: $value[date]</span></h3>";
