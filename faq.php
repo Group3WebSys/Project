@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+	<div class = "wrapmeup">
 	<div class = "bodyBlock">
 		<h1>FAQ</h1>
 		<br/>
@@ -51,7 +52,7 @@
 			<p>Confiden isn't for everyone; we totally uderstand that! If you feel that Confiden isn't your jam, check out our <a href = "resources.php">Resources Page</a> to see if any of the articles, books, or other websites listed can help you.</p>
 			<br/>
 		</div>	
-		
+	</div>	
 	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
