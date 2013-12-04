@@ -1,6 +1,6 @@
-	<?php include 'header.php'; ?>
-	<div class = "wrapmeup">
-	<?php
+	<?php include 'header.php'; 
+	include 'leftsidebar.php'; 
+	include 'rightsidebar.php'; 
 	require_once("./include/fgcontactform.php");
 
 	$formproc = new FGContactForm();
@@ -83,8 +83,5 @@
 		
 		// ]]>
 		</script>
-	</div>
-        <?php include 'leftsidebar.php'; ?>
-        <?php include 'rightsidebar.php'; ?>
 	</div>
 	<?php include 'footer.php'; ?>
