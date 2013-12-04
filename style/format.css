@@ -117,9 +117,10 @@ clear: both;
 
 #journalarchive{
 	width: 800px;
-	height: 200px;
+	height: 300px;
 	font-size: 16px;
 	overflow-y: auto;
+	border: 1px inset green;
 }
 
 #leftsidebar{
