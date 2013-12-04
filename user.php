@@ -124,14 +124,6 @@ else
 			$.post("login.php", $(this).serialize(), function(data){
 				if(data["success"]==1)
 				{
-					$("#user").hide(500);
-					$("#user #login_container").hide(500);
-					$("#user #register_container").hide(500);
-					$("#uesr #login_container").remove();
-					$("#user #register_container").remove();
-					$("#user #logout_container").show(500);
-					$("#user").show(500);
-					
 					alert("You have successfully logged in!");
 					window.location.reload();
 				}
