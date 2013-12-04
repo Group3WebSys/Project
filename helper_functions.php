@@ -152,11 +152,12 @@ function get_available_missions($uid, $db)
 		
 		// then just select the tasks
 		if (!isset($missions)) $missions = $user['currentmissions'];
+		if ($missions == "") return "No missions available!";
 		$query="SELECT * FROM `tasks` WHERE `tasks`.`id` IN (".$missions.")";
 		$stmt=$db->prepare($query);
 		$result2=$stmt->execute($query_params);
 		$missions=$stmt->fetchAll();
-
+		
 		//echo $missions;
 		return $missions;
 	}
