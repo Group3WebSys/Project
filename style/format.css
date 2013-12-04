@@ -178,17 +178,21 @@ clear: both;
         margin: 150px;
 }*/
 
+.wrapmeup {
+	height:2000px;
+}
+
 #footer{
-  clear: both;
   position: relative;
-  z-index: 10;
   height: 20px;
+  width: 100%;
   background-color: white;
   text-align: center;
   font-size: 16px;
   font-weight: bold;
   color: #91B585;
   padding:5px 5px 5px 5px;
+  bottom:0px;
 }
 
 .footerspan{
