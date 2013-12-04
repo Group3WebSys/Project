@@ -10,14 +10,14 @@
                                 <input type='hidden' name='uname' id='uname' value='<?php echo $_SESSION["user"]["username"]; ?>'>
                                 <input type="text" name="subject" style="width:500px;"/><br>
                                 <input type="hidden" name="entryid"/>
-                                <textarea id="enid" name="entry" rows='15' cols='70'></textarea><br>
+                                <textarea id="enid" name="entry" rows='10' cols='72'></textarea><br>
                                 <input id="button_journal" type="submit" value="Post"/>
                         </form>
                         
       <!--Displays jounal entries-->
       <!--Old problem fixed, still trying to get the onclick display to work though-->
-		    <div id = "journalarchive">
-		    <h3>Journal Archive</h3>
+		    <div id = "journalarchive"><br/>
+		    <h1>YOUR JOURNAL ARCHIVE</h1>
 		      <?php  
 		
 		    	  	$prev =  get_journal_entries($_SESSION["user"]["id"], $db);
