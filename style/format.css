@@ -72,7 +72,7 @@ clear: both;
   
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .bodyBlock a{
