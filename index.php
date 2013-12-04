@@ -1,4 +1,5 @@
 	<?php include 'header.php'; ?>
+	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
 	<div class = "wrapmeupindex">
 	<div id = "content">
