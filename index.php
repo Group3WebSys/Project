@@ -16,7 +16,7 @@
 						<div class="wrapper">
 							<img src="style/resources/tempphoto-1.jpg" alt="temp" />
 							<div class="photo-meta-data">
-								<a href="about.php">Learn more about us</a>
+								<a href="about.php" target="_blank">Learn more about us</a>
 							</div>
 						</div>
 					</div>
@@ -24,7 +24,7 @@
 						<div class="wrapper">
 							<img src="style/resources/sliderphoto1.png" alt="subreddit" />
 							<div class="photo-meta-data">
-								<a href="http://www.reddit.com/r/confidence">Check out our subreddit page</a>
+								<a href="http://www.reddit.com/r/confidence" target="_blank">Check out our subreddit page</a>
 							</div>
 						</div>
 					</div>		
@@ -32,7 +32,7 @@
 						<div class="wrapper">
 							<img src="style/resources/tempphoto-3.jpg" alt="temp"/>
 							<div class="photo-meta-data">
-								<a href="resources.php">Check out our resources page</a>
+								<a href="resources.php" target="_blank">Check out our resources page</a>
 							</div>
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 						<div class="wrapper">
 							<img src="style/resources/tempphoto-4.jpg" alt="temp" />
 							<div class="photo-meta-data">
-								<a href="http://www.psychologytoday.com/blog/hide-and-seek/201205/building-confidence-and-self-esteem">Building Confidence and Self-Esteem</a>
+								<a href="http://www.psychologytoday.com/blog/hide-and-seek/201205/building-confidence-and-self-esteem" target="_blank">Building Confidence and Self-Esteem</a>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 						<div class="wrapper">
 							<img src="style/resources/tempphoto-5.jpg" alt="temp" />
 							<div class="photo-meta-data">
-								<a href="http://healthland.time.com/2012/10/08/6-breathing-exercises-to-relax-in-10-minutes-or-less/">6 Breathing Exercises to Relax in Ten Minutes or Less</a>
+								<a href="http://healthland.time.com/2012/10/08/6-breathing-exercises-to-relax-in-10-minutes-or-less/" target="_blank">6 Breathing Exercises to Relax in Ten Minutes or Less</a>
 							</div>
 						</div>
 					</div>
