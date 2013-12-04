@@ -34,7 +34,7 @@
 				<input type='hidden' name='uname' id='uname' value='<?php echo $_SESSION["user"]["username"]; ?>'>
 				<input type="text" name="subject" style="width:500px;"/><br>
 				<input type="hidden" name="entryid"/>
-				<textarea id="enid" name="entry" rows='15' cols='90'></textarea><br>
+				<textarea id="enid" name="entry" rows='15' cols='70'></textarea><br>
 				<input id="button_journal" type="submit" value="Post"/>
 			</form>
 	</div>
