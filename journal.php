@@ -8,7 +8,7 @@
                         <form action="addJEntry.php" method="post" id="journal">
                                 <input type='hidden' name='id' id='id' value='<?php echo $_SESSION["user"]["id"]; ?>'>
                                 <input type='hidden' name='uname' id='uname' value='<?php echo $_SESSION["user"]["username"]; ?>'>
-                                <input type="text" name="subject" style="width:500px;"/><br>
+                                <span>Subject: <input type="text" name="subject" style="width:500px;"/></span><br>
                                 <input type="hidden" name="entryid"/>
                                 <textarea id="enid" name="entry" rows='10' cols='72'></textarea><br>
                                 <input id="button_journal" type="submit" value="Post"/>
