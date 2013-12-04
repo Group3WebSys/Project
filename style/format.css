@@ -116,8 +116,8 @@ clear: both;
 }
 
 #journalarchive{
-	width: 770px;
-	height: 250px;
+	width: 740px;
+	height: 230px;
 	font-size: 18px;
 	overflow-y: auto;
 	border: 1px dashed green;
