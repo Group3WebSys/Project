@@ -23,12 +23,6 @@ function display_user_info(data)
 //		}
 //	}
 //	
-	//Display the greeting
-	$("#user #account #greeting").html(
-			"<p>Hello "+user_info["username"]+"! You are Level "+user_info["level"]+"</p>"
-//			"<p>You progress towards the next level:"+user_info["progress"]+"</p>"+
-//			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
-	);
 	//Display user's current task
 	var task="";
 	if(user_info["currentTask"]!="")
@@ -75,39 +69,14 @@ function display_user_info(data)
 //	$("#user #account #personal_goal2").html("<p>Personal Goal 2: "+user_info["personalGoal2"]+"</p>");
 //	$("#user #account #personal_goal3").html("<p>Personal Goal 3: "+user_info["personalGoal3"]+"</p>");
 	
-	// Display/Edit avatar
+	
 
 	//Dipslay account setting
-	
-	if(user_info["avatar"]!="default.jpg")
-	{
-		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
-		//$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time(); ?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
-		
-		// changed by Taha - this way it will reflect whatever is from the session, default set to default.jpg
-		// image is broken because the path is wrong it should be users/username/(avatar.image or defautl.image)
-		$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/"+user_info["avatar"]+"' height='75' width='75'></img>");
-		$("#user #account #avatar").append(
-			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
-			  "<label>Choose a new profile picture</label><br />" +
-			  "<input type='file' name='avatar' />" +
-			  "<input type='submit' value='upload' />" +
-			"</form>"
-		);
-	}
-	else
-	{
-		$("#user #account #avatar").html("<img src='users/default.jpg' height='75' width='75'></img>");
-		$("#user #account #avatar").html(
-			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
-			  "<label>Upload a profile picture</label><input type='file' name='avatar'/>" +
-			  "<input type='submit' value='upload' />" +
-			"</form>"
-		);
-	}
 		
 	
 	$("#user #account #account_setting").html(
+			"<div id='greeting'></div>"+
+		    "<div id='avatar'></div>"+
 			"<p><a href='#'>Change username</a></p>" +
 	    	"<form method='post' action='accountsettings.php' id='change_username'>"+
 	    	"  <label>New username: </label><input type='text' name='username' /><br />"+
@@ -156,6 +125,41 @@ function display_user_info(data)
 			}
 		});
 	});
+	
+	//Display the greeting
+	$("#user #account #account_setting #greeting").html(
+			"<p>Hello "+user_info["username"]+"! You are Level "+user_info["level"]+"</p>"
+//			"<p>You progress towards the next level:"+user_info["progress"]+"</p>"+
+//			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
+	);
+	
+	// Display/Edit avatar
+	if(user_info["avatar"]!="default.jpg")
+	{
+		//The <?php echo time() ?> prevents the image from being cached. So the latest image will always display
+		//$("#user #account #avatar").html("<img src='users/"+user_info["username"]+"/avatar.jpg?<?php echo time(); ?>' height='75' width='75' alt='You don&apos;t have an avatar'></img>");
+		
+		// changed by Taha - this way it will reflect whatever is from the session, default set to default.jpg
+		// image is broken because the path is wrong it should be users/username/(avatar.image or defautl.image)
+		$("#user #account #account_setting #avatar").html("<img src='users/"+user_info["username"]+"/"+user_info["avatar"]+"' height='75' width='75'></img>");
+		$("#user #account #account_setting #avatar").append(
+			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
+			  "<label>Choose a new profile picture</label><br />" +
+			  "<input type='file' name='avatar' />" +
+			  "<input type='submit' value='upload' />" +
+			"</form>"
+		);
+	}
+	else
+	{
+		$("#user #account #account_setting #avatar").html("<img src='users/default.jpg' height='75' width='75'></img>");
+		$("#user #account #account_setting #avatar").html(
+			"<form enctype='multipart/form-data' action='uploadavatar.php' method='post'>" +
+			  "<label>Upload a profile picture</label><input type='file' name='avatar'/>" +
+			  "<input type='submit' value='upload' />" +
+			"</form>" 
+		);
+	}
 	
 	//bind event handler to the newly created change forms
 	$("#user #change_username, #user #change_email, #user #change_password, #user #change_goals").on("submit", function(e){

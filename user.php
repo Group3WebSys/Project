@@ -29,15 +29,6 @@ else
 	  </div>
 	  
 	  <div id="account">
-	    <div id="greeting"></div>
-	    <div id="avatar"></div>
-	    <div id="progress"></div>
-	    <div class="right_c" id="personal_goal1"></div>
-	    <div class="left_c" id="completed_missions"></div>
-	    <div class="right_c" id="personal_goal2"></div>
-	    <div class="left_c" id="current_mission"></div>
-	    <div class="right_c" id="personal_goal3"></div>
-	    <div class="left_c" id="email"></div>
 	    <div class="left_c" id="account_setting"></div>
 	    <div style="clear:both;font-size:150%;" id="account_setting_toggle"></div>
 	  </div>
