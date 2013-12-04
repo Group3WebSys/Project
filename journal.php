@@ -28,8 +28,7 @@
 						$innerdiv = $value['id'].$value['subject'];
 						$output = "";
 						$output .= "<div id='$value[id]'>\n";
-						$output .= "<span><h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3>";
-						$output .= "<sub>$value[date]</sub></span>";
+						$output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3><span><sub>$value[date]</sub></span>";
 						$output .= "<div id='$innerdiv' style='display:none;'>\n";
 						$output .= "<p>$value[content]</p></div>\n</div>\n";
 		
