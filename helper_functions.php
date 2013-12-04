@@ -501,7 +501,7 @@ function get_journal_entries($uid, $db)
 	{
 		return false;
 	}
-
+}
 
 
 ?>
