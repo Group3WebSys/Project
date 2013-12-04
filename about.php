@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<div class = "wrapmeup">
 	<div class = "bodyBlock">
 		<h1>ABOUT US</h1><br/>
 		<h3>Overview</h3>
@@ -18,5 +19,6 @@
 	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
+</div>
 <?php include 'footer.php'; ?>
 
