@@ -1,6 +1,6 @@
 <?php include 'header.php';?>
 
-
+<div class = "wrapmeup">
  	<div class = "bodyBlock">
 			<h1>JOURNAL</h1>
 			<!--STILL NEEDS CODE TO ADD INPUT DATA TO TABLE-->
@@ -13,4 +13,5 @@
 	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
+</div>
 <?php include 'footer.php'; ?>
