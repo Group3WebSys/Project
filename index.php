@@ -5,7 +5,7 @@
 	<div id = "content">
 		<img src = "style/resources/LOGOforindex.png" id = "indexlogo" alt = "logo" width = "800">
 		<div id ="intro">
-			<p>New to this site? Learn all <a href = "about.php">About Us</a></p>
+			<p>New to this site? Learn all <a href = "about.php">about us</a></p>
 		</div>
 		<div id = "slider">
 												
