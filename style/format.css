@@ -36,13 +36,13 @@ li {
   list-style: none;
   text-indent: -1em;
 }
-
+/*
 li:hover {
   list-style: none;
   text-indent: -1em;
   background-color: #91B585;
   color: white;
-}
+} */
 
 a {
   text-decoration: none;
