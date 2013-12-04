@@ -14,6 +14,7 @@
 	if(!empty($_POST))
 	{
 		require('dbconnect.php');
+		require('helper_functions.php');
 		header('Content-Type: application/json');
 		header("Last-Modified: {now} GMT");
 		header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');

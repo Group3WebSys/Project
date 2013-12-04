@@ -25,9 +25,9 @@ function display_user_info(data)
 //	
 	//Display the greeting
 	$("#user #account #greeting").html(
-			"<p>Hello "+user_info["username"]+"! You are Level "+user_info["level"]+"</p>"+
+			"<p>Hello "+user_info["username"]+"! You are Level "+user_info["level"]+"</p>"
 //			"<p>You progress towards the next level:"+user_info["progress"]+"</p>"+
-			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
+//			"<meter value='"+user_info["progress"]/100+"'>"+user_info["progress"]+"</meter>"
 	);
 	//Display user's current task
 	var task="";

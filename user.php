@@ -132,9 +132,8 @@ else
 					$("#user #logout_container").show(500);
 					$("#user").show(500);
 					
-					display_user_info(data);
-					
-					
+					alert("You have successfully logged in!");
+					window.location.reload();
 				}
 				else if(data["success"]==0)
 				{
