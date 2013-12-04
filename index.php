@@ -3,8 +3,7 @@
 	<?php include 'rightsidebar.php'; ?>
 	<div class = "wrapmeupindex">
 	<div id = "content">
-		<h1><img src = "style/resources/LOGOwithglow.png" alt = "logo" width = "200">
-		Confiden</h1>
+		<img src = "style/resources/LOGOforindex.png" alt = "logo" width = "200">
 		<div id ="intro">
 			<p>New to this site? Learn all <a href = "about.php">About Us</a></p>
 		</div>
