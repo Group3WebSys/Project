@@ -1,4 +1,5 @@
 <?php include 'header.php'; ?>
+<div class = "wrapmeup">
 	<div class = "bodyBlock">
 			<h1>Confiden Privacy Policy</h1>
 			<p>This Privacy Policy was last modified on December 01, 2013.</p>
@@ -23,5 +24,6 @@
 	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
+</div>
 <?php include 'footer.php'; ?>
 
