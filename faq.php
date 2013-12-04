@@ -53,8 +53,9 @@
 			<br/>
 		</div>	
 	</div>	
-	</div>
 	<?php include 'leftsidebar.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
+	<!--wrapmeup-->
+	</div>
 <?php include 'footer.php'; ?>
 
