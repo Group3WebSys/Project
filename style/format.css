@@ -7,7 +7,7 @@ html, body {
 
 body {
   background-repeat: repeat;
-  background-color:#91B585;
+  background-color:#a4c6dc;
   background-position:center top;
   background-attachment: scroll;
   font-family: 'Agency FB', 'Share Tech', 'Arial';
@@ -222,7 +222,8 @@ clear: both;
 	color: #DEFFBC;
 }
 #indexlogo{
-	margin-bottom: -20px;
+	margin-bottom: -40px;
+	margin-top: -20px;
 }
 
 #intro {
