@@ -16,10 +16,11 @@
 
 				$innerdiv = $value['id'].$value['subject'];
 				$output = "";
+                		$output .= "<sub>$value[date]</sub>\n";
 				$output .= "<div id='$value[id]'>\n";
-				$output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3>\n";
+				$output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3>";
 				$output .= "<div id='$innerdiv' style='display:none;'>\n";
-				$output .= "<p class='{$value['id']}content'>$value[content]</p></div>\n</div>\n";
+				$output .= "<p>$value[content]</p></div>\n</div>\n";
 
 				$prevOut .= $output;
 
