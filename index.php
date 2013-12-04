@@ -54,15 +54,11 @@
 					</div>
 					<div class="panel" title="Panel 6">
 						<div class="wrapper">
-							<h1>A Tale of Two Cities</h1>
-							<p><em>Charles Dickins</em></p>
-							<blockquote>It was the best of times, it was the worst of times, it was the age of wisdom,
-							 it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity,
-							 it was the season of Light, it was the season of Darkness, it was the spring of hope,
-							 it was the winter of despair, we had everything before us, we had nothing before us, 
-							 we were all going direct to heaven, we were all going direct the other way - in short,
-							 the period was so far like the present period, that some of its noisiest authorities insisted on its being received,
-							 for good or for evil, in the superlative degree of comparison only.
+							<h1>Quote of the Week</h1>
+							<p><em>Neil Gaiman</em></p>
+							<blockquote>“I hope that in this year to come, you make mistakes.Because if you are making mistakes, then you are making new things, trying new things, learning, living, pushing yourself, changing yourself, changing your world. You're doing things you've never done before, and more importantly, you're Doing Something.
+										So that's my wish for you, and all of us, and my wish for myself. Make New Mistakes. Make glorious, amazing mistakes. Make mistakes nobody's ever made before. Don't freeze, don't stop, don't worry that it isn't good enough, or it isn't perfect, whatever it is: art, or love, or work or family or life. Whatever it is you're scared of doing, Do it.
+										Make your mistakes, next year and forever.”
 							</blockquote>
 						</div>
 					</div>
