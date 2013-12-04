@@ -75,7 +75,8 @@ else
 	  <div class="error">
 	    
 	  </div>
-	  <form action='logout.php' method='post' id="logout"><input id='button_logout' type='submit' value='Log out' /></form>
+	  <a style="font-size:150%" id="logout" href="#">Log out</a>
+	  <!-- <form style="display:none;" name="logout" id = "logout" action='logout.php' method='post' id="logout"><input id='button_logout' type='submit' value='Log out' /></form> -->
 	</div>
 	<script>
 		var ajax_response="";
@@ -132,7 +133,7 @@ else
 			
 		});
 	
-		$("#user #logout").on("submit", function(e){
+		$("#user #logout").click("submit", function(e){
 			e.preventDefault();
 			$.post("logout.php", $(this).serialize(), function(data){
 				if(data["success"]==1)
