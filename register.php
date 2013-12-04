@@ -54,12 +54,9 @@
 			echo json_encode(array("error"=>$error_msg, "success"=>0));
 			die();
 		}
-		else if($_POST['password']!=$_POST['password_again'])
+		else if(!validate_password($_POST['password'], $_POST['password_again'], $db, "", "register", $old_password=""))
 		{
-			if(!validate_password($_POST['password'], $_POST['password_again'], $db, "", "register", $old_password=""))
-			{
-				die();
-			}
+			die();
 			
 		}
 		
