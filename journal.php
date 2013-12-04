@@ -11,8 +11,10 @@
 
     	  	$prev =  get_journal_entries($_SESSION["user"]["id"], $db);
     	  	$prevOut = "";
+    	  	echo "yo";
     	  	echo $prev;
-
+    	  	print $prev;
+		echo "yo";
     	  	// iterate through each mission and generate the appropriate HTML for it
 			foreach ($prev as $key => $value) {
 
