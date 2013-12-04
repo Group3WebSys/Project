@@ -401,9 +401,11 @@ hr {
   list-style: square;
   text-indent: 0em;
 }
+/*
 #dialog ol > li:hover {
   list-style: square;
   text-indent: 0em;
   background-color: white;
   color: black;
 }
+*/
