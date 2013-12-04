@@ -122,6 +122,7 @@ clear: both;
 	overflow-y: auto;
 	border: 1px dashed green;
 	padding-left: 10px;
+	padding-top:-10px;
 }
 
 #leftsidebar{
