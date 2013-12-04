@@ -148,7 +148,7 @@ clear: both;
 
 #header {
   /* Filler stuff for now */
-  height: auto;
+  height: 70px;
   /*line-height: 150px;*/
   background-color: lightgray;
   border: none;
