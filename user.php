@@ -30,7 +30,7 @@ else
 	  
 	  <div id="account">
 	    <div class="left_c" id="account_setting"></div>
-	    <div style="clear:both;font-size:150%;" id="account_setting_toggle"></div>
+	    <div style="clear:both;" id="account_setting_toggle"></div>
 	  </div>
 	</div>
 	
@@ -75,7 +75,7 @@ else
 	  <div class="error">
 	    
 	  </div>
-	  <a style="font-size:150%" id="logout" href="#">Log out</a>
+	  <a id="logout" href="#">Log out</a>
 	  <!-- <form style="display:none;" name="logout" id = "logout" action='logout.php' method='post' id="logout"><input id='button_logout' type='submit' value='Log out' /></form> -->
 	</div>
 	<script>

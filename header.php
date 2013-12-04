@@ -67,7 +67,7 @@
 			else if (basename($_SERVER['PHP_SELF']) == "privacypolicy.php") echo "Privacy Policy";
 			else if (basename($_SERVER['PHP_SELF']) == "termsandconditions.php") echo "Terms and Conditions";
 			else if (basename($_SERVER['PHP_SELF']) == "journal.php") echo "Journal";
-			else if (basename($_SERVER['PHP_SELF']) == "accountsettings.php") echo "Settings";
+			else if (basename($_SERVER['PHP_SELF']) == "about.php") echo "About Us";
 			// etc
 		?>
 		</title>
