@@ -17,7 +17,7 @@
 			}
 			else {
 				foreach ($missions as $key => $value) {
-					$innerdiv = $value['id'].$value['title'];
+					$innerdiv = $value['id']."fb";
 					$output = "";
 					$output .= "<div id='$value[id]'>\n";
 					$output .= "<h3 class='$value[title]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[title]</a></h3>\n";
