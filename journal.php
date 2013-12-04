@@ -5,30 +5,29 @@
                 <h1>JOURNAL</h1>
                 
                 <!--Displays jounal entries-->
-                <!--I keep getting an error that says the foreach arguments are invalid but I don't see anything
-                wrong with the, anyone see something I'm mising?-->
-                <?php  
+                <!--Old problem fixed, still trying to get the onclick display to work though-->
+             	<?php  
 
-                      $prev =  get_journal_entries($_SESSION["user"]["id"], $db);
-                      $prevOut = "";
-                      
-                      // iterate through each mission and generate the appropriate HTML for it
-                        foreach ($prev as $key => $value) {
+    	  	$prev =  get_journal_entries($_SESSION["user"]["id"], $db);
+    	  	$prevOut = "";
 
-                                $innerdiv = $value['id'].$value['subject'];
-                                $output = "";
-                                $output .= "<div id='$value[id]'>\n";
-                                $output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3>\n";
-                                $output .= "<div id='$innerdiv' style='display:none;'>\n";
-                                $output .= "<p class='{$value['id']}desc'>$value[entry]</p>\n</div>\n";
+    	  	// iterate through each mission and generate the appropriate HTML for it
+			foreach ($prev as $key => $value) {
 
-                                $prevOut .= "$output";
+				$innerdiv = $value['id'].$value['subject'];
+				$output = "";
+				$output .= "<div id='$value[id]'>\n";
+				$output .= "<h3 class='$value[subject]'><a href='#' onclick=\"toggle_visibility('$innerdiv'); return false;\">$value[subject]</a></h3>\n";
+				$output .= "<div id='$innerdiv' style='display:none;'>\n";
+				$output .= "<p class='{$value['id']}content'>$value[content]</p></div>\n</div>\n";
 
-                        }
+				$prevOut .= $output;
 
-                        echo $prevOut;
-          ?>
+			}
 
+		echo $prevOut;
+
+  	?>
                         <form action="addJEntry.php" method="post" id="journal">
                                 <input type='hidden' name='id' id='id' value='<?php echo $_SESSION["user"]["id"]; ?>'>
                                 <input type='hidden' name='uname' id='uname' value='<?php echo $_SESSION["user"]["username"]; ?>'>
