@@ -486,7 +486,7 @@ function get_journal_entries($uid, $db)
 {
 	try
 	{
-		$query="SELECT `journals`.`id`, `journals`.`subject`, `journals`.`content` FROM `journals` WHERE
+		$query="SELECT `journals`.`id`, `journals`.`subject`, `journals`.`content`,`journals`.`date` FROM `journals` WHERE
 		            		`journals`.`uid` = :uid";
 
 		$query_params=array(":uid" => $uid);
