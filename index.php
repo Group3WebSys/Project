@@ -1,6 +1,6 @@
 	<?php include 'header.php'; ?>
 	<?php include 'rightsidebar.php'; ?>
-	<div class = "wrapmeup">
+	<div class = "wrapmeupindex">
 	<div id = "content">
 		<h1><img src = "style/resources/LOGOwithglow.png" alt = "logo" width = "200">
 		Confiden</h1>
@@ -84,6 +84,6 @@
 	
 	</div>
 	</div>
-	<!--wrapmeup-->
+	<!--wrapmeupindex-->
 	</div>
 	<?php include 'footer.php'; ?>
