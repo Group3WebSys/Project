@@ -66,7 +66,7 @@ clear: both;
   
   position: absolute;
   left: 50%;
-  min-height:600px;
+  height:600px;
   margin-top: 40px;
   margin-left: -400px;    
   margin-bottom: 40px;
@@ -179,7 +179,7 @@ clear: both;
 }*/
 
 .wrapmeup {
-	height:2000px;
+	height:700px;
 }
 
 #footer{
