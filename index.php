@@ -24,7 +24,7 @@
 						<div class="wrapper">
 							<img src="style/resources/sliderphoto1.png" alt="subreddit" />
 							<div class="photo-meta-data">
-								<a href="http://www.reddit.com/r/confidence" target="_blank">Check out our subreddit page</a>
+								<a href="http://www.reddit.com/r/confidence" target="_blank">Check out the confidence subreddit page</a>
 							</div>
 						</div>
 					</div>		
