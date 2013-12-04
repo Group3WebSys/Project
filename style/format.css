@@ -63,7 +63,6 @@ clear: both;
 
 .bodyBlock{
   width: 800px;  
-  
   position: absolute;
   left: 50%;
   height:600px;
@@ -73,7 +72,6 @@ clear: both;
   
   border: 1px dashed green;
   padding: 10px 10px 30px 10px;
-  padding-bottom:100px;
   overflow: auto;
 }
 
