@@ -43,13 +43,6 @@
 				':subject' => $_POST['subject'],
 				':entry'   => $_POST['entry']
 			);
-			
-			$query_params = array(
-				':uid'     => $_POST['id'],
-				':un'      => $_POST['uname'],
-				':subject' => $_POST['subject'],
-				':entry'   => $_POST['entry']
-			);
 
 			try
 			{
