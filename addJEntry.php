@@ -21,22 +21,21 @@
 				die();
 			}
 
-			$query = "
-	            INSERT INTO journals (
-	            	uid,
-	            	author,
-	                subject,
-	                content
-	            ) VALUES (
-	            	:uid,
-	            	:un,
-	                :subject,
-	                :entry
-	            )";
+			$query = "INSERT INTO journals (
+	            		uid,
+	            		author,
+	                	subject,
+	                	content
+	            	) VALUES (
+	            		:uid,
+	            		:un,
+	                	:subject,
+	                	:entry
+	        	)";
 			
 			$query_params = array(
-				':uid'     => $_POST["id"],
-				':un'      => $_POST["uname"],
+				':uid'     => $_POST['id'],
+				':un'      => $_POST['uname'],
 				':subject' => $_POST['subject'],
 				':entry'   => $_POST['entry']
 			);
