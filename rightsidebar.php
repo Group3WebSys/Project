@@ -21,7 +21,7 @@
   <div class="meter animate">
 	<span style="width: <?php echo $w; ?>%"><span></span></span>
 </div>
-  <p><a class="rightsidebarlinks" href="#" onclick="return false;">View personal goals!</a></p>
+  <p><a id="personalgoals" class="rightsidebarlinks" href="#" onclick="return false;">View personal goals!</a></p>
   <div id="dialog" title="Personal Goals">
   <p>
   <ol>
