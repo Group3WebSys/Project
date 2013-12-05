@@ -25,7 +25,7 @@
 					$output .= "<p class='{$value['id']}desc'>$value[desc]</p>\n";
 					$output .= "<form method='post' action='' name='$value[id]' id='$value[id]'>\n";
 					$output .= "<input type='hidden' name='id' id='id' value='$value[id]'>";
-					$output .= "<textarea onkeyup='wordcount(this.value, $value[id]);' id='feedback' name='feedback' rows='4' cols='50' placeholder='Enter your feedback here (at least 30 words)'></textarea>\n";
+					$output .= "<textarea onkeyup='wordcount(this.value, $value[id]);' id='feedback' name='feedback' rows='4' cols='50' placeholder='How did it go? (at least 30 words)'></textarea>\n";
 					$output .= "<br/><input id='submitmission' name='submit' type='submit' value='Submit Mission'>\n";
 					$output .= "</form>\n<span class='wordcount'>Word Count:</span><input type='text' size='4' readonly id='{$value['id']}w_count'></div>\n</div>\n";		
 					if ($value['star'] == 1) {
