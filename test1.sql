@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2013 at 04:21 AM
+-- Generation Time: Dec 05, 2013 at 09:43 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `completedtasks` (
   `uid` int(11) NOT NULL,
   `feedback` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `journals` (
   PRIMARY KEY (`id`),
   KEY `uid` (`uid`),
   KEY `author` (`author`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `suggestedtasks` (
   PRIMARY KEY (`id`),
   KEY `suggestedBy` (`suggestedBy`),
   KEY `suggestedBy_2` (`suggestedBy`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 
 INSERT INTO `tasks` (`id`, `title`, `desc`, `star`) VALUES
 (6, 'Reflect ', '<a target=''_blank'' href=''http://www.askmen.com/grooming/project/top-10-ways-to-show-confidence-with-body-language.html''>Body Language</a>', 1),
-(7, 'Reflect', '<a target=''_blank'' href=''http://www.councelingcenter.illinois.edu/self-help-brochures/self-awarenessself-care/self-confidence/''>Confidence</a>', 1),
+(7, 'Reflect', '<a target=''_blank'' href=''http://www.counselingcenter.illinois.edu/self-help-brochures/self-awarenessself-care/self-confidence/''>Confidence</a>', 1),
 (8, 'Say Cheese', 'Take and upload a picture of yourself', 1),
 (9, 'Reflect', '<a target=''_blank'' href=''http://www.mindtools.com/selfconf.html''>Prepare for Success</a>', 1),
 (10, 'Pat On The Back', 'Write down and upload a list of things you like about yourself', 1),
@@ -186,7 +186,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `currentmissions` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=52 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `password`, `salt`, `email`, `id`, `gender`, `DOB`, `avatar`, `level`, `personalGoal1`, `personalGoal2`, `personalGoal3`, `current1star`, `current2star`, `current3star`, `currentmissions`) VALUES
+('hellothere', '3755505042d5bf064e3ba0adcae88db9e87cb718f3a375ea6834ee52e2a79bb8', '4ac629354e1dfb5d', 'hellothere@aol.com', 52, 'unspecified', '1990-01-02', 'default.jpg', 1, 'Graduate RPI', 'Go hard in the paint', 'Not fall down on stairs', 0, 0, 0, '17,7,15,13');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
