@@ -86,16 +86,19 @@ clear: both;
   background-color: transparent;
 }
 
+#user{
+  width: 90%;
+  float: right;
+}
+
 #user #account{
   overflow: hidden;
 }
 
 
 #user .left_c {
-  position: relative;
-  left: 200px;
   float: left;
-  width: 500px;
+  width: 40%;
   text-align: left;
   line-height:240%;
 }
@@ -105,12 +108,10 @@ clear: both;
 }
 
 #user .right_c {
-  position: relative;
-  right: 200px;
-  float: right;
-  width: 500px;
-  text-align: left;
-  line-height: 240%;
+	float: right;
+	width: 40%;
+	text-align: left;
+	line-height: 240%;
 }
 
 #user .right_c input {

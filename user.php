@@ -21,7 +21,7 @@ else
 
 <div id="user">				
 	<script src="user_helper.js"></script>
-	
+		
 	<div id="info">
 	  <div class="error">
 	  <?php if(isset($_SESSION["error"]) && $_SESSION["error"]!=""){ echo "<p>"+$_SESSION["error"]+"</p>";}?>
