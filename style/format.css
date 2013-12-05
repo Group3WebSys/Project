@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-  color: #c4ff9c;
+  color: #eaffd5;
   font-size: 28px;
   text-align: center;
 }
@@ -77,7 +77,7 @@ clear: both;
 
 .bodyBlock a{
   text-decoration: none;
-  color: #c4ff9c;
+  color: #eaffd5;
 }
 
 .bodyBlock a:hover{
