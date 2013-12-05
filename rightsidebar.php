@@ -21,7 +21,7 @@
   <div class="meter animate">
 	<span style="width: <?php echo $w; ?>%"><span></span></span>
 </div>
-  <p><a id="personalgoals" style="color:green;" href="#" onclick="return false;">View personal goals!</a></p>
+  <p><a class="rightsidebarlinks" href="#" onclick="return false;">View personal goals!</a></p>
   <div id="dialog" title="Personal Goals">
   <p>
   <ol>
@@ -37,7 +37,7 @@
   </p>
   </div>
   <hr/>
-  <p><a style="color:green;" href="#" onclick="toggle_visibility('suggestamission'); return false;">Suggest a mission!</a></p>
+  <p><a class = "rightsidebarlinks" href="#" onclick="toggle_visibility('suggestamission'); return false;">Suggest a mission!</a></p>
   <form style="display:none;" id ="suggestamission" action="" method="post">
   <input type='hidden' name='id' id='id' value='<?php echo $_SESSION["user"]["id"]; ?>'>
   <textarea name="suggest" id="suggest" rows="4" cols="15" placeholder="Enter some ideas for missions here"></textarea>
