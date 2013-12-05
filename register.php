@@ -184,8 +184,6 @@
 				gender,
 				dob,
 				level,
-				progress,
-				totalpoints,
 				personalgoal1,
 				personalgoal2,
 				personalgoal3
@@ -197,8 +195,6 @@
 				:gender,
 				STR_TO_DATE(:dob, '%m/%d/%Y'),
 				:level,
-				:progress,
-				:totalpoints,
 				:personalgoal1,
 				:personalgoal2,
 				:personalgoal3
@@ -240,8 +236,6 @@
 			':gender' => $_POST['gender'],
 			':dob' => $_POST['DOB'],
 			':level' => 1,
-			':progress' => 0,
-			':totalpoints' => 0,
 			':personalgoal1' => $_POST['pg1'],
 			':personalgoal2' => $_POST['pg2'],
 			':personalgoal3' => $_POST['pg3']
@@ -338,6 +332,7 @@
 		
 		$_SESSION["user"]=$user;
 		echo json_encode(array("error"=>"None", "success"=>1, "sid"=>session_id(), "current_user"=>$user));
+		
 		die();
 	}
 	 

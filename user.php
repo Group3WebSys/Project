@@ -52,7 +52,7 @@ else
 	    	<label>Password*:</label><input type="password" name="password"/><br />
 	    	<label>Password again*:</label><input type="password" name="password_again"/><br />
 		    <label>Gender:</label>
-		    <select name="gender" style="float:right"><br />
+		    <select name="gender" style="float:right">
 		      <option selected value="unspecified">unspecified</option>
 		      <option value="male">male</option>
 		      <option value="female">female</option>
@@ -92,8 +92,9 @@ else
 					$("#user #register_container").remove();
 					$("#user #logout_container").show(500);
 					$("#user").show(500);
-					
-					display_user_info(data);
+					alert("You have successfully registered!");
+					window.location.reload();
+					//display_user_info(data);
 					
 				}
 				else if(data["success"]==0)

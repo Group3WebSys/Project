@@ -97,7 +97,7 @@
 		<div id="header">
 		
 		<!--LOGO, YO-->
-		<a href = "index.php" style = "float:left;"><img src = "style/resources/LOGOforheader.png" height = "40"></a>
+		<a href = "index.php" style = "float:left;"><img alt="Logo" src = "style/resources/LOGOforheader.png" height = "40"></a>
 			<?php 
 			include("user.php");
 			$notification = "";
