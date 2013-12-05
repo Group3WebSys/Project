@@ -31,7 +31,7 @@
 	foreach ($goals as $id => $goal) {
 		echo "<li>".$goal."</li>";
 	}
-	echo "<p>Have you put work towards you personal goals today?</p>";
+	echo "<p>Have you put work towards your personal goals today?</p>";
   ?>
   </ol>
   </p>
