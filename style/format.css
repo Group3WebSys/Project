@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-  color: #003300;
+  color: #a0ea7e;
   font-size: 28px;
   text-align: center;
 }
@@ -77,7 +77,13 @@ clear: both;
 
 .bodyBlock a{
   text-decoration: none;
-  color: #DEFFBC;
+  color: #a0ea7e;
+}
+
+.bodyBlock a:hover{
+  text-decoration: none;
+  color: #2a678e;
+  background-color: transparent;
 }
 
 #user #account{
