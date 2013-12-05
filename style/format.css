@@ -199,6 +199,10 @@ clear: both;
 	height:850px;
 }
 
+.wrapper p{
+	font-size: 25px;
+}
+
 #footer{
   position: relative;
   height: 20px;
@@ -238,6 +242,11 @@ clear: both;
 #content a{
 	color: #DEFFBC;
 }
+
+#content a:hover{
+	color: #658e97;
+}
+
 #indexlogo{
 	margin-bottom: -40px;
 	margin-top: -20px;
