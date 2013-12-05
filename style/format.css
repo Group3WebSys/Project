@@ -82,7 +82,7 @@ clear: both;
 
 .bodyBlock a:hover{
   text-decoration: none;
-  color: #76a5af;
+  color: #6f9ba5;
   background-color: transparent;
 }
 
@@ -216,12 +216,12 @@ clear: both;
 	padding-right:10px;
 }
 
-#personalgoals a {
+#rightsidebarlinks {
   text-decoration: none;
   color: #919191;
 }
 
-#personalgoals a:hover {
+#rightsidebarlinks:hover {
   text-decoration: none;
   color: #8CC63F;
 }
