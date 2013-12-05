@@ -82,7 +82,7 @@ clear: both;
 
 .bodyBlock a:hover{
   text-decoration: none;
-  color: #7fb439;
+  color: #76a5af;
   background-color: transparent;
 }
 
@@ -159,7 +159,7 @@ clear: both;
   padding: 10px 10px 10px 10px;
   background-color: white;
   text-align: center;
-  color: #91B585;
+  color: #919191;
 }
 
 #header {
@@ -215,6 +215,17 @@ clear: both;
 .footerspan{
 	padding-right:10px;
 }
+
+#personalgoals a {
+  text-decoration: none;
+  color: #919191;
+}
+
+#personalgoals a:hover {
+  text-decoration: none;
+  color: #8CC63F;
+}
+
 
 #content {
   width: 800px;
