@@ -122,7 +122,7 @@ clear: both;
 	overflow-y: auto;
 	border: 1px dashed white;
 	padding-left: 10px;
-	padding-top:-10px;
+	padding-bottom:10px;
 }
 
 #leftsidebar{
@@ -143,7 +143,6 @@ clear: both;
 #rightsidebar{
   float: right;
   width: 200px;
-  //height: 400px;
   height: auto;
   margin-top: 40px;
   margin-left: 20px;
