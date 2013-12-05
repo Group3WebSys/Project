@@ -22,7 +22,7 @@ h1 {
 }
 
 h2 {
-  color: #e8ffd1;
+  color: #e6ffcd;
   font-size: 28px;
   text-align: center;
 }
@@ -77,12 +77,12 @@ clear: both;
 
 .bodyBlock a{
   text-decoration: none;
-  color: #e8ffd1;
+  color: #e6ffcd;
 }
 
 .bodyBlock a:hover{
   text-decoration: none;
-  color: #2a678e;
+  color: #86bcc8;
   background-color: transparent;
 }
 
