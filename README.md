@@ -68,7 +68,10 @@ Notification of Changes
 The user may or may not be notified of changes made to the Terms and Conditions of this website. We reserve the right to change them at any time as we see fit. Your continued use of the site signifies your acceptance of these new Terms and Conditions.
 
 ========================================
+Access to Database:
+1. Create new database entitled "test1"
+2. Import "test1.sql"
+
+========================================
 Thank you for visiting Confiden!
 ========================================
-
-
